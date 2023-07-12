@@ -65,55 +65,58 @@
    }
 
 //검색어 검색 기능--------------------------------------------
-function myFunction() {
-  var input, filter, table, tr, td1, td2, td3, i;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("myTable");
-  tr = table.getElementsByTagName("tr");
-  
-  for (i = 0; i < tr.length; i++) {
-    td1 = tr[i].getElementsByTagName("td")[0];
-    td2 = tr[i].getElementsByTagName("td")[1];
-    td3 = tr[i].getElementsByTagName("td")[2];
-    
-    if (td1 || td2 || td3) {
-      var txtValue1 = td1 ? td1.textContent || td1.innerText : "";
-      var txtValue2 = td2 ? td2.textContent || td2.innerText : "";
-      var txtValue3 = td3 ? td3.textContent || td3.innerText : "";
-      var matchFound = false;
-
-      if (txtValue1.toUpperCase().indexOf(filter) > -1) {
-        matchFound = true;
-      }
-      
-      if (txtValue2.toUpperCase().indexOf(filter) > -1) {
-        matchFound = true;
-      }
-      
-      if (txtValue3.toUpperCase().indexOf(filter) > -1) {
-        matchFound = true;
-      }
-      
-      if (matchFound) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }
-  }
-}
+	function myFunction() {
+	  var input, filter, table, tr, td1, td2, td3, i;
+	  input = document.getElementById("myInput");
+	  filter = input.value.toUpperCase();
+	  table = document.getElementById("myTable");
+	  tr = table.getElementsByTagName("tr");
+	  
+	  for (i = 0; i < tr.length; i++) {
+	    td1 = tr[i].getElementsByTagName("td")[0];
+	    td2 = tr[i].getElementsByTagName("td")[1];
+	    td3 = tr[i].getElementsByTagName("td")[2];
+	    
+	    if (td1 || td2 || td3) {
+	      var txtValue1 = td1 ? td1.textContent || td1.innerText : "";
+	      var txtValue2 = td2 ? td2.textContent || td2.innerText : "";
+	      var txtValue3 = td3 ? td3.textContent || td3.innerText : "";
+	      var matchFound = false;
+	
+	      if (txtValue1.toUpperCase().indexOf(filter) > -1) {
+	        matchFound = true;
+	      }
+	      
+	      if (txtValue2.toUpperCase().indexOf(filter) > -1) {
+	        matchFound = true;
+	      }
+	      
+	      if (txtValue3.toUpperCase().indexOf(filter) > -1) {
+	        matchFound = true;
+	      }
+	      
+	      if (matchFound) {
+	        tr[i].style.display = "";
+	      } else {
+	        tr[i].style.display = "none";
+	      }
+	    }
+	  }
+	}
 //연도 선택 기능---------------------------------------------
-function selectYear(year){
-	console.log(year);
-	$.ajax({
-		url:"myProPage",
-		data:{year:year},
-		success:function(data){
-			
+	
+		function selectYear(year){
+			var year=year;
+			$.ajax({
+				url:"myProPage",
+				data:{year:year},
+				success:function(data){
+					
+				}
+			})
 		}
-	})
-}
+
+	
 </script>
 </head>
 <body>
@@ -137,7 +140,7 @@ function selectYear(year){
 			     <button class="w3-button" style="width:12.8rem; height:4rem; font-size:large;font-weight:600;">연도선택</button>
 		     	 <div class="w3-dropdown-content w3-bar-block w3-card-4" style="width:12.8rem; height:4.3rem;font-weight:300;">
 		     	 	<c:forEach var="y" items="${regdate }">
-		     	 		<a href="#" class="w3-bar-item w3-button" onclick="selectYear(${y})">${y }</a>
+		     	 		<button class="w3-bar-item w3-button" onclick="selectYear(${y})">${y }</button>
 		     	 	</c:forEach>
 			     </div>
 		     </div>
