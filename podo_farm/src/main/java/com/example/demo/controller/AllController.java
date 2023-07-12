@@ -34,14 +34,17 @@ public class AllController {
 	
 	@GetMapping("/myProPage")
 	public void code(String year,Model model) {
+		System.out.println("year:"+year);
 		if(year==null|| year.equals("")) {
 			year2="2023";
 		}else{
 			year2=year;
+			System.out.println("year2:"+year2);
 		}
 		//스터디 번호
 		String s_no=cd.selectStudy(a_no);
 		year="2023";
+		
 		//문제 리스트-----------------------
 		HashMap<String, String>map=new HashMap();
 		map.put("year", year2); 
