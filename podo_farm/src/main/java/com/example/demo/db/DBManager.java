@@ -24,8 +24,15 @@ public class DBManager {
 			System.out.println("예외발생:"+e.getMessage());
 		}
 	}
+	//----------------------------study_InMapper-------------------------------
+	
+	
+	
+	//---------------------------coding_testMapper ------------------------------
+	
 	//문제 목록
 	public static List<Coding_testVO> findByAno(HashMap<String,String> map) {
+		System.out.println(map);
 	    List<Coding_testVO> list = null;
 	    SqlSession session = sqlSessionFactory.openSession();
 	    list = session.selectList("coding.findByAno", map);

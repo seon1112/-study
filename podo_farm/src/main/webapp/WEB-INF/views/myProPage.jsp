@@ -16,15 +16,16 @@
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
    <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 <script type="text/javascript">
+	var year2;
 //캘린더-------------------------------------------------
- google.charts.load("current", {packages:["calendar"]});
- google.charts.setOnLoadCallback(drawChart);
+	 google.charts.load("current", {packages:["calendar"]});
+	 google.charts.setOnLoadCallback(drawChart);
 
    function drawChart() {
 	   $.ajax({
 		  url:"grape",
+		  data:{year:year2},
 		  success:function(data){
-			  console.log(data);
 		        var dataTable = new google.visualization.DataTable();
 		        dataTable.addColumn('date', 'Date');
 		        dataTable.addColumn('number', 'Count');
@@ -65,55 +66,69 @@
    }
 
 //검색어 검색 기능--------------------------------------------
-function myFunction() {
-  var input, filter, table, tr, td1, td2, td3, i;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("myTable");
-  tr = table.getElementsByTagName("tr");
-  
-  for (i = 0; i < tr.length; i++) {
-    td1 = tr[i].getElementsByTagName("td")[0];
-    td2 = tr[i].getElementsByTagName("td")[1];
-    td3 = tr[i].getElementsByTagName("td")[2];
-    
-    if (td1 || td2 || td3) {
-      var txtValue1 = td1 ? td1.textContent || td1.innerText : "";
-      var txtValue2 = td2 ? td2.textContent || td2.innerText : "";
-      var txtValue3 = td3 ? td3.textContent || td3.innerText : "";
-      var matchFound = false;
-
-      if (txtValue1.toUpperCase().indexOf(filter) > -1) {
-        matchFound = true;
-      }
-      
-      if (txtValue2.toUpperCase().indexOf(filter) > -1) {
-        matchFound = true;
-      }
-      
-      if (txtValue3.toUpperCase().indexOf(filter) > -1) {
-        matchFound = true;
-      }
-      
-      if (matchFound) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }
-  }
-}
+	function myFunction() {
+	  var input, filter, table, tr, td1, td2, td3, i;
+	  input = document.getElementById("myInput");
+	  filter = input.value.toUpperCase();
+	  table = document.getElementById("myTable");
+	  tr = table.getElementsByTagName("tr");
+	  
+	  for (i = 0; i < tr.length; i++) {
+	    td1 = tr[i].getElementsByTagName("td")[0];
+	    td2 = tr[i].getElementsByTagName("td")[1];
+	    td3 = tr[i].getElementsByTagName("td")[2];
+	    
+	    if (td1 || td2 || td3) {
+	      var txtValue1 = td1 ? td1.textContent || td1.innerText : "";
+	      var txtValue2 = td2 ? td2.textContent || td2.innerText : "";
+	      var txtValue3 = td3 ? td3.textContent || td3.innerText : "";
+	      var matchFound = false;
+	
+	      if (txtValue1.toUpperCase().indexOf(filter) > -1) {
+	        matchFound = true;
+	      }
+	      
+	      if (txtValue2.toUpperCase().indexOf(filter) > -1) {
+	        matchFound = true;
+	      }
+	      
+	      if (txtValue3.toUpperCase().indexOf(filter) > -1) {
+	        matchFound = true;
+	      }
+	      
+	      if (matchFound) {
+	        tr[i].style.display = "";
+	      } else {
+	        tr[i].style.display = "none";
+	      }
+	    }
+	  }
+	}
 //연도 선택 기능---------------------------------------------
-function selectYear(year){
-	console.log(year);
-	$.ajax({
-		url:"myProPage",
-		data:{year:year},
-		success:function(data){
+	
+		function selectYear(year){
+			year2=year;
+			$.ajax({
+				url:"solved",
+				data:{year:year},
+				success:function(data){
+					console.log(data);
+					$("#tbody").empty();
+					 for (var i = 0; i < data.length; i++) {
+						 	var tr =$("<tr></tr>")
+						 	var td1 = $("<td></td>").html(data[i].p_date);
+						 	var td2 = $("<td></td>").html(data[i].rownum);
+						 	var td3 = $("<td></td>").html(data[i].p_title);
+						 	tr.append(td1).append(td2).append(td3);
+				          	$("#tbody").append(tr);
+				        }
+					 drawChart();
 			
+				}
+			})
 		}
-	})
-}
+
+	
 </script>
 </head>
 <body>
@@ -137,7 +152,7 @@ function selectYear(year){
 			     <button class="w3-button" style="width:12.8rem; height:4rem; font-size:large;font-weight:600;">연도선택</button>
 		     	 <div class="w3-dropdown-content w3-bar-block w3-card-4" style="width:12.8rem; height:4.3rem;font-weight:300;">
 		     	 	<c:forEach var="y" items="${regdate }">
-		     	 		<a href="#" class="w3-bar-item w3-button" onclick="selectYear(${y})">${y }</a>
+		     	 		<button class="w3-bar-item w3-button" onclick="selectYear(${y})">${y }</button>
 		     	 	</c:forEach>
 			     </div>
 		     </div>
@@ -221,6 +236,7 @@ function selectYear(year){
 			      <th style="width:20%;">번호</th>
 			      <th style="width:50%;">제목</th>
 			    </tr>
+			    <tbody id="tbody">
 			    <c:forEach var="c" items="${list }">
 			    <tr >
 			      <td>${c.p_date }</td>
@@ -228,6 +244,7 @@ function selectYear(year){
 			      <td>${c.p_title }</td>
 			    </tr> 
 			    </c:forEach>
+			    </tbody>
 			  </table>
           </div>
         </div>
