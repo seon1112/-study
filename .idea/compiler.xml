@@ -7,10 +7,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="jpa_board" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="jpa_board" target="17" />
       <module name="JpaBoard" target="17" />
       <module name="podo" target="17" />
       <module name="podo_farm" target="17" />
