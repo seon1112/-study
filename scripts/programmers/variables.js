@@ -3,90 +3,6 @@
     levels: 현재 등록된 프로그래머스 연습 문제의 레벨 구분입니다.
     uploadState: 현재 업로드 중인지를 저장하는 boolean입니다.
 */
-
-/*
-function get_csrf_token() {
-  const csrfToken = document.querySelector('meta[name=csrf-token]').getAttribute('content');
-  return csrfToken;
-}
-
-function get_levels() {
-  let page = 1;
-
-  fetch(`/learn/challenges/filter_lessons?page=1`, {
-    method: 'GET',
-    credentials: 'same-origin',
-    headers: {
-      'x-requested-with': 'XMLHttpRequest',
-      'x-csrf-token': `${get_csrf_token()}`,
-    },
-  })
-    .then((res) => res.text())
-    .then((res) => {
-      const html = /\$\('.algorithm-list'\).html\('(.*)'\);/.exec(res)[1];
-      const doc = new DOMParser().parseFromString(html.replace(/\\"/g, '"').replace(/\\n/g, '').replace(/\\/g, ''), 'text/html');
-      const last_page = [...doc.querySelectorAll('li.page-item:not(.next_page, .previous_page, .disabled)')].at(-1).innerText;
-      // log(doc);
-      return Number(last_page) || 1;
-    })
-    .then((last_page) => {
-      const fetches = [];
-      for (let page = 1; page <= last_page; page++) {
-        const data = new URLSearchParams();
-        // data.set('challenge_statuses[]', 'solved');
-        data.set('page', page);
-        fetches.push(
-          fetch(`/learn/challenges/filter_lessons?${data.toString()}`, {
-            method: 'GET',
-            credentials: 'same-origin',
-            headers: {
-              'x-requested-with': 'XMLHttpRequest',
-              'x-csrf-token': `${get_csrf_token()}`,
-            },
-          })
-            .then((res) => res.text())
-            .then((res) => {
-              const result = [];
-              const html = /\$\('.algorithm-list'\).html\('(.*)'\);/.exec(res)[1];
-              const doc = new DOMParser().parseFromString(html.replace(/\\"/g, '"').replace(/\\n/g, '').replace(/\\/g, ''), 'text/html');
-              // const isEnd = [...document.querySelector("li.next_page").classList].includes("disabled");
-              // log(doc);
-              const cards = [...doc.querySelectorAll('div.card-algorithm')];
-              console.log(cards);
-              for (const card of cards) {
-                const level =
-                  card
-                    .querySelector('span.level-badge')
-                    .className.match(/(level-\d)/g, '')
-                    ?.at(0)
-                    .replace?.('level-', 'lv') || 'unrated';
-                const problemId = card
-                  .querySelector('a')
-                  .getAttribute('href')
-                  .match(/\d{3,}/)[0];
-                result.push({ problemId, level });
-              }
-              console.log(result);
-              return result;
-            }),
-        );
-      }
-      return Promise.all(fetches).then((res) => {
-        const levels = {};
-        for (const r of res) {
-          for (const l of r) {
-            levels[l.problemId] = l.level;
-          }
-        }
-        console.log(levels);
-        return levels;
-      });
-    });
-}
-
-get_levels();
-*/
-
 const levels = {
   1829: 'lv2',
   1830: 'lv3',
@@ -474,5 +390,4 @@ const levels = {
   131705: 'lv1',
 };
 
-/* state of upload for progress */
 const uploadState = { uploading: false };
