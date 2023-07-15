@@ -3,33 +3,44 @@
   모든 해당 파일의 모든 함수는 parseData()를 통해 호출됩니다.
 */
 
-/*
-  bojData를 초기화하는 함수로 문제 요약과 코드를 파싱합니다.
-  - directory : 레포에 기록될 폴더명
-  - message : 커밋 메시지
-  - fileName : 파일명
-  - readme : README.md에 작성할 내용
-  - code : 소스코드 내용
-*/
+//html문서에서 데이터 추출하는 함수
 async function parseData() {
+  // <meta> 태그의 내용을 가져와 URL을 추출
   const link = document.querySelector('head > meta[name$=url]').content.replace(/\?.*/g, '').trim();
+
+  // 문제 번호를 추출
   const problemId = document.querySelector('div.main > div.lesson-content').getAttribute('data-lesson-id');
+
+  // levels 객체에서 레벨을 가져온다. 만약 찾지 못할 경우 'unrated'
   const level = levels[problemId] || 'unrated';
+
+  // HTML 문서에서 breadcrumb 탐색 요소로부터 구분을 추출합니다.
   const division = [...document.querySelector('ol.breadcrumb').childNodes]
     .filter((x) => x.className !== 'active')
     .map((x) => x.innerText)
-    // .filter((x) => !x.includes('코딩테스트'))
     .map((x) => convertSingleCharToDoubleChar(x))
     .reduce((a, b) => `${a}/${b}`);
+
+  // 문제 제목을 추출
   const title = document.querySelector('#tab > li.algorithm-title').textContent.replace(/\\n/g, '').trim();
+
+  // 문제 설명을 추출
   const problem_description = document.querySelector('div.guide-section-description > div.markdown').innerHTML;
-  const language_extension = document.querySelector('div.editor > ul > li.nav-item > a').innerText.split('.')[1]
+
+  // 파일 확장자를 추출
+  const language_extension = document.querySelector('div.editor > ul > li.nav-item > a').innerText.split('.')[1];
+
+  // 코드를 추출
   const code = document.querySelector('textarea#code').value;
+
+  // 결과 메시지를 추출 나중 함수를 위해서 형식 조정
   const result_message =
     [...document.querySelectorAll('#output > pre.console-content > div.console-message')]
       .map((x) => x.innerText)
       .filter((x) => x.includes(': '))
       .reduce((x, y) => `${x}<br/>${y}`, '') || 'Empty';
+
+  // 실행 시간과 메모리 값 추출 후  형식화
   const [runtime, memory] = [...document.querySelectorAll('td.result.passed')]
     .map((x) => x.innerText)
     .map((x) => x.replace(/[^., 0-9a-zA-Z]/g, '').trim())
@@ -37,27 +48,8 @@ async function parseData() {
     .reduce((x, y) => (Number(x[0]) > Number(y[0]) ? x : y), ['0.00ms', '0.0MB'])
     .map((x) => x.replace(/(?<=[0-9])(?=[A-Za-z])/, ' '));
 
+  // 추출한 데이터 결과를 반환
   return makeData({ link, problemId, level, title, problem_description, division, language_extension, code, result_message, runtime, memory });
 }
 
-async function makeData(origin) {
-  const { problem_description, problemId, level, result_message, division, language_extension, title, runtime, memory, code } = origin;
-  const directory = `프로그래머스/${level}/${problemId}. ${convertSingleCharToDoubleChar(title)}`;
-  const message = `[${level.replace('lv', 'level ')}] Title: ${title}, Time: ${runtime}, Memory: ${memory} -BaekjoonHub`;
-  const fileName = `${convertSingleCharToDoubleChar(title)}.${language_extension}`;
-  // prettier-ignore
-  const readme =
-    `# [${level.replace('lv', 'level ')}] ${title} - ${problemId} \n\n`
-    + `[문제 링크](${link}) \n\n`
-    + `### 성능 요약\n\n`
-    + `메모리: ${memory}, `
-    + `시간: ${runtime}\n\n`
-    + `### 구분\n\n`
-    + `${division.replace('/', ' > ')}\n\n`
-    + `### 채점결과\n\n`
-    + `${result_message}\n\n`
-    + `### 문제 설명\n\n`
-    + `${problem_description}\n\n`
-    + `> 출처: 프로그래머스 코딩 테스트 연습, https://programmers.co.kr/learn/challenges`;
-  return { problemId, directory, message, fileName, readme, code };
-}
+export { link, problemId, level, title, problem_description, language_extension, code, runtime, memory };
