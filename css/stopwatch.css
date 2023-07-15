@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+  html {
+    background: black;
+    color: white;
+    font-family: Menlo;
+  }
+  .controls {
+    position: fixed;
+    text-align: left;
+    top: 1em;
+    right: 150px;
+    width: auto;
+  }
+  
+  .button {
+    color: #bbb;
+    font-size: 10px;
+    margin: 0 0.5em;
+    text-decoration: none;
+    
+  }
+  
+  .button:first-child {
+      margin-left: 0;
+  }
+  
+  .button:last-child {
+      margin-right: 0;
+  }
+  
+  .button:hover {
+    color: white;
+  }
+  
+  .stopwatch {
+    position: fixed;
+    font-size: 25px;
+    height: auto;
+    top: 15px;
+    right: 300px;
+    text-align: center;
+    display: inline;
+  }

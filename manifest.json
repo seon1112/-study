@@ -117,12 +117,24 @@
     {
       "matches": [
         "https://school.programmers.co.kr/learn/courses/30/lessons/*"
-      ]
-      "css":[
-        "css/stopwatch.css"
+      ],
+      "css": [
+        "scripts/stopwatch.css"
       ],
       "js": [
-        "scripts/programmers/stopwatch.js"
+        "scripts/programmers/stopwatch.js",
+        "scripts/programmers/stopwatchpopup.html",
+        "library/sha1.min.js",
+        "scripts/util.js",
+        "scripts/Github.js",
+        "scripts/authorize.js",
+        "scripts/storage.js",
+        "scripts/enable.js",
+        "scripts/programmers/variables.js",
+        "scripts/programmers/util.js",
+        "scripts/programmers/parsing.js",
+        "scripts/programmers/uploadfunctions.js",
+        "scripts/programmers/programmers.js"
       ],
       "run_at": "document_idle"
     },

@@ -1,40 +1,91 @@
-let timerId;
-let time = 0;
-const stopwatch = document.getElementById("stopwatch");
-let  hour, min, sec;
+class Stopwatch {
+    constructor(display, results) {
+        this.running = false;
+        this.display = display;
+        this.results = results;
+        this.laps = [];
+        this.reset();
+        this.print(this.times);
+    }
+    
+    reset() {
+        this.times = [ 0, 0, 0 ];
+    }
+    
+    start() {
+        if (!this.time) this.time = performance.now();
+        if (!this.running) {
+            this.running = true;
+            requestAnimationFrame(this.step.bind(this));
+        }
+    }
+    
+    stop() {
+        this.running = false;
+        this.time = null;
+    }
 
-
-function printTime() {
-    time++;
-    stopwatch.innerText = getTimeFormatString();
-}
-
-//시계 시작 - 재귀호출로 반복실행
-function startClock() {
-    printTime();
-    stopClock();
-    timerId = setTimeout(startClock, 1000);
-}
-
-//시계 중지
-function stopClock() {
-    if (timerId != null) {
-        clearTimeout(timerId);
+    restart() {
+        if (!this.time) this.time = performance.now();
+        if (!this.running) {
+            this.running = true;
+            requestAnimationFrame(this.step.bind(this));
+        }
+        this.reset();
+    }
+    
+    clear() {
+        clearChildren(this.results);
+    }
+    
+    step(timestamp) {
+        if (!this.running) return;
+        this.calculate(timestamp);
+        this.time = timestamp;
+        this.print();
+        requestAnimationFrame(this.step.bind(this));
+    }
+    
+    calculate(timestamp) {
+        var diff = timestamp - this.time;
+        // Hundredths of a second are 100 ms
+        this.times[2] += diff / 10;
+        // Seconds are 100 hundredths of a second
+        if (this.times[2] >= 100) {
+            this.times[1] += 1;
+            this.times[2] -= 100;
+        }
+        // Minutes are 60 seconds
+        if (this.times[1] >= 60) {
+            this.times[0] += 1;
+            this.times[1] -= 60;
+        }
+    }
+    
+    print() {
+        this.display.innerText = this.format(this.times);
+    }
+    
+    format(times) {
+        return `\
+${pad0(times[0], 2)}:\
+${pad0(times[1], 2)}:\
+${pad0(Math.floor(times[2]), 2)}`;
     }
 }
 
-// 시계 초기화
-function resetClock() {
-    stopClock()
-    stopwatch.innerText = "00:00:00";
-    time = 0;
+function pad0(value, count) {
+    var result = value.toString();
+    for (; result.length < count; --count)
+        result = '0' + result;
+    return result;
 }
 
-// 시간(int)을 시, 분, 초 문자열로 변환
-function getTimeFormatString() {
-    hour = parseInt(String(time / (60 * 60)));
-    min = parseInt(String((time - (hour * 60 * 60)) / 60));
-    sec = time % 60;
-
-    return String(hour).padStart(2, '0') + ":" + String(min).padStart(2, '0') + ":" + String(sec).padStart(2, '0');
+function clearChildren(node) {
+    while (node.lastChild)
+        node.removeChild(node.lastChild);
 }
+
+let stopwatch = new Stopwatch(
+    document.querySelector('.stopwatch'),
+    document.querySelector('.results'));
