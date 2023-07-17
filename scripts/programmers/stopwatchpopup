@@ -1,0 +1,6 @@
+<div class="stopwatch"></div>
+<nav class="controls">
+			<a href="#" class="button" onClick="stopwatch.start();">Start</a>
+			<a href="#" class="button" onClick="stopwatch.stop();">Stop</a>
+			<a href="#" class="button" onClick="stopwatch.restart();">Restart</a>
+		</nav>

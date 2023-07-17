@@ -1,2 +1,5 @@
-
-/.metadata/
+.env
+node_modules
+package-lock.json
+_metadata
+.idea
