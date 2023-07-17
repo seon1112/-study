@@ -1,91 +1,104 @@
 class Stopwatch {
     constructor(display, results) {
-        this.running = false;
-        this.display = display;
-        this.results = results;
-        this.laps = [];
-        this.reset();
-        this.print(this.times);
+      this.running = false;
+      this.display = display;
+      this.results = results;
+      this.laps = [];
+      this.reset();
+      this.print(this.times);
     }
-    
+  
     reset() {
-        this.times = [ 0, 0, 0 ];
+      this.times = [0, 0, 0];
     }
-    
+  
     start() {
-        if (!this.time) this.time = performance.now();
-        if (!this.running) {
-            this.running = true;
-            requestAnimationFrame(this.step.bind(this));
-        }
-    }
-    
-    stop() {
-        this.running = false;
-        this.time = null;
-    }
-
-    restart() {
-        if (!this.time) this.time = performance.now();
-        if (!this.running) {
-            this.running = true;
-            requestAnimationFrame(this.step.bind(this));
-        }
-        this.reset();
-    }
-    
-    clear() {
-        clearChildren(this.results);
-    }
-    
-    step(timestamp) {
-        if (!this.running) return;
-        this.calculate(timestamp);
-        this.time = timestamp;
-        this.print();
+      if (!this.time) this.time = performance.now();
+      if (!this.running) {
+        this.running = true;
         requestAnimationFrame(this.step.bind(this));
+      }
     }
-    
+  
+    stop() {
+      this.running = false;
+      this.time = null;
+  
+      // 시간을 데이터베이스에 저장
+      this.saveTimeToDatabase();
+    }
+  
+    restart() {
+      if (!this.time) this.time = performance.now();
+      if (!this.running) {
+        this.running = true;
+        requestAnimationFrame(this.step.bind(this));
+      }
+      this.reset();
+    }
+  
+    clear() {
+      clearChildren(this.results);
+    }
+  
+    step(timestamp) {
+      if (!this.running) return;
+      this.calculate(timestamp);
+      this.time = timestamp;
+      this.print();
+      requestAnimationFrame(this.step.bind(this));
+    }
+  
     calculate(timestamp) {
-        var diff = timestamp - this.time;
-        // Hundredths of a second are 100 ms
-        this.times[2] += diff / 10;
-        // Seconds are 100 hundredths of a second
-        if (this.times[2] >= 100) {
-            this.times[1] += 1;
-            this.times[2] -= 100;
-        }
-        // Minutes are 60 seconds
-        if (this.times[1] >= 60) {
-            this.times[0] += 1;
-            this.times[1] -= 60;
-        }
+      var diff = timestamp - this.time;
+      // Hundredths of a second are 100 ms
+      this.times[2] += diff / 10;
+      // Seconds are 100 hundredths of a second
+      if (this.times[2] >= 100) {
+        this.times[1] += 1;
+        this.times[2] -= 100;
+      }
+      // Minutes are 60 seconds
+      if (this.times[1] >= 60) {
+        this.times[0] += 1;
+        this.times[1] -= 60;
+      }
     }
-    
+  
     print() {
-        this.display.innerText = this.format(this.times);
+      this.display.innerText = this.format(this.times);
     }
-    
+  
     format(times) {
-        return `\
-${pad0(times[0], 2)}:\
-${pad0(times[1], 2)}:\
-${pad0(Math.floor(times[2]), 2)}`;
+      return `\
+  ${pad0(times[0], 2)}:\
+  ${pad0(times[1], 2)}:\
+  ${pad0(Math.floor(times[2]), 2)}`;
     }
-}
-
-function pad0(value, count) {
+  
+    saveTimeToDatabase() {
+      const elapsedTime = this.times.join(':'); // 시간 형식을 ':'로 연결하여 문자열로 변환
+    }
+  }
+  
+  function pad0(value, count) {
     var result = value.toString();
     for (; result.length < count; --count)
-        result = '0' + result;
+      result = '0' + result;
     return result;
-}
-
-function clearChildren(node) {
+  }
+  
+  function clearChildren(node) {
     while (node.lastChild)
-        node.removeChild(node.lastChild);
-}
+      node.removeChild(node.lastChild);
+  }
+  
+  export { Stopwatch };
 
-let stopwatch = new Stopwatch(
+  let stopwatch = new Stopwatch(
     document.querySelector('.stopwatch'),
-    document.querySelector('.results'));
+    document.querySelector('.results')
+  );
+
+// Stopwatch 객체가 정지된 후에 데이터베이스에 저장
+stopwatch.stop();

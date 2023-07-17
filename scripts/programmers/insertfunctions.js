@@ -1,6 +1,7 @@
 const oracledb = require('oracledb');
 
 import { level, title, problem_description, language_extension, code, runtime, memory } from './parsing.js';
+import { elapsedTime } from './stopwatch.js';
 
 async function insertDataIntoOracleDB(data) {
   try {
@@ -12,14 +13,16 @@ async function insertDataIntoOracleDB(data) {
 
     const sql = `INSERT INTO coding_test (ct_no, a_no, p_title, p_level, p_timer, p_time, p_memory, p_code, p_content, p_date, p_lang) VALUES (:ctNo, :aNo, :pTitle, :pLevel, :pTimer, :pTime, :pMemory, :pCode, :pContent, :pDate, :pLang)`;
 
+    const elapsedTime = stopwatch.times.join(':'); // 시간 형식을 ':'로 연결하여 문자열로 변환
+
     // SQL 문에 값을 바인딩
     const binds = {
       ctNo: 1,
       aNo: 1,
       pTitle: data.title,
       pLevel: data.level,
-      pTimer: '없대고 싶다',
-      pTime: data.runtime,
+      pTimer: data.Stopwatch,
+      pTime: data.elapsedTime,
       pMemory: data.memory,
       pCode: data.code,
       pContent: data.problem_description,
