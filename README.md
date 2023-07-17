@@ -1,7 +1,7 @@
 <h1 align="center">
   <img src="assets/thumbnail.png" alt="BaekjoonHub - Automatically sync your code to GitHub." width="400">
   <br>
-  BaekjoonHub - Automatically sync your code to GitHub.
+  ㅋㅋ - Automatically sync your code to GitHub.
   <br>
   <br>
 </h1>
@@ -197,10 +197,10 @@
 <!--- 개발자 참고 내용 --->
 
 ## 개발자 참고 내용
+
 ```sh
 $ npm test # jest test 실행
 ```
-
 
 <!--- 링크 및 문서 --->
 

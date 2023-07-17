@@ -5,10 +5,10 @@
 
 //html문서에서 데이터 추출하는 함수
 async function parseData() {
-  // <meta> 태그의 내용을 가져와 URL을 추출
+  // <meta> 태그의 내용을 가져와 URL을 추출 혹시 모르니까 남겨둠
   const link = document.querySelector('head > meta[name$=url]').content.replace(/\?.*/g, '').trim();
 
-  // 문제 번호를 추출
+  // 문제 번호를 추출 일단 혹시 모르니까 남겨둠
   const problemId = document.querySelector('div.main > div.lesson-content').getAttribute('data-lesson-id');
 
   // levels 객체에서 레벨을 가져온다. 만약 찾지 못할 경우 'unrated'
