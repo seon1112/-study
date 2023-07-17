@@ -4,6 +4,7 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 
+import com.example.demo.vo.AccountVO;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -104,5 +105,20 @@ public class DBManager {
 		list=session.selectList("coding.proGrape", map);
 		session.close();
 		return list;
+	}
+
+	//----------------------------myPage Mapper--------------------------------
+
+	//MYPAGE 이미지 수정하기
+	public static int updateProfile(AccountVO a){
+		System.out.println("updateProfile 실행");
+		int re = -1;
+		SqlSession session =
+				sqlSessionFactory.openSession();
+		re =session.update("mypage.updateProfile");
+		session.commit();
+		session.close();
+
+		return re;
 	}
 }

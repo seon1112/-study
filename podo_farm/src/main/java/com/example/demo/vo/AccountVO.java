@@ -3,6 +3,7 @@ package com.example.demo.vo;
 import java.sql.Date;
 
 import lombok.Data;
+import org.springframework.web.multipart.MultipartFile;
 
 
 @Data
@@ -14,4 +15,5 @@ public class AccountVO {
     private String a_email;
     private String a_img;
     private Date a_regdate;
+    private MultipartFile uploadFile;
 }

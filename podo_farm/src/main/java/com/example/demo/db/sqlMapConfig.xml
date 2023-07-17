@@ -24,5 +24,6 @@
   <mappers>
     <mapper resource="com/example/demo/db/codingMapper.xml"/>  <!-- mapper를 지금은 하나만 등록해놨어요 -->
     <mapper resource="com/example/demo/db/study_InMapper.xml"/>  <!-- mapper를 지금은 하나만 등록해놨어요 -->
+    <mapper resource="com/example/demo/db/mypageMapper.xml"/>
   </mappers>
 </configuration>

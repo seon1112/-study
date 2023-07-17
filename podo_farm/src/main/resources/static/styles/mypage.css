@@ -2,8 +2,6 @@
     --color-background: #F7F7F7;
     --color-white: #ffffff;
     --color-purple: #624BFF;
-    --color-light: rgba(0, 0, 0, 0.4);
-    --box-shadow: 0 2rem 3rem var(--color-light);
 }
 
 html {
@@ -13,16 +11,20 @@ html {
 }
 
 body {
+    margin : auto;
     box-sizing: border-box;
-    min-height: 100%;
     display: flex;
-    padding: 0.0625rem 0rem;
     flex-direction: column;
     align-items: flex-start;
 }
 
+button{
+    outline:none;
+}
+
 header{
-    width: 120rem;
+    width : 100vw;
+    max-width: 110rem;
     margin : auto; /*중앙 정렬 이걸로    */
     display : block;
     height: 10rem;
@@ -33,6 +35,7 @@ header{
 .header-bar{
     display : flex;
     background-color : beige;
+    justify-content: space-between;
 
 }
 
@@ -50,49 +53,56 @@ header{
     align-items: center;
     flex-shrink: 0;
     text-decoration: none;
+    object-fit: contain;
 
 
 }
 
 
 .logo-img{
-    width: 3.75rem;
     height: 3.125rem;
     flex-shrink: 0;
 }
 
-.light-dark-mode{
+.profile {
     display: flex;
-    width: 6.5625rem;
-    padding: 0.625rem 0.875rem;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 1.25rem;
-    background: rgba(181, 181, 181, 0.40);
-    margin-left: 75rem;
-}
-
-.profile{
-    display: flex;
-    width: 10rem;
-    justify-content: center;
     align-items: center;
     gap: 0.75rem;
+    background: none; /* 버튼의 기본 배경 제거 */
+    border: none; /* 버튼의 기본 스타일 제거 */
+    cursor: pointer; /* 손 모양 커서 설정 */
+    margin-left: auto; /* 프로필 요소를 오른쪽으로 이동 */
+    padding-right: 3rem;
+
+}
+
+.profile-img{
+    background-color: white;
+}
+
+.profile-img img{
+    width: 3rem;
+    height: 3rem;
+    object-fit: contain;
 }
 
 .alaram{
     display:flex;
     align-items: center;
     justify-content: center;
-
+    border: none;
+    background: none;
+    cursor: pointer; /* 손 모양 커서 설정 */
 }
-.alaram button {
-    background-image: url('./static/assets/mypage-alarm.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    width: 1.75rem;
-    height: 1.75rem;
-    flex-shrink: 0;
+
+
+.alaram img{
+    padding-top : 0.3rem;
+    width: 2rem;
+    height: 2rem;
+    align-items: center;
+    justify-content: center;
+
 }
 
 
@@ -113,7 +123,8 @@ header{
 main {
     margin : auto;
     display: flex;
-    width: 120rem;
+    width: 100vw;
+    max-width: 110rem;
     height: 56.25rem;
     align-items: flex-start;
     gap: 0.0625rem;
@@ -204,6 +215,8 @@ main {
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    cursor: pointer; /* 손 모양 커서 설정 */
+    border : none;
 }
 
 .edit-nickname{
