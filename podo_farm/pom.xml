@@ -54,24 +54,36 @@
 			<version>3.0.2</version>
 			<scope>test</scope>
 		</dependency>
+				<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
 		<dependency>
-	<groupId>org.apache.tomcat.embed</groupId>
-	<artifactId>tomcat-embed-jasper</artifactId>
-	<scope>provided</scope>
-</dependency>
+			<groupId>org.glassfish.web</groupId>
+			<artifactId>jakarta.servlet.jsp.jstl</artifactId>
+			<version>2.0.0</version>
+		</dependency>
 
-<dependency>
-	<groupId>org.glassfish.web</groupId>
-	<artifactId>jakarta.servlet.jsp.jstl</artifactId>
-	<version>2.0.0</version>
-</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+			<scope>provided</scope>
+		</dependency>
 
-<dependency>
-    <groupId>javax.servlet</groupId>
-    <artifactId>javax.servlet-api</artifactId>
-    <version>3.1.0</version>
-    <scope>provided</scope>
-</dependency>
+		<dependency>
+			<groupId>org.springframework.social</groupId>
+			<artifactId>spring-social-google</artifactId>
+			<version>1.0.0.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.5.3</version>
+		</dependency>
 	</dependencies>
 
 	<build>

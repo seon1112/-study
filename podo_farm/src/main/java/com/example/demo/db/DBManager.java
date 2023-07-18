@@ -11,6 +11,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.example.demo.vo.Coding_testVO;
+import org.springframework.util.ClassUtils;
 
 
 public class DBManager {
@@ -110,6 +111,18 @@ public class DBManager {
 	//----------------------------myPage Mapper--------------------------------
 
 	//MYPAGE 이미지 수정하기
+
+	public static AccountVO getProfile(int a_no){
+		System.out.println("---------DBMANAGER 동작함!!------------");
+
+		AccountVO a = null;
+		SqlSession session = sqlSessionFactory.openSession();
+		a = session.selectOne("mypage.findMyPage", a_no);
+
+		System.out.println("담아오는 자료들은 : " + a);
+		session.close();
+		return a;
+	}
 	public static int updateProfile(AccountVO a){
 		System.out.println("updateProfile 실행");
 		int re = -1;
