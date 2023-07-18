@@ -11,10 +11,10 @@ async function insertDataIntoOracleDB(data) {
       connectString: '연결_문자열',
     });
 
-    // 이메일로 계정버호 가져오기
+    // 이메일로 계정번호 가져오기
     const sql2 = 'SELECT a_no FROM ACCOUNT WHERE a_email = (:a_email)';
     const binds2 = {
-      a_email: a_email
+      a_email: a_email,
     };
 
     // 코딩테스트 번호 최대값+1해서 인서트
@@ -60,6 +60,6 @@ const data = {
   code: code,
   runtime: runtime,
   memory: memory,
-  p_timer: elapsedTime
+  p_timer: elapsedTime,
 };
 insertDataIntoOracleDB(data);

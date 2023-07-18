@@ -3,8 +3,7 @@
  * @param {int} problemId
  */
 async function SolvedApiCall(problemId) {
-  return fetch(`https://solved.ac/api/v3/problem/show?problemId=${problemId}`, { method: 'GET' })
-    .then((query) => query.json());
+  return fetch(`https://solved.ac/api/v3/problem/show?problemId=${problemId}`, { method: 'GET' }).then((query) => query.json());
 }
 
 function handleMessage(request, sender, sendResponse) {
@@ -28,10 +27,6 @@ function handleMessage(request, sender, sendResponse) {
       console.log('Closed pipe.');
     });
 
-    // chrome.tabs.getSelected(null, function (tab) {
-    //   chrome.tabs.remove(tab.id);
-    // });
-
     /* Go to onboarding for UX */
     const urlOnboarding = `chrome-extension://${chrome.runtime.id}/welcome.html`;
     chrome.tabs.create({ url: urlOnboarding, selected: true }); // creates new tab
@@ -40,9 +35,8 @@ function handleMessage(request, sender, sendResponse) {
     chrome.tabs.getSelected(null, function (tab) {
       chrome.tabs.remove(tab.id);
     });
-  } else if (request && request.sender == "baekjoon" && request.task == "SolvedApiCall") {
+  } else if (request && request.sender == 'baekjoon' && request.task == 'SolvedApiCall') {
     SolvedApiCall(request.problemId).then((res) => sendResponse(res));
-    //sendResponse(SolvedApiCall(request.problemId))
   }
   return true;
 }

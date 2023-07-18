@@ -5,7 +5,7 @@
 
 const localAuth = {
   /**
-   * Initialize
+   * 초기화(기본설정)
    */
   init() {
     this.KEY = 'BaekjoonHub_token';
@@ -18,9 +18,9 @@ const localAuth = {
   },
 
   /**
-   * Parses Access Code
+   * 코드 파싱
    *
-   * @param url The url containing the access code.
+   * @param url The url containing the access code. url에 포함된 코드
    */
   parseAccessCode(url) {
     if (url.match(/\?error=(.+)/)) {
@@ -28,7 +28,6 @@ const localAuth = {
         chrome.tabs.remove(tab.id, function () {});
       });
     } else {
-      // eslint-disable-next-line
       const accessCode = url.match(/\?code=([\w\/\-]+)/);
       if (accessCode) {
         this.requestToken(accessCode[1]);
@@ -37,9 +36,9 @@ const localAuth = {
   },
 
   /**
-   * Request Token
+   * 토큰 요청
    *
-   * @param code The access code returned by provider.
+   * @param code The access code returned by provider. code 제공자가 반환한 액세스 코드.
    */
   requestToken(code) {
     const that = this;

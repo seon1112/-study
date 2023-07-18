@@ -23,8 +23,8 @@ function startLoader() {
       log('정답이 나왔습니다. 업로드를 시작합니다.');
       stopLoader();
       try {
-        const bojData = await parseData();
-        await beginUpload(bojData);
+        const insertData = await parseData();
+        await beginUpload(insertData);
       } catch (error) {
         log(error);
       }
@@ -45,9 +45,9 @@ function getSolvedResult() {
 }
 
 // 파싱 직후 실행되는 함수 정답이 확인되면 실행(업로드)
-async function beginUpload(bojData) {
-  log('bojData', bojData);
-  if (isNotEmpty(bojData)) {
+async function beginUpload(insertData) {
+  log('bojData', insertData);
+  if (isNotEmpty(insertData)) {
     startUpload();
 
     const stats = await getStats();
@@ -60,31 +60,25 @@ async function beginUpload(bojData) {
     }
 
     /* 현재 제출하려는 소스코드가 기존 업로드한 내용과 같다면 중지 */
-    cachedSHA = await getStatsSHAfromPath(`${hook}/${bojData.directory}/${bojData.fileName}`);
-    calcSHA = calculateBlobSHA(bojData.code);
+    cachedSHA = await getStatsSHAfromPath(`${hook}/${insertData.directory}/${insertData.fileName}`);
+    calcSHA = calculateBlobSHA(insertData.code);
     log('cachedSHA', cachedSHA, 'calcSHA', calcSHA);
     if (cachedSHA == calcSHA) {
       markUploadedCSS();
-      console.log(`현재 제출번호를 업로드한 기록이 있습니다. problemIdID ${bojData.problemId}`);
+      console.log(`현재 제출번호를 업로드한 기록이 있습니다. problemIdID ${insertData.problemId}`);
       return;
     }
     /* 신규 제출 번호라면 새롭게 커밋  */
-    await uploadOneSolveProblemOnGit(bojData, markUploadedCSS);
+    // await uploadOneSolveProblemOnGit(bojData, markUploadedCSS); 깃허브에 커밋하는 함수라 필요없음
   }
 }
 
-// 버전 업데이트 해주는 함수
-async function versionUpdate() {
-  log('start versionUpdate');
-  const stats = await updateLocalStorageStats();
-  // update version.
-  stats.version = getVersion();
-  await saveStats(stats);
-  log('stats updated.', stats);
-}
-
-// /* TODO: 하나의 데이터만 가져오는 구조이므로 page를 계속적으로
-//   아래 있는 네이베이션바의 "다음"버튼이 비활성화 될때까지 반복으로 진행한다.
-//   진행하며 존재하는 알고리즘 카드인 div.col-item > div.card-algorithm > a 의 href 속성값을 가져와 리스트화하고,
-//   이를 차후 fetch GET를 진행하여 작성한 알고리즘을 가져와 github에 업로드를 진행한다.
-//   */
+// 버전 업데이트 해주는 함수 github repo파일을 가지고 와서 거기에 버전을 확인해서 버전을 업데이트 해주는 함수
+// async function versionUpdate() {
+//   log('start versionUpdate');
+//   const stats = await updateLocalStorageStats();
+//   // update version.
+//   stats.version = getVersion();
+//   await saveStats(stats);
+//   log('stats updated.', stats);
+// }
