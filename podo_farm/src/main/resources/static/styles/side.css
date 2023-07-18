@@ -3,8 +3,23 @@
 	margin-right: 1rem;
 }
 .w3-bar-block .w3-bar-item{
-	padding: 15px 16px!;
+	padding: 15px 16px;
 }
+
+.w3-sidebar {
+    height: 100%;
+  width: 200px;
+  background-color: #fff;
+  position: fixed!important;
+  z-index: 1;
+  top: 100px; /* 원하는 값으로 조정 */
+    
+}
+
+
+.w3-theme-l1 {color:#fff !important;background-color: #7040fa !important}
+
+
 .sidbar-LMX {
   width: 70%;
   margin-left:30%;

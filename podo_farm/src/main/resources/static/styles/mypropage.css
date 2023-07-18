@@ -14,9 +14,28 @@ input {
 }
 body {
   width: 192rem;
+  display: flex;
+justify-content: center;
+align-items: center
 }
 
 
+
+.solved{
+	background-color: #7040fa;
+	color:white;
+}	
+.selectY{
+	width:12.8rem; 
+	height:4rem;
+	 font-size:25px;
+	 font-weight:600;
+}
+.selectYearCol{
+	width:12.8rem;
+	 height:4.3rem;
+	 font-size: 25px;
+}
  .mypro-fxm {
   left:42.3rem;
   box-sizing: border-box;
@@ -75,7 +94,7 @@ body {
   flex-shrink: 0;
 }
  .mypro-fxm .maincol-DDb .auto-group-gd4m-XEH .mainmemberstate-Dso .auto-group-gvzm-B3w .memberstatetitle-Xdb .memberstatetitle-Xdb-sub-0 {
-  font-size: 3rem;
+  font-size: 4rem;
   font-weight: 700;
   line-height: 1.4475;
   color: #000000;
@@ -86,10 +105,12 @@ body {
  .mypro-fxm .maincol-DDb .auto-group-gd4m-XEH .mainmemberstate-Dso .auto-group-gvzm-B3w .selectyear-nhw {
   width: 13rem;
   height: 4.3rem;
-  background-color: #d9d9d9;
   flex-shrink: 0;
   position: absolute;
   right: 20px;
+  border-radius: 1rem;
+  font-size: 1.6rem;
+  margin-top: 1rem;
 }
  .mypro-fxm .maincol-DDb .auto-group-gd4m-XEH .mainmemberstate-Dso .memberstate-X9j {
   margin: 0 0.3rem;
@@ -441,6 +462,7 @@ body {
   background-color: #ffffff;
   border-radius: 0.4rem;
   flex-shrink: 0;
+  
 }
  .mypro-fxm .maincol-DDb .mainsolved-vwB .selectcol-b1j .searchbtn-sV3 {
   width: 15.7rem;
@@ -464,4 +486,10 @@ body {
   box-sizing: border-box;
   flex-shrink: 0;
   overflow: auto;
+  border-radius: 1.5rem;
+}
+#myInput{
+	height:5rem; 
+	border-radius:1rem;
+	font-size: 25px;
 }

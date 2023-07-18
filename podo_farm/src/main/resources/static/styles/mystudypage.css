@@ -14,7 +14,12 @@ input {
 }
 body {
   width: 192rem;
-}.mystudypage-Su7 {
+  display: flex;
+justify-content: center;
+align-items: center
+}
+
+.mystudypage-Su7 {
   box-sizing: border-box;
   padding-top: 0.1rem;
   width: 100%;
@@ -25,7 +30,36 @@ body {
   flex-direction: column;
   background-color: #ffffff;
 }
+.selectMonthCol{
+	width:12.8rem;
+	 height:4.3rem;
+	 font-size: 25px;
+}
+.selectM{
+	width:12.8rem; 
+	height:4rem;
+	font-size: 25px;
+	font-weight: 600;
+	border:solid 0.1rem #7040FA;
 
+}
+
+#monthBest{
+	padding-top:1.2rem;
+	  background-color:#7040FA; 
+	  font-size:25px;
+	  color: white;
+	  border-top-left-radius: 2rem;
+	  border-top-right-radius: 2rem;
+}
+.total{
+	 padding-top:1.2rem;
+	 background-color:#7040FA;
+	 font-size:25px;
+	 color: white;
+	 border-top-left-radius: 2rem;
+	 border-top-right-radius: 2rem;
+}
 
  .mystudy-3uT {
  left:42.3rem;
@@ -58,14 +92,14 @@ body {
   flex-shrink: 0;
 }
  .mystudy-3uT .maincol-CGZ .mainstudy-Wo3 .auto-group-c6cy-r6D {
-  margin: 0rem 0rem 5rem 0.4rem;
+  margin: 0rem 0rem 2rem 0.4rem;
   width: calc(100% - 0.4rem);
   display: flex;
   align-items: flex-start;
   flex-shrink: 0;
 }
  .mystudy-3uT .maincol-CGZ .mainstudy-Wo3 .auto-group-c6cy-r6D .studyname-xf3 {
-  margin-right: 96.7rem;
+  margin-right: 92.5rem;
   display: flex;
   font-size: 3.5rem;
   font-weight: 700;
@@ -78,8 +112,12 @@ body {
  .mystudy-3uT .maincol-CGZ .mainstudy-Wo3 .auto-group-c6cy-r6D .selectmonth-fZT {
   width: 13rem;
   height: 4.3rem;
-  background-color: #d9d9d9;
+  font-size: 1.6rem;
   flex-shrink: 0;
+  position: absolute;
+  right: 20px;
+    border-radius: 1rem;
+  margin-top: 0.5rem;
 }
  .mystudy-3uT .maincol-CGZ .mainstudy-Wo3 .ranktable-QG9 {
   margin-right: 0.1rem;
@@ -95,6 +133,7 @@ body {
   border: solid 0.1rem #828282;
   box-sizing: border-box;
   flex-shrink: 0;
+  border-radius: 2rem;
 }
  .mystudy-3uT .maincol-CGZ .mainstudy-Wo3 .ranktable-QG9 .monthrank-tx1 {
   width: 61rem;
@@ -102,6 +141,7 @@ body {
   border: solid 0.1rem #828282;
   box-sizing: border-box;
   flex-shrink: 0;
+  border-radius: 2rem;
 }
  .mystudy-3uT .maincol-CGZ .mainsolved-qMT {
   box-sizing: border-box;
