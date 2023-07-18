@@ -11,18 +11,28 @@ async function insertDataIntoOracleDB(data) {
       connectString: '연결_문자열',
     });
 
-    const sql = `INSERT INTO coding_test (ct_no, a_no, p_title, p_level, p_timer, p_time, p_memory, p_code, p_content, p_date, p_lang) VALUES (:ctNo, :aNo, :pTitle, :pLevel, :pTimer, :pTime, :pMemory, :pCode, :pContent, :pDate, :pLang)`;
+    // 이메일로 계정버호 가져오기
+    const sql2 = 'SELECT a_no FROM ACCOUNT WHERE a_email = (:a_email)';
+    const binds2 = {
+      a_email: a_email
+    };
 
-    const elapsedTime = stopwatch.times.join(':'); // 시간 형식을 ':'로 연결하여 문자열로 변환
+    // 코딩테스트 번호 최대값+1해서 인서트
+    const sql3 = 'SELECT NVL(MAX(ct_no), 4000)+1 FROM coding_test';
+    const ct_no = await connection.execute(sql3);
+
+    const a_no = await connection.execute(sql2, binds2);
+
+    const sql = `INSERT INTO coding_test (ct_no, a_no, p_title, p_level, p_timer, p_time, p_memory, p_code, p_content, p_date, p_lang) VALUES (:ctNo, :aNo, :pTitle, :pLevel, :pTimer, :pTime, :pMemory, :pCode, :pContent, :pDate, :pLang)`;
 
     // SQL 문에 값을 바인딩
     const binds = {
-      ctNo: 1,
-      aNo: 1,
+      ctNo: ct_no,
+      aNo: a_no,
       pTitle: data.title,
       pLevel: data.level,
-      pTimer: data.Stopwatch,
-      pTime: data.elapsedTime,
+      pTimer: data.elapsedTime,
+      pTime: data.runtime,
       pMemory: data.memory,
       pCode: data.code,
       pContent: data.problem_description,
@@ -50,5 +60,6 @@ const data = {
   code: code,
   runtime: runtime,
   memory: memory,
+  p_timer: elapsedTime
 };
 insertDataIntoOracleDB(data);
