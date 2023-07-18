@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="study">
+	<select id="findStudyName" resultType="java.lang.String">
+		select s_name from study, study_in  where study.s_no=study_in.s_no and a_no=#{a_no}
+	</select>
+	
+	<select id="findTotalRank" resultType="rankVO">
+		select rownum,a.* from
+		(SELECT a_name, COUNT(ct_no) AS c FROM coding_test
+		JOIN study_in ON coding_test.a_no = study_in.a_no
+		JOIN account ON coding_test.a_no = account.a_no
+		where study_in.s_no=(select s_no from study_in where a_no=#{a_no})
+		and p_date >=s_a_regdate
+		GROUP BY a_name ORDER BY c DESC FETCH FIRST 3 ROWS ONLY) a
+	</select>
+	
+	<select id="findMonthRank" resultType="rankVO">
+		select rownum,a.* from(
+		SELECT a_name, COUNT(ct_no) AS c FROM coding_test
+		JOIN study_in ON coding_test.a_no = study_in.a_no
+		JOIN account ON coding_test.a_no = account.a_no
+		WHERE EXTRACT(MONTH FROM p_date) = #{month}
+		  AND EXTRACT(YEAR FROM p_date) = #{year}
+		  and study_in.s_no=(select s_no from study_in where a_no=#{a_no})
+		GROUP BY a_name ORDER BY c DESC FETCH FIRST 3 ROWS ONLY)a
+	</select>
+	
+	<select id="findMonth" resultType="java.lang.String">
+    <![CDATA[
+        WITH cte AS (
+            SELECT TO_CHAR(ADD_MONTHS((SELECT s_a_regdate FROM study_in WHERE a_no = #{a_no}), LEVEL-1), 'YYYY/MM') AS year_month
+            FROM dual
+            CONNECT BY ADD_MONTHS((SELECT s_a_regdate FROM study_in WHERE a_no = #{a_no}), LEVEL-1) <= TRUNC(SYSDATE, 'MM')
+        )
+        SELECT year_month
+        FROM cte
+        order by year_month desc
+    ]]>
+   </select>
+   
+   <select id="findGraph" resultType="rankVO">
+   	select extract(day from p_date) as day, a.a_no,a_name ,count(ct.p_date) as c
+	from coding_test ct, account a
+	where ct.a_no=a.a_no
+	and extract(month from p_date)=#{month}
+	and extract(year from p_date)=#{year}
+	and a.a_no in(select a_no from study_in where s_no =
+	(select s_no from study_in where a_no=#{a_no}))
+	group by(p_date,a.a_no,a.a_name)
+   </select>
+	
+</mapper>

@@ -3,6 +3,14 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="coding">
+	<!-- 프로그래머스 레벨 별 푼 문제 개수 -->
+	<select id="findByLevel" resultType="java.lang.String">
+		select count(*) as ct from coding_test where a_no=#{a_no} and p_level=#{p_level} group by p_level
+	</select>
+	<!-- 번호에 따른 문제 찾기 -->
+	<select id="findByCtNo" resultType="codingVO">
+		select * from coding_test where ct_no=#{ct_no}
+	</select>
 	<!-- 연도에 따른 문제목록 -->
 	<select id="findByAno" resultType="codingVO">
 		    SELECT ROWNUM , coding_test.*

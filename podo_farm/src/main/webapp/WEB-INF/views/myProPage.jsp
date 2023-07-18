@@ -9,6 +9,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#000000" />
   <title>myProPage</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-win8.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins%3A300%2C400%2C500%2C700"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A300%2C400%2C500%2C700"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR%3A400%2C500%2C700"/>
@@ -112,7 +114,6 @@
 				url:"solved",
 				data:{year:year},
 				success:function(data){
-					console.log(data);
 					$("#tbody").empty();
 					 for (var i = 0; i < data.length; i++) {
 						 	var tr =$("<tr></tr>")
@@ -127,8 +128,12 @@
 				}
 			})
 		}
+//---문제 선택시 codepage로 이동
+	function selectTest(ct_no){
+		var ct_no = ct_no;
+		window.location.href = "codePage?ct_no=" + ct_no;
+	}
 
-	
 </script>
 </head>
 <body>
@@ -146,17 +151,25 @@
                 <span class="memberstatetitle-Xdb-sub-0">${name }님</span>
                 <span class="memberstatetitle-Xdb-sub-1">의  성장 여정이에요.</span>
               </div>
-              
-              <!-- 연도선택 드롭다운 -->
+             
+             <!--  
 			 <div class="w3-white w3-border w3-dropdown-hover selectyear-nhw ">
-			     <button class="w3-button" style="width:12.8rem; height:4rem; font-size:large;font-weight:600;">연도선택</button>
-		     	 <div class="w3-dropdown-content w3-bar-block w3-card-4" style="width:12.8rem; height:4.3rem;font-weight:300;">
+			     <button class="w3-button selectY w3-hover-deep-purple" style="border:solid 0.1rem #7040FA;  border-radius:1rem;">연도선택</button>
+		     	 <div class="w3-dropdown-content w3-bar-block w3-card-4 selectYearCol" >
 		     	 	<c:forEach var="y" items="${regdate }">
-		     	 		<button class="w3-bar-item w3-button" onclick="selectYear(${y})">${y }</button>
+		     	 		<button class="w3-bar-item w3-button w3-hover-deep-purple" onclick="selectYear(${y})">${y }</button>
 		     	 	</c:forEach>
 			     </div>
 		     </div>
-				 
+		     -->
+		     <!-- 연도선택 드롭다운 -->
+			<select class="selectyear-nhw"  onchange="selectYear(this.value)">
+				<option disabled selected>연도 선택</option>
+			    <c:forEach var="y" items="${regdate}">
+			        <option class="selectYearCol" value="${y}">${y}</option>
+			    </c:forEach>
+			</select>
+			
               
             </div>
             <div class="memberstate-X9j">
@@ -221,24 +234,18 @@
         <!-- 내가 푼 문제들-->
         <div class="mainsolved-vwB">
           <div class="solvedtitle-3ku">${name }’s solved</div>
-          <!--  
-          <div class="selectcol-b1j">
-            <div class="search-Lk1">
-            </div>
-            <div class="searchbtn-sV3">검색</div>
-          </div> -->
-          <input class="w3-input w3-border w3-padding search-Lk1" type="text" placeholder="검색어를 입력해주세요" style="height:5rem;" id="myInput" onkeyup="myFunction()">
+          <input class="w3-input w3-border w3-padding search-Lk1" type="text" placeholder="검색어를 입력해주세요" id="myInput" onkeyup="myFunction()">
           <div class="solvedtable-Aj3">
           	<!-- 문제 테이블 -->
           	<table class="w3-table w3-xlarge w3-bordered w3-hoverable" id="myTable">
-			    <tr class="w3-gray w3-centered"  >
-			      <th style="width:30%;">날짜</th>
-			      <th style="width:20%;">번호</th>
-			      <th style="width:50%;">제목</th>
+			    <tr class="w3-gray w3-centered " style="font-size:30px;"  >
+			      <th style="width:30%;" class="solved">날짜</th>
+			      <th style="width:20%;" class="solved">번호</th>
+			      <th style="width:50%;" class="solved">제목</th>
 			    </tr>
 			    <tbody id="tbody">
 			    <c:forEach var="c" items="${list }">
-			    <tr >
+			    <tr style="font-size:25px;" onclick="selectTest(${c.ct_no})" >
 			      <td>${c.p_date }</td>
 			      <td>${c.rownum }</td>
 			      <td>${c.p_title }</td>

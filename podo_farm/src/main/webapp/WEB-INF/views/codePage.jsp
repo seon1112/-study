@@ -25,33 +25,43 @@
    	</div>
    	
    	
-    <div class="code-Ek1" id="content" style="margin-left:19%">
+    <div class="code-Ek1" id="content" >
       <div class="maincol-Adf">
         <div class="maincode-5Vj">
           <div class="article-B2y">
-            <div class="heading-1-iYh">[Gold V] 적록색약 - 10026</div>
-            <div class="link-A9o">문제 링크</div>
+          <!-- 문제이름  [Gold V] 적록색약 - 10026-->
+            <div class="heading-1-iYh">[Level ${test.p_level}] ${test.p_title }</div>
             <div class="auto-group-sehf-VSy">
               <div class="heading-2-EfT">
+              <!-- 성능요약 -->
                 <div class="performance-ngy">성능 요약</div>
-                <div class="performancetext-Wss">메모리: 20848 KB, 시간: 308 ms</div>
+                <!-- 메모리  메모리: 20848 KB, 시간: 308 ms-->
+                <div class="performancetext-Wss">메모리: ${test.p_memory }, 시간: ${test.p_time }</div>
               </div>
               <div class="heading-3-4Pb">
-                <div class="class-2LR">구분</div>
-                <div class="classtext-xjs">너비 우선 탐색, 깊이 우선 탐색, 그래프 이론, 그래프 탐색</div>
+               <!-- 걸린 시간 -->
+                <div class="class-2LR">걸린 시간</div>
+                <div class="classtext-xjs">${test.p_timer }</div>
               </div>
             </div>
             <div class="heading-4-6bB">
+             <!-- 문제설명 -->
               <div class="question-esb">문제 설명</div>
               <div class="questiontext-amF">
+              ${test.p_content }
               </div>
             </div>
           </div>
+          <!-- 코드 -->
           <div class="code-pp1">
-         	 <jsp:include page="code.jsp"/>
+         	<jsp:include page="code.jsp">
+			    <jsp:param name="p_lang" value="${test.p_lang}" />
+			    <jsp:param name="p_code" value="${test.p_code}" />
+			</jsp:include>
           </div>
         </div>
-        <div class="listbtn-95b">목록</div>
+        <!-- 목록버튼 -->
+        <a class="listbtn-95b" href="myProPage">목록</div>
       </div>
     </div>
  

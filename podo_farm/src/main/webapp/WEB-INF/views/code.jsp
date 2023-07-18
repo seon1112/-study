@@ -118,22 +118,9 @@
   <!-- data-type은 타이틀 제목이다. -->
   <pre>
   	<!-- 언어 변경하기 -->
-  	<code class="java" data-type="test">
+  	<code class="${param.p_lang }" data-type="test">
   	<!-- 코드 적는곳 -->
-  	package l2f.gameserver.model;
-
-		public abstract strictfp class L2Char extends L2Object {
-		  public static final Short ERROR = 0x0001;
-		
-		  public void moveTo(int x, int y, int z) {
-		    _ai = null;
-		    log("Should not be called");
-		    if (1 > 5) { // wtf!?
-		      return;
-		    }
-		  }
-		}
-		
+  	${param.p_code }
 	</code>
   </pre>
   <!-- Jquery 추가 -->

@@ -10,6 +10,14 @@ import com.example.demo.vo.Coding_testVO;
 
 @Repository
 public class Coding_testDAO {
+	//레벨 별 문제 푼 개수
+	public String findByLevel(HashMap<String, String> map){
+		return DBManager.findByLevel(map);
+	}
+	//문제 번호에 따른 문제 찾기
+	public Coding_testVO findByCtNo(String ct_no) {
+		return DBManager.findByCtNo(ct_no);
+	}
 	//회원번호, 년도에 따른 문제 리스트
 	 public List<Coding_testVO> findByAno(HashMap<String,String> map) {
 	        return DBManager.findByAno(map);

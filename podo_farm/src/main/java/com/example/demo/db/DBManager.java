@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.example.demo.vo.AccountVO;
+import com.example.demo.vo.RankVO;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -26,36 +27,107 @@ public class DBManager {
 			System.out.println("예외발생:"+e.getMessage());
 		}
 	}
-	//----------------------------study_InMapper-------------------------------
-	
-	
-	
+	//스터디 멤버 찾기
+	public static List<AccountVO> findMember(String a_no){
+		List<AccountVO> list=null;
+		SqlSession session=sqlSessionFactory.openSession();
+		list=session.selectList("studyin.findMember", a_no);
+		session.close();
+		return list;
+	}
+	//같은 스터디 멤버 찾기
+	public static List<AccountVO> findMate(String a_no){
+		List<AccountVO> list=null;
+		SqlSession session=sqlSessionFactory.openSession();
+		list=session.selectList("studyin.findMate", a_no);
+		session.close();
+		return list;
+	}
+	//----------------------------studyMapper-------------------------------
+	//팀원 별 문제푼 날짜와 푼 문제 개수 구하기
+	public static List<RankVO> findGraph(HashMap<String, String> map){
+		SqlSession session=sqlSessionFactory.openSession();
+		List<RankVO> list=null;
+		list=session.selectList("study.findGraph", map);
+		session.close();
+		return list;
+
+	}
+	//멤버의 스터디 이름
+	public static String findStudyName(String a_no) {
+		SqlSession session=sqlSessionFactory.openSession();
+		String s_name=session.selectOne("study.findStudyName", a_no);
+		session.close();
+		return s_name;
+	}
+
+	//스터디 종합 랭킹
+	public static List<RankVO> findTotalRank(String a_no){
+		SqlSession session=sqlSessionFactory.openSession();
+		List<RankVO> list=null;
+		list=session.selectList("study.findTotalRank", a_no);
+		session.close();
+		return list;
+	}
+	//이달의 랭킹
+	public static List<RankVO> findMonthRank(HashMap<String, String> map){
+		SqlSession session=sqlSessionFactory.openSession();
+		List<RankVO> list=null;
+		list=session.selectList("study.findMonthRank",map);
+		//	System.out.println(list);
+		session.close();
+		return list;
+	}
+	//YY/MM 활동기간
+	public static List<String> findMonth(String a_no){
+		SqlSession session=sqlSessionFactory.openSession();
+		List<String>list=null;
+		list=session.selectList("study.findMonth",a_no);
+		System.out.println(list);
+		session.close();
+		return list;
+	}
+
 	//---------------------------coding_testMapper ------------------------------
-	
+	//레벨 별 문제 푼 개수
+	public static String findByLevel(HashMap<String , String> map){
+		String level=null;
+		SqlSession session=sqlSessionFactory.openSession();
+		level=session.selectOne("coding.findByLevel", map);
+		session.close();
+		return level;
+	}
+	//문제 번호에 따른 문제 찾기
+	public static Coding_testVO findByCtNo(String ct_no) {
+		Coding_testVO cv=null;
+		SqlSession session = sqlSessionFactory.openSession();
+		cv=session.selectOne("coding.findByCtNo", ct_no);
+		session.close();
+		return cv;
+	}
 	//문제 목록
 	public static List<Coding_testVO> findByAno(HashMap<String,String> map) {
-		System.out.println(map);
-	    List<Coding_testVO> list = null;
-	    SqlSession session = sqlSessionFactory.openSession();
-	    list = session.selectList("coding.findByAno", map);
-	    session.close();
-	    return list;
+		List<Coding_testVO> list = null;
+		SqlSession session = sqlSessionFactory.openSession();
+		list = session.selectList("coding.findByAno", map);
+		session.close();
+		return list;
 	}
-	
+
 	//회원의 스터디 찾기
 	public static String selectStudy(String a_no) {
 		SqlSession session = sqlSessionFactory.openSession();
-	    String s_no = session.selectOne("coding.selectStudy", a_no);
-	    session.close();
-	    return s_no;
+		String s_no = session.selectOne("coding.selectStudy", a_no);
+		session.close();
+		return s_no;
 	}
-	
+
 	//해결한 문제 수
 	public static String getTotalCount(String a_no) {
-	    SqlSession session = sqlSessionFactory.openSession();
-	    String totalCount = session.selectOne("coding.total", a_no);
-	    session.close();
-	    return totalCount;
+		SqlSession session = sqlSessionFactory.openSession();
+		String totalCount = session.selectOne("coding.total", a_no);
+		session.close();
+		return totalCount;
 	}
 	//랭킹
 	public static String getRank(HashMap<String, String> map){

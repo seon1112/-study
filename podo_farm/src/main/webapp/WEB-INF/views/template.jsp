@@ -24,7 +24,7 @@
    </div>
 
    <div id="content">
-      <jsp:include page="codePage.jsp"/>
+      <jsp:include page="myProPage.jsp"/>
    </div>
    
 

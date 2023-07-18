@@ -3,5 +3,14 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="studyin">
-	
+	<!-- 스터디의 멤버 찾기 -->
+	<select id="findMember" resultType="accountVO">
+		select * from account where a_no in (
+		select a_no from study_in where s_no=(select s_no from study_in where a_no=#{a_no}))
+	</select>
+	<!-- 같은 스터디 멤버 찾기 -->
+	<select id="findMate" resultType="accountVO">
+		select * from account where a_no in (
+		select a_no from study_in where s_no=(select s_no from study_in where a_no=#{a_no}) and a_no!=#{a_no})
+	</select>
 </mapper>
