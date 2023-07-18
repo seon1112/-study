@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mypage">
+
+    <select id = "findMyPage" parameterType="AccountVO">
+        SELECT a_no, a_nick, a_img
+        FROM account
+        WHERE a_no= #{a_no}
+    </select>
+
+
+    <update id = "updateProfile" parameterType="AccountVO">
+        UPDATE account SET a_img =#{a_img}  WHERE a_no = #{a_no}
+    </update>
+</mapper>

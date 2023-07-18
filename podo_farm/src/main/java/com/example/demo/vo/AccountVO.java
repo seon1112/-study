@@ -17,3 +17,4 @@ public class AccountVO {
     private Date a_regdate;
     private MultipartFile uploadFile;
 }
+
