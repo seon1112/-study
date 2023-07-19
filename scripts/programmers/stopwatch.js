@@ -76,7 +76,6 @@ class Stopwatch {
     const elapsedTime = this.times.join(':'); // 시간 형식을 ':'로 연결하여 문자열로 변환
   }
 
-
 }
 
 function pad0(value, count) {
