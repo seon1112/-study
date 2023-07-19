@@ -1,5 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 const oAuth2 = {
+  // 팝업에 필요한 js
   /**
    * Initialize
    */

@@ -24,7 +24,7 @@ function startLoader() {
       stopLoader();
       try {
         const insertData = await parseData();
-        await beginUpload(insertData);
+        await insertDataIntoOracleDB(insertData);
       } catch (error) {
         log(error);
       }

@@ -1,6 +1,6 @@
 /* global oAuth2 */
 /* eslint no-undef: "error" */
-
+// 팝업에 필요한 스크립트
 let action = false;
 
 $('#authenticate').on('click', () => {
@@ -64,16 +64,15 @@ chrome.storage.local.get('BaekjoonHub_token', (data) => {
 chrome.storage.local.get('bjhEnable', (data4) => {
   if (data4.bjhEnable === undefined) {
     $('#onffbox').prop('checked', true);
-    chrome.storage.local.set({ 'bjhEnable': $('#onffbox').is(':checked') }, () => { });
-  }
-  else {
+    chrome.storage.local.set({ bjhEnable: $('#onffbox').is(':checked') }, () => {});
+  } else {
     $('#onffbox').prop('checked', data4.bjhEnable);
-    chrome.storage.local.set({ 'bjhEnable': $('#onffbox').is(':checked') }, () => { });
+    chrome.storage.local.set({ bjhEnable: $('#onffbox').is(':checked') }, () => {});
   }
-})
+});
 /*
   활성화 버튼 클릭 시 storage에 활성 여부 데이터를 저장.
  */
 $('#onffbox').on('click', () => {
-  chrome.storage.local.set({ 'bjhEnable': $('#onffbox').is(':checked') }, () => { });
+  chrome.storage.local.set({ bjhEnable: $('#onffbox').is(':checked') }, () => {});
 });

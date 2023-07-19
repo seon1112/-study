@@ -70,9 +70,9 @@ const localAuth = {
    * @param token The OAuth2 token given to the application from the provider.
    */
   finish(token) {
-    /* Get username */
-    // To validate user, load user object from GitHub.
-    const AUTHENTICATION_URL = 'https://api.github.com/user';
+    /* Get username 사용자 이름가져오기*/
+    // To validate user, load user object from GitHub. 사용자의 유효성을 확인하기 위해 해당 부분을 구글로 교체해야 될 듯?
+    const AUTHENTICATION_URL = 'https://api.githb.com/user';
 
     const xhr = new XMLHttpRequest();
     xhr.addEventListener('readystatechange', function () {
@@ -98,11 +98,11 @@ const localAuth = {
 localAuth.init(); // load params.
 const link = window.location.href;
 
-/* Check for open pipe */
-if (window.location.host === 'github.com') {
-  chrome.storage.local.get('pipe_baekjoonhub', (data) => {
-    if (data && data.pipe_baekjoonhub) {
-      localAuth.parseAccessCode(link);
-    }
-  });
-}
+// /* Check for open pipe */
+// if (window.location.host === 'github.com') {
+//   chrome.storage.local.get('pipe_baekjoonhub', (data) => {
+//     if (data && data.pipe_baekjoonhub) {
+//       localAuth.parseAccessCode(link);
+//     }
+//   });
+// }

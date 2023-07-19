@@ -215,29 +215,29 @@ function getObjectDatafromPath(obj, path) {
 }
 
 /* github repo에 있는 모든 파일 목록을 가져와서 stats 갱신 */
-async function updateLocalStorageStats() {
-  const hook = await getHook();
-  const token = await getToken();
-  const git = new GitHub(hook, token);
-  const stats = await getStats();
-  const tree_items = [];
-  await git.getTree().then((tree) => {
-    tree.forEach((item) => {
-      if (item.type === 'blob') {
-        tree_items.push(item);
-      }
-    });
-  });
-  const { submission } = stats;
-  tree_items.forEach((item) => {
-    updateObjectDatafromPath(submission, `${hook}/${item.path}`, item.sha);
-  });
-  const default_branch = await git.getDefaultBranchOnRepo();
-  stats.branches[hook] = default_branch;
-  await saveStats(stats);
-  log('update stats', stats);
-  return stats;
-}
+// async function updateLocalStorageStats() {
+//   const hook = await getHook();
+//   const token = await getToken();
+//   //const git = new GitHub(hook, token);
+//   const stats = await getStats();
+//   const tree_items = [];
+//   await git.getTree().then((tree) => {
+//     tree.forEach((item) => {
+//       if (item.type === 'blob') {
+//         tree_items.push(item);
+//       }
+//     });
+//   });
+//   const { submission } = stats;
+//   tree_items.forEach((item) => {
+//     updateObjectDatafromPath(submission, `${hook}/${item.path}`, item.sha);
+//   });
+//   const default_branch = await git.getDefaultBranchOnRepo();
+//   stats.branches[hook] = default_branch;
+//   await saveStats(stats);
+//   log('update stats', stats);
+//   return stats;
+// }
 
 /**
  * @deprecated
