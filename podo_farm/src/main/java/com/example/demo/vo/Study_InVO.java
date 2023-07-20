@@ -15,4 +15,6 @@ public class Study_InVO {
 	   private String a_level;
 	   private int a_programmers;
 	   private Date s_a_regdate;
+
+
 }

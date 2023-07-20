@@ -4,14 +4,12 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 
-import com.example.demo.vo.AccountVO;
-import com.example.demo.vo.RankVO;
+import com.example.demo.vo.*;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import com.example.demo.vo.Coding_testVO;
 import org.springframework.util.ClassUtils;
 
 
@@ -185,13 +183,10 @@ public class DBManager {
 	//MYPAGE 이미지 수정하기
 
 	public static AccountVO getProfile(int a_no){
-		System.out.println("---------DBMANAGER 동작함!!------------");
 
-		AccountVO a = null;
 		SqlSession session = sqlSessionFactory.openSession();
-		a = session.selectOne("mypage.findMyPage", a_no);
+		AccountVO a = session.selectOne("mypage.findMyPage", a_no);
 
-		System.out.println("담아오는 자료들은 : " + a);
 		session.close();
 		return a;
 	}
@@ -206,4 +201,79 @@ public class DBManager {
 
 		return re;
 	}
+
+	//스터디 멤버 불러오기
+	public static List<AdminVO> StudyMemberList(int a_no) {
+		System.out.println("---------DBMANAGER 동작함!!------------");
+		List<AdminVO> list = null;
+		SqlSession session = sqlSessionFactory.openSession();
+		list = session.selectList("mypage.StudyMemberList", a_no);
+		System.out.println("담아오는 자료는 " + list);
+		session.close();
+		return list;
+	}
+
+	//스터디 방장 불러오기
+	public static String LeaderName(int r_no){
+		SqlSession session=sqlSessionFactory.openSession();
+		String Leader =session.selectOne("mypage.LeaderNickName", r_no);
+		session.close();
+		return Leader;
+	}
+
+	//스터디 가입희망자 불러오기
+	public static List<AdminVO> PermissionMemberList(int a_no){
+		List<AdminVO> list = null;
+		SqlSession session = sqlSessionFactory.openSession();
+		list = session.selectList("mypage.PermissionMemberList", a_no);
+		System.out.println("담아오는 자료는 " + list);
+		session.close();
+		return list;
+	}
+
+	public static int getTeamLeader(int a_no){
+		int name = -1;
+		SqlSession session=sqlSessionFactory.openSession();
+		Integer result = session.selectOne("mypage.FindTeamLeader", a_no);
+		if (result != null){
+			name = result;
+		}
+		System.out.println("name----------------"+name);
+		session.close();
+		return name;
+	}
+
+	//스터디 가입승인
+	public static int allow(int a_no) {
+		int re = -1;
+		SqlSession session =
+				sqlSessionFactory.openSession();
+		re = session.update("mypage.allowed", a_no);
+		session.commit();
+		session.close();
+		return re;
+	}
+
+
+	//스터디 가입거절
+	public static int reject(int a_no) {
+		int re = -1;
+		SqlSession session =
+				sqlSessionFactory.openSession();
+		re = session.delete("mypage.reject", a_no);
+		session.commit();
+		session.close();
+		return re;
+	}
+	public static int deleteAccount(int a_no) {
+		int re = -1;
+		SqlSession session =
+				sqlSessionFactory.openSession();
+		re = session.delete("mypage.deleteAccount", a_no);
+		session.commit();
+		session.close();
+		return re;
+	}
+
+
 }

@@ -9,8 +9,10 @@
  	<typeAlias type="com.example.demo.vo.Coding_testVO" alias="codingVO"/>   <!--나는 이렇게 애칭으로 쓰겠어 -->
  	<typeAlias type="com.example.demo.vo.StudyVO" alias="studyVO"/>   <!--나는 이렇게 애칭으로 쓰겠어 -->
  	<typeAlias type="com.example.demo.vo.Study_InVO" alias="studyInVO"/>   <!--나는 이렇게 애칭으로 쓰겠어 -->
+    <typeAlias type="com.example.demo.vo.AccountVO" alias="accountVO"/>
+    <typeAlias type="com.example.demo.vo.AdminVO" alias="adminVO"/>
  </typeAliases>
-  <environments default="development">
+    <environments default="development">
     <environment id="development">
       <transactionManager type="JDBC"/>
       <dataSource type="POOLED">

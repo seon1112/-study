@@ -1,17 +1,120 @@
-body {
-  width: 192rem;
+:root {
+  --color-background: #F7F7F7;
+  --color-white: #ffffff;
+  --color-purple: #624BFF;
 }
-.topbar {
-  margin-bottom: 0.3rem;
+
+html {
+  font-size: 14px;
+  font-family: Poppins;
+  font-style: normal;
+}
+
+body {
+  margin : auto;
   box-sizing: border-box;
-  padding: 1.3rem 4.5rem 1.2rem 1.8rem;
-  width: 100%;
-  height: 9.8rem;
-  overflow: hidden;
-  position: relative;
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+button{
+  outline:none;
+}
+
+header{
+  width : 100vw;
+  max-width: 110rem;
+  margin : auto; /*중앙 정렬 이걸로    */
+  display : block;
+  height: 10rem;
+  flex-shrink: 0;
+  align-items : center;
+}
+
+.header-bar{
+  display : flex;
+  background-color : beige;
+  justify-content: space-between;
+
+}
+
+.menu-bar {
+  display: flex;
+  padding: 0.5rem 0rem;
   align-items: center;
-  box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.25);
-  background-color: #e9eaf5;
+  gap: 0.625rem;
+
+}
+
+.logo{
+  display: flex;
+  width: 10rem;
+  align-items: center;
+  flex-shrink: 0;
+  text-decoration: none;
+  object-fit: contain;
+
+
+}
+
+
+.logo-img{
+  height: 3.125rem;
   flex-shrink: 0;
 }
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: none; /* 버튼의 기본 배경 제거 */
+  border: none; /* 버튼의 기본 스타일 제거 */
+  cursor: pointer; /* 손 모양 커서 설정 */
+  margin-left: auto; /* 프로필 요소를 오른쪽으로 이동 */
+  padding-right: 3rem;
+
+}
+
+.profile-img{
+  background-color: white;
+}
+
+.profile-img img{
+  width: 3rem;
+  height: 3rem;
+  object-fit: contain;
+}
+
+.alaram{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: none;
+  cursor: pointer; /* 손 모양 커서 설정 */
+}
+
+
+.alaram img{
+  padding-top : 0.3rem;
+  width: 2rem;
+  height: 2rem;
+  align-items: center;
+  justify-content: center;
+
+}
+
+
+.edit-profile,
+.edit-studygroup {
+
+  color: #533777;
+  font-family: Poppins;
+  font-size: 1.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 3.6875rem;
+  text-decoration: none;
+}
+

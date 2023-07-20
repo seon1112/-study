@@ -4,14 +4,68 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mypage">
 
-    <select id = "findMyPage" parameterType="AccountVO">
-        SELECT a_no, a_nick, a_img
+    <select id = "findMyPage" resultType="accountVO">
+        SELECT *
         FROM account
-        WHERE a_no= #{a_no}
+        WHERE a_no = #{a_no}
+    </select>
+
+    <select id = "StudyMemberList" resultType="adminVO">
+        SELECT a.a_nick, COUNT(ct.a_no) AS solved, si.a_programmers, si.a_level, si.a_git, si.s_a_regdate FROM study_in si
+        JOIN account a ON si.a_no = a.a_no
+        LEFT JOIN coding_test ct ON si.a_no = ct.a_no
+        WHERE si.s_no = (SELECT s_no FROM study_in WHERE a_no = #{a_no}) AND si.r_ok = '1'
+        GROUP BY a.a_nick, si.a_programmers, si.a_level, si.a_git, si.s_a_regdate
+        ORDER BY s_a_regdate;
+    </select>
+
+    <select id = "LeaderNickName" resultType="java.lang.String">
+        SELECT a_nick
+        FROM account
+        WHERE a_no =
+            (SELECT a_no
+             FROM study_in
+             WHERE r_no = #{r_no} and s_leader = '1')
+
+    </select>
+
+    <select id = "FindTeamLeader" resultType="java.lang.Integer">
+        SELECT a_no
+        FROM study_in
+        WHERE s_no = (SELECT s_no from study_in where a_no = #{a_no}) and s_leader ='1'
+    </select>
+    <update id = "updateProfile" parameterType="accountVO">
+        UPDATE account SET a_img =#{a_img}  WHERE a_no = #{a_no}
+    </update>
+
+    <select id = "PermissionMemberList" resultType="adminVO" >
+        SELECT a.a_nick, si.a_git, si.a_level, si.a_programmers, a.a_no
+        FROM study_in si
+        JOIN account a ON si.a_no = a.a_no
+        WHERE si.s_no = (SELECT s_no FROM study_in WHERE a_no = #{a_no}) AND si.r_ok = '0'
+        ORDER BY si.r_no
     </select>
 
 
-    <update id = "updateProfile" parameterType="AccountVO">
-        UPDATE account SET a_img =#{a_img}  WHERE a_no = #{a_no}
+    <!-- 가입승인하기-->
+    <update id = "allowed" parameterType= "java.lang.Integer">
+        UPDATE study_in
+        SET r_ok = '1'
+        WHERE a_no = #{a_no}
     </update>
+
+    <!-- 가입거절하기-->
+    <delete id = "reject"           >
+        DELETE FROM study_in
+        WHERE a_no = #{a_no}
+    </delete>
+
+    <!-- 회원탈퇴하기-->
+    <delete id = "deleteAccount">
+        DELETE account
+        WHERE a_no = #{a_no}
+    </delete>
+
+
+
 </mapper>
