@@ -23,7 +23,7 @@ function handleMessage(request, sender, sendResponse) {
 
     // 사용자 경험을 위해 온보딩(환영)페이지로 이동합니다.
 
-    const urlOnboarding = `chrome-extension://${chrome.runtime.id}/welcome.html`일부로 오류냄; // html페이지 변경 해야 됨
+    const urlOnboarding = `chrome-extension://${chrome.runtime.id}/welcome.html`; // html페이지 변경 해야 됨일부로 오류냄
     chrome.tabs.create({ url: urlOnboarding, selected: true }); // 새 탭을 생성합니다.
   }
   // 인증에 실패한 경우(웹 페이지를 닫아야 함)
