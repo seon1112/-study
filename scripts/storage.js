@@ -1,6 +1,6 @@
 /* Sync to local storage */
 chrome.storage.local.get('isSync', (data) => {
-  keys = ['BaekjoonHub_token', 'BaekjoonHub_username', 'pipe_baekjoonhub', 'stats', 'BaekjoonHub_hook', 'mode_type'];
+  keys = ['PodoFarm_token', 'PodoFarm_username', 'pipe_podofarm', 'stats', 'PodoFarm_hook', 'mode_type'];
   if (!data || !data.isSync) {
     keys.forEach((key) => {
       chrome.storage.sync.get(key, (data) => {
@@ -26,7 +26,7 @@ chrome.storage.local.get('isSync', (data) => {
 getStats().then((stats) => {
   if (isNull(stats)) stats = {};
   if (isNull(stats.version)) stats.version = '0.0.0';
-  if (isNull(stats.branches) || stats.version !== getVersion()) stats.branches = {};
+  // if (isNull(stats.branches) || stats.version !== getVersion()) stats.branches = {};
   if (isNull(stats.submission) || stats.version !== getVersion()) stats.submission = {};
   if (isNull(stats.problems) || stats.version !== getVersion()) stats.problems = {};
   saveStats(stats);
@@ -133,11 +133,11 @@ async function removeObjectFromSyncStorage(keys) {
 }
 
 async function getToken() {
-  return await getObjectFromLocalStorage('BaekjoonHub_token');
+  return await getObjectFromLocalStorage('PodoFarm_token');
 }
 
 async function getGithubUsername() {
-  return await getObjectFromLocalStorage('BaekjoonHub_username');
+  return await getObjectFromLocalStorage('PodoFarm_username');
 }
 
 async function getStats() {
@@ -145,7 +145,7 @@ async function getStats() {
 }
 
 async function getHook() {
-  return await getObjectFromLocalStorage('BaekjoonHub_hook');
+  return await getObjectFromLocalStorage('PodoFarm_hook');
 }
 
 async function getModeType() {
@@ -153,7 +153,7 @@ async function getModeType() {
 }
 
 async function saveToken(token) {
-  return await saveObjectInLocalStorage({ BaekjoonHub_token: token });
+  return await saveObjectInLocalStorage({ PodoFarm_token: token });
 }
 
 async function saveStats(stats) {
