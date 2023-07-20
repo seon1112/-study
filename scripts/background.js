@@ -21,14 +21,11 @@ function handleMessage(request, sender, sendResponse) {
       console.log('Closed pipe.');
     });
 
-    // 사용자 경험을 위해 온보딩(환영)페이지로 이동합니다.
-
-    const urlOnboarding = `chrome-extension://${chrome.runtime.id}/welcome.html`; // html페이지 변경 해야 됨일부로 오류냄
-    chrome.tabs.create({ url: urlOnboarding, selected: true }); // 새 탭을 생성합니다.
-  }
-  // 인증에 실패한 경우(웹 페이지를 닫아야 함)
-  else if (request && request.closeWebPage === true && request.isSuccess === false) {
-    alert('프로필 인증 중 문제가 발생했습니다!');
+    /* Go to onboarding for UX */
+    const urlOnboarding = `chrome-extension://${chrome.runtime.id}/welcome.html`;
+    chrome.tabs.create({ url: urlOnboarding, selected: true }); // creates new tab
+  } else if (request && request.closeWebPage === true && request.isSuccess === false) {
+    alert('Something went wrong while trying to authenticate your profile!');
     chrome.tabs.getSelected(null, function (tab) {
       chrome.tabs.remove(tab.id);
     });
