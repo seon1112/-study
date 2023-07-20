@@ -5,6 +5,13 @@ app.use(express.static(public))
 app.use(express.bodyParser())
 app.use(app.router)
 
+
+// @param {String} email;
+
+async function searchEmail(email){
+    console.log("async function works");
+    
+}
 app.post("/searchEmail", function(req,res){
     console.log("start");
     try {
