@@ -5,7 +5,7 @@ const oAuth2 = {
    * Initialize
    */
   init() {
-    this.KEY = 'BaekjoonHub_token';
+    this.KEY = 'BaekjoonHub_token'; // PodoFarm_token
     this.ACCESS_TOKEN_URL = 'https://github.com/login/oauth/access_token';
     this.AUTHORIZATION_URL = 'https://github.com/login/oauth/authorize';
     this.CLIENT_ID = '975f8d5cf6686dd1faed';
@@ -13,10 +13,12 @@ const oAuth2 = {
     this.REDIRECT_URL = 'https://github.com/'; // for example, https://github.com
     this.SCOPES = ['repo'];
   },
-
-  /**
-   * Begin
-   */
+  // init() {
+  //   this.KEY = 'PodoFarm_token';
+  //   this.CLIENT_ID = 'YOUR_GOOGLE_CLIENT_ID';
+  //   this.REDIRECT_URL = `chrome-extension://${chrome.runtime.id}/main_page.html`;
+  //   this.SCOPES = ['profile', 'email'];
+  // }
   begin() {
     this.init(); // secure token params.
 
@@ -26,14 +28,12 @@ const oAuth2 = {
       url += this.SCOPES[i];
     }
 
-    chrome.storage.local.set({ pipe_baekjoonhub: true }, () => {
+    chrome.storage.local.set({ pipe_podofarm: true }, () => {
       // opening pipe temporarily
 
       chrome.tabs.create({ url, selected: true }, function () {
         window.close();
-        chrome.tabs.getCurrent(function (tab) {
-          // chrome.tabs.remove(tab.id, function () {});
-        });
+        chrome.tabs.getCurrent(function (tab) {});
       });
     });
   },

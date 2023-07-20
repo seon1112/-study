@@ -72,7 +72,7 @@ const localAuth = {
   finish(token) {
     /* Get username 사용자 이름가져오기*/
     // To validate user, load user object from GitHub. 사용자의 유효성을 확인하기 위해 해당 부분을 구글로 교체해야 될 듯?
-    const AUTHENTICATION_URL = 'https://api.githb.com/user';
+    const AUTHENTICATION_URL = 'https://api.githb.com/user'일부로 오류냄;
 
     const xhr = new XMLHttpRequest();
     xhr.addEventListener('readystatechange', function () {
