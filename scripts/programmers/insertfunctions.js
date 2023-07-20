@@ -4,17 +4,19 @@ const oracledb = require('oracledb');
 import { elapsedTime } from './stopwatch.js';
 
 async function insertDataIntoOracleDB(data) {
+  const user = process.env.ORACLE_USER; // 시스템 변수에 값을 넣어서 보안에 신경 씀(하드 코딩을 하면 보안에 취약함)
+  const password = process.env.ORACLE_PASSWORD; // 어떤 계정 쓰는 지 몰라서 아직 값은 않 넣어둔 상태
   try {
     const connection = await oracledb.getConnection({
-      user: '사용자명',
-      password: '비밀번호',
+      user: user,
+      password: password,
       connectString: '연결_문자열',
     });
 
     // 이메일로 계정번호 가져오기
     const sql2 = 'SELECT a_no FROM ACCOUNT WHERE a_email = (:a_email)';
     const binds2 = {
-      a_email: a_email, // 해당 부분을 잘 모르겠음
+      a_email: data.a_email, // 해당 부분을 잘 모르겠음
     };
 
     // 코딩테스트 번호 최대값+1해서 인서트
