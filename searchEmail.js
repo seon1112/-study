@@ -1,3 +1,17 @@
+const email = () => {
+    return $('#email').val().trim();
+}
+
+const createRepo = (emial) => {
+    let data = {
+        email,
+        private: true,
+        auto_init: true,
+        description: 'This is a auto push repository for Podo_Farm'
+    };
+    data = JSON.stringify(data);
+}
+
 var http = require("http")
 var express = require("express")
 var app = express()
