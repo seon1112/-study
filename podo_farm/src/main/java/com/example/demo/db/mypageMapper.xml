@@ -29,6 +29,14 @@
 
     </select>
 
+    <select id ="TeamLeaderInfo" resultType="adminVO">
+        SELECT a.a_nick, si.a_git, si.a_level, si.a_programmers, a.a_no,
+        (SELECT COUNT(*) FROM coding_test WHERE a_no = a.a_no) AS ct
+        FROM study_in si
+        JOIN account a ON si.a_no = a.a_no
+        WHERE si.s_no = (SELECT s_no FROM study_in WHERE a_no = #{a_no}) AND si.s_leader = '1';
+    </select>
+
     <select id = "FindTeamLeader" resultType="java.lang.Integer">
         SELECT a_no
         FROM study_in

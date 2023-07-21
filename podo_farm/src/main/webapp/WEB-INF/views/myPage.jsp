@@ -89,13 +89,11 @@
             <span>${a.a_nick}님,<br>환영합니다</span>
         </button>
 
-
         <button class="alaram">
             <img src="alarm.png" alt="alaram">
         </button>
 
     </div>
-
     <div class="menu-bar">
         <a href = "#" class = "edit-profile">프로필수정</a>
         <a href = "myPage_study.jsp" class = "edit-studygroup">스터디관리</a>

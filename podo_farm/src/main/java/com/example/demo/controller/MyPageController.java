@@ -28,7 +28,7 @@ public class MyPageController {
     @Autowired
     private Study_InDAO sid;
 
-    private int a_no = 200;
+    private int a_no = 2;
 
     @GetMapping("/myPage")
     public void myPage(Model model){
@@ -101,20 +101,24 @@ public class MyPageController {
         return mav;
     }
 
-
-
     @GetMapping("/myPage_study")
     public void myPage_Study(Model model){
         int leader = sid.FindTeamLeader(a_no);
-        // model.addAttribute("ad", sid.StudyMemberList(a_no));
-        //if(a_no == leader) {
-        model.addAttribute("pl", sid.PermissionList(a_no));
-        //}
+        System.out.println("leader값 :" +leader);
+        model.addAttribute("lf",sid.TeamLeaderInfo(2));
+
+        if(a_no == leader) {
+            model.addAttribute("pl", sid.PermissionList(a_no));
+            model.addAttribute("sml-l", sid.StudyMemberList(a_no));
+            System.out.println("if동작함!!!!!!!!!!!!!!");
+        } else{
+            model.addAttribute("sml-u", sid.StudyMemberList(a_no));
+        }
         System.out.println("매핑동작함");
     }
 
 
-    @PostMapping("acceptRequest")
+    @PostMapping("/acceptRequest")
     @ResponseBody
     public ModelAndView acceptRequest(Model model, @RequestParam("a_no") int a_no){
         sid.allowed(a_no);
@@ -128,25 +132,23 @@ public class MyPageController {
     }
 
     @PostMapping("/rejectRequest")
-    public ModelAndView rejectRequest(Model model){
+    @ResponseBody
+    public ModelAndView rejectRequest(Model model, @RequestParam("a_no") int a_no){
         sid.reject(a_no);
         ModelAndView mav = new ModelAndView("redirect:myPage_study");
         // 업데이트된 데이터를 JSON 형식으로 반환
         Map<String, String> response = new HashMap<>();
-        response.put("message", "승인되었습니다!");
-
+        response.put("message", "거절되었습니다!");
         return mav;
     }
 
+
+
     @GetMapping("/deletePage")
     public ModelAndView deletePage(Model model){
-        ad.deleteAccount(3);
+        ad.deleteAccount(a_no);
         ModelAndView mav = new ModelAndView("redirect:/mainPage");
         System.out.println("mav : " + mav);
         return mav;
     }
-
-
-
-
 }

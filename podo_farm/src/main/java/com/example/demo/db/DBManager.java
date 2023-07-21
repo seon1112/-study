@@ -265,6 +265,7 @@ public class DBManager {
 		session.close();
 		return re;
 	}
+	//회원탈퇴
 	public static int deleteAccount(int a_no) {
 		int re = -1;
 		SqlSession session =
@@ -275,5 +276,14 @@ public class DBManager {
 		return re;
 	}
 
+	// 방장 정보 가져오기
+	public static AdminVO TeamLeaderInfo(int a_no){
+		AdminVO list = null;
+		SqlSession session = sqlSessionFactory.openSession();
+		list = session.selectOne("mypage.TeamLeaderInfo", a_no);
+		System.out.println("담아오는 자료는 " + list);
+		session.close();
+		return list;
+	}
 
 }

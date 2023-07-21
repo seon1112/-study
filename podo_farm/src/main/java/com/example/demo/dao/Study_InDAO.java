@@ -29,18 +29,28 @@ public class Study_InDAO {
 		return DBManager.reject(a_no);
 	}
 
+	//스터디 멤버리스트 출력
 	public List<AdminVO> StudyMemberList(int a_no){
+		System.out.println("StudyMemeberDAO 동작함----------------------");
 		return DBManager.StudyMemberList(a_no);
+
 	}
 
+	//승인목록 출력
 	public List<AdminVO> PermissionList(int a_no){
 		System.out.println("DAO동작함");
 		return DBManager.PermissionMemberList(a_no);
 	}
 
+	//IF문을 위한 리더찾기
 	public int FindTeamLeader(int a_no){
 		System.out.println("DAO 동작함");
 		return DBManager.getTeamLeader(a_no);
+	}
+
+	//방장 정보 가져오기
+	public AdminVO TeamLeaderInfo(int a_no){
+		return DBManager.TeamLeaderInfo(a_no);
 	}
 
 }
