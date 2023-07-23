@@ -204,7 +204,7 @@ public class DBManager {
 
 	//스터디 멤버 불러오기
 	public static List<AdminVO> StudyMemberList(int a_no) {
-		System.out.println("---------DBMANAGER 동작함!!------------");
+		System.out.println("STUDYMEMBERLISTDAO---------DBMANAGER 동작함!!------------");
 		List<AdminVO> list = null;
 		SqlSession session = sqlSessionFactory.openSession();
 		list = session.selectList("mypage.StudyMemberList", a_no);

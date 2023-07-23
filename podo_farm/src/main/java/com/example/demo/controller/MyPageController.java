@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.dao.AccountDAO;
 import com.example.demo.dao.Study_InDAO;
 import com.example.demo.vo.AccountVO;
+import jakarta.servlet.jsp.PageContext;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -101,19 +102,12 @@ public class MyPageController {
         return mav;
     }
 
-    @GetMapping("/myPage_study")
+    @GetMapping("/myPageStudy")
     public void myPage_Study(Model model){
         int leader = sid.FindTeamLeader(a_no);
-        System.out.println("leader값 :" +leader);
-        model.addAttribute("lf",sid.TeamLeaderInfo(2));
-
-        if(a_no == leader) {
-            model.addAttribute("pl", sid.PermissionList(a_no));
-            model.addAttribute("sml-l", sid.StudyMemberList(a_no));
-            System.out.println("if동작함!!!!!!!!!!!!!!");
-        } else{
-            model.addAttribute("sml-u", sid.StudyMemberList(a_no));
-        }
+        model.addAttribute("lf",sid.TeamLeaderInfo(a_no));
+        model.addAttribute("pl", sid.PermissionList(a_no));
+        model.addAttribute("sml",sid.StudyMemberList(a_no));
         System.out.println("매핑동작함");
     }
 

@@ -11,12 +11,12 @@
     </select>
 
     <select id = "StudyMemberList" resultType="adminVO">
-        SELECT a.a_nick, COUNT(ct.a_no) AS solved, si.a_programmers, si.a_level, si.a_git, si.s_a_regdate FROM study_in si
+        SELECT a.a_nick, si.a_git, si.a_level, si.a_programmers, a.a_no,
+        (SELECT COUNT(*) FROM coding_test WHERE a_no = a.a_no) AS ct
+        FROM study_in si
         JOIN account a ON si.a_no = a.a_no
         LEFT JOIN coding_test ct ON si.a_no = ct.a_no
         WHERE si.s_no = (SELECT s_no FROM study_in WHERE a_no = #{a_no}) AND si.r_ok = '1'
-        GROUP BY a.a_nick, si.a_programmers, si.a_level, si.a_git, si.s_a_regdate
-        ORDER BY s_a_regdate;
     </select>
 
     <select id = "LeaderNickName" resultType="java.lang.String">

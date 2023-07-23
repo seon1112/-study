@@ -31,7 +31,6 @@ public class Study_InDAO {
 
 	//스터디 멤버리스트 출력
 	public List<AdminVO> StudyMemberList(int a_no){
-		System.out.println("StudyMemeberDAO 동작함----------------------");
 		return DBManager.StudyMemberList(a_no);
 
 	}

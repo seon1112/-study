@@ -34,7 +34,7 @@ header{
 
 .header-bar{
     display : flex;
-    background-color : beige;
+    background-color : white;
     justify-content: space-between;
 
 }
@@ -54,7 +54,6 @@ header{
     flex-shrink: 0;
     text-decoration: none;
     object-fit: contain;
-
 
 }
 
@@ -108,16 +107,18 @@ header{
 
 .edit-profile,
 .edit-studygroup {
-    color: #533777;
+
+    color: #624BFF;
     font-family: Poppins;
-    font-size: 1.875rem;
+    font-size: 1.5rem;
     font-style: normal;
-    font-weight: 400;
-    line-height: 3.6875rem;
+    font-weight: 700;
+    line-height: 3.5rem;
     text-decoration: none;
 }
 
-.setting {
+.setting-div {
+
     font-family: Poppins;
     font-size: 1.875rem;
     display: block;
@@ -126,16 +127,22 @@ header{
     background-color: black;
     margin-left: 90rem;
     margin-top : 1rem;
-    display: none; /* 추가 */
+    display: block; /* 추가 */
 }
 
-.notice {
+.alaram-div {
+    font-family: Poppins;
+    font-size: 1.875rem;
+    display: block;
     position: absolute;
     width: 30rem;
     background-color: white;
     margin-left: 80rem;
+    display: block; /* 추가 */
 }
 
+.setting-box{
+}
 main {
     margin : auto;
     display: flex;
@@ -145,7 +152,7 @@ main {
     align-items: flex-start;
     gap: 0.0625rem;
     flex-shrink: 0;
-    background-color: beige;
+    background-color: #fff;
 }
 
 .edit-image{
@@ -164,16 +171,15 @@ main {
 }
 .title-image{
     display: flex;
-    width: 94.1875rem;
+    width: 15.1875rem;
     align-items: flex-start;
-    gap: 65.6875rem;
+    gap: 70.6875rem;
 
-    color: #000;
     text-align: center;
     font-family: Noto Sans KR;
-    font-size: 1.875rem;
+    font-size: 2.575rem;
     font-style: normal;
-    font-weight: 700;
+    font-weight: 800;
     line-height: normal;
 }
 
@@ -218,21 +224,23 @@ main {
 
 .image-edit-button{
     display: flex;
-    padding: 0.75rem 0.8125rem;
+    padding: 0.55rem 1.125rem;
     justify-content: center;
     align-items: center;
     gap: 0.625rem;
-    border-radius: 1.25rem;
-    background: #E1C7FA;
-    color: #000;
+    border-radius: 0.5rem;
+    background: #262626;
+    color: white;
     text-align: center;
     font-family: Noto Sans KR;
-    font-size: 1.875rem;
+    font-size: 1.575rem;
     font-style: normal;
-    font-weight: 700;
+    font-weight: 600;
     line-height: normal;
     cursor: pointer; /* 손 모양 커서 설정 */
     border : none;
+
+
 }
 
 .edit-nickname{
@@ -247,18 +255,18 @@ main {
 
 .nick-name{
     display: flex;
-    color: #000;
+    color: color;
     text-align: left;
     font-family: Noto Sans KR;
     font-size: 1.875rem;
     font-style: normal;
-    font-weight: 700;
+    font-weight: 600;
     line-height: normal;
     align-items: center;
 }
 
 .input {
-    margin-left : 1rem;
+    margin-left : 2rem;
     display: flex;
     width: 21.9375rem;
     height: 2.1875rem;
@@ -267,6 +275,7 @@ main {
     align-items: center;
     gap: 0.625rem;
     flex-shrink: 0;
+    border-radius: 0.5rem;
 }
 
 .save-box{
@@ -278,20 +287,20 @@ main {
 
 .complete{
     display: flex;
-    width: 7.6875rem;
-    padding: 0.75rem 0.8125rem;
+    width: 10.5rem;
+    padding: 0.7rem 0.125rem;
     justify-content: center;
     align-items: center;
     gap: 0.625rem;
     flex-shrink: 0;
-    border-radius: 0.625rem;
-    background: rgba(0, 255, 26, 0.50);
-    color: #000;
+    border-radius: 0.5rem;
+    background: black;
+    color: white;
     text-align: center;
     font-family: Noto Sans KR;
-    font-size: 1.875rem;
+    font-size: 1.675rem;
     font-style: normal;
-    font-weight: 700;
+    font-weight: 800;
     line-height: normal;
     text-decoration: none;
 
@@ -299,24 +308,80 @@ main {
 
 .delete-account{
     display: flex;
-    width: 13.5rem;
-    padding: 0.75rem 0.8125rem;
+    width: 10.5rem;
+    padding: 0.7rem 0.125rem;
     justify-content: center;
     align-items: center;
     gap: 0.625rem;
     flex-shrink: 0;
-    border-radius: 0.625rem;
-    background: rgba(255, 0, 0, 0.50);
-    color: #000;
+    border-radius: 0.225rem;
+    background: #ff3217;
+    color: white;
     text-align: center;
     font-family: Noto Sans KR;
-    font-size: 1.875rem;
+    font-size: 1.675rem;
     font-style: normal;
-    font-weight: 700;
+    font-weight: 800;
     line-height: normal;
     text-decoration: none;
 
 }
-footer {
+
+/* mypage _study */
+
+.study-main{
+    display: block;
+    width: 1920px;
+    height: 1080px;
+    padding: 20px 100px;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-shrink: 0;
+    overflow : auto;
+
+}
+.study-box{
+    width: 94.1875rem;
+    height: 25.375rem;
+    padding: 1rem;
+    padding-left: 1.2rem;
+    align-items: center;
+    gap: 1.25rem;
+    flex-shrink: 0;
+    background-color: #533777;
+}
+
+.study-title-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 2.2 rem;
+    background-color: beige;
+}
+
+.study-title-box h2 {
+    margin: 0; /* 기본적인 마진 제거 */
+}
+.study-allowed{
+    display: block;
+    height: 20rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+    flex-shrink: 0;
+    margin-top: 4rem;
+}
+
+.allowed-box{
+    background-color: #E1C7FA;
+    width: 50rem;
+    height: 15rem;
+}
+
+.permission-user-list{
+}
+
+.footer {
     background-color: #533777;
 }
