@@ -1,16 +1,5 @@
-<<<<<<< Updated upstream
-const oracledb = require('oracledb');
-const email = '';
-// 이메일로 계정번호 가져오기
-$('#btnEmail').on('click', () => {
-  email = $('#email').val();
-  console.log('OK');
-  console.log(email);
-});
-=======
 //const oracledb = require('oracledb');
-const email = "";
->>>>>>> Stashed changes
+const email = '';
 
 $('#btnEmail').on('click', () => {
     email = $('#email').val();
