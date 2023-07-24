@@ -1,4 +1,4 @@
-//const oracledb = require('oracledb'); 해당 코드 오류 발생 일단 주석처리 해놓음
+const oracledb = require('oracledb');
 const email = '';
 // 이메일로 계정번호 가져오기
 $('#btnEmail').on('click', () => {
