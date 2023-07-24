@@ -2,6 +2,7 @@
 <html lang="english">
   <head>
     <title>exported project</title>
+    <script type="text/javascript" src="./searchEmail.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />
     <meta property="twitter:card" content="summary_large_image" />
@@ -42,7 +43,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
       data-tag="font"
     />
-    <link rel="stylesheet" href="./style.css" />
+
   </head>
   <body>
     <div>
@@ -52,16 +53,23 @@
         <div class="input-email-input-email">
           <div class="input-email-intropage">
             <div class="input-email-extensiondonwload">
-              <span class="input-email-text">
-                    자동 업로드 기능을 위해 포도팜의 이메일 주소를 입력해주세요.
-                  <br />
-                  회원가입 되어있지 않다면 회원가입 먼저 해주세요.
-                  <br />
+              <div  id="insertEmail">
+                <span class="input-email-text">
+                  자동 업로드 기능을 위해 포도팜의 이메일 주소를 입력해주세요.
+                <br />
+                회원가입 되어있지 않다면 회원가입 먼저 해주세요.
+                <br />
+                <input autocomplete="off" type="text" placeholder="example@gmail.com" class="input-email-inputemail1" name="email" id="email"/>
+                <button class="input-email-btnconfirm" id="btnEmail">확인</button>
+            </span>
+              </div>
+              
+
+              <span class="input-email-text" id="OKEmail"  style="display: none">
+                이메일 인증을 완료하였습니다.
               </span>
 
-                    <input autocomplete="off" type="text" placeholder="example@gmail.com" class="input-email-inputemail1" name="email" id="email"/>
-                    <button class="input-email-btnconfirm">확인</button>
-
+                    
 
               <img src="https://aheioqhobo.cloudimg.io/v7/_playground-bucket-v2.teleporthq.io_/76b9c27b-18d0-4658-87c6-f1319ca14338/88a3ab02-b51c-451f-b753-1c3c21aca5c2?org_if_sml=142738"
                 alt="KakaoTalk202307151553217762738"
@@ -73,6 +81,5 @@
         </div>
       </div>
     </div>
-    <script type="text/javascript" src="./searchEmail.js"></script>
   </body>
 </html>

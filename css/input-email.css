@@ -57,8 +57,8 @@
   text-decoration: none;
 }
 .input-email-inputemail1 {
-  top: 600px;
-  left: 669px;
+  top: 150px;
+  left: 130px;
   width: 582px;
   height: 67px;
   display: flex;
@@ -75,8 +75,8 @@
   padding-right: 15px;
 }
 .input-email-btnconfirm {
-  top: 700px;
-  left: 858px;
+  top: 270px;
+  left: 311px;
   width: 203px;
   height: 67px;
   display: flex;

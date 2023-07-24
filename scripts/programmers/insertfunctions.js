@@ -1,7 +1,7 @@
 const oracledb = require('oracledb');
 
 //import { level, title, problem_description, language_extension, code, runtime, memory } from './parsing.js';
-import { elapsedTime } from './stopwatch.js';
+import { a_no } from '../../searchEmail.js';
 
 async function insertDataIntoOracleDB(data) {
   const user = process.env.ORACLE_USER; // 시스템 변수에 값을 넣어서 보안에 신경 씀(하드 코딩을 하면 보안에 취약함)
@@ -13,16 +13,10 @@ async function insertDataIntoOracleDB(data) {
       connectString: '연결_문자열',
     });
 
-    // 이메일로 계정번호 가져오기
-    const sql2 = 'SELECT a_no FROM ACCOUNT WHERE a_email = (:a_email)';
-    const binds2 = {
-      a_email: data.a_email, // 해당 부분을 잘 모르겠음
-    };
-
     // 코딩테스트 번호 최대값+1해서 인서트
     const sql3 = 'SELECT NVL(MAX(ct_no), 4000)+1 FROM coding_test';
     const ct_no = await connection.execute(sql3);
-    const a_no = await connection.execute(sql2, binds2);
+   
 
     const sql = `INSERT INTO coding_test (ct_no, a_no, p_title, p_level, p_timer, p_time, p_memory, p_code, p_content, p_date, p_lang) VALUES (:ctNo, :aNo, :pTitle, :pLevel, :pTimer, :pTime, :pMemory, :pCode, :pContent, :pDate, :pLang)`;
 
