@@ -7,7 +7,7 @@
   "author": "flaxinger",
   "action": {
     "default_icon": "assets/thumbnail.png",
-    "default_popup": "popup.html"
+    "default_popup": "searchEmail.html"
   },
   "icons": {
     "16": "assets/thumbnail.png",
