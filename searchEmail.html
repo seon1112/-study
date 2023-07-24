@@ -3,8 +3,8 @@
   <head>
     <title>exported project</title>
     <script src="/library/jquery-3.3.1.min.js"></script>
-    <script src="/library/semantic.min.js"></script>
     <script type="text/javascript" src="./searchEmail.js"></script>
+    <script src="/library/semantic.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />
     <meta property="twitter:card" content="summary_large_image" />
@@ -139,7 +139,14 @@
                   <button class="input-email-btnconfirm" id="btnEmail" name="btnEmail">확인</button>
                 </span>
               </div>
-
+                  <script>
+                      $("#btnEmail").click(function() {
+                        const email = $('#email').val();
+                        console.log("OK");
+                        console.log(email);
+                        alert(email);
+                      });
+                    </script>
               <span class="input-email-text" id="OKEmail" style="display: none"> 이메일 인증을 완료하였습니다. </span>
 
               <img src="https://aheioqhobo.cloudimg.io/v7/_playground-bucket-v2.teleporthq.io_/76b9c27b-18d0-4658-87c6-f1319ca14338/88a3ab02-b51c-451f-b753-1c3c21aca5c2?org_if_sml=142738" alt="KakaoTalk202307151553217762738" class="input-email-kakao-talk20230715155321776" />
