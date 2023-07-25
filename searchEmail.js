@@ -1,8 +1,8 @@
 //const oracledb = require('oracledb');
 const email = '';
 
-$('#btnEmail').on('click', () => {
-    email = $('#email').val();
+$('#btnEmail').on('click', (this) => {
+    email = $('#email').val;
     console.log("OK");
     console.log(email);
     // 이메일로 계정번호 가져오기
@@ -25,7 +25,6 @@ $('#btnEmail').on('click', () => {
         } catch (error) {
             console.error('데이터를 삽입하는 중 오류가 발생했습니다(insertDataIntoOracleDB):', error);
     }
-
     if(a_no != null){
         console.log('email: '+email);
         console.log('a_no: '+a_no);

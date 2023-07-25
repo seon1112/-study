@@ -135,18 +135,18 @@
                   <br />
                   회원가입 되어있지 않다면 회원가입 먼저 해주세요.
                   <br />
-                  <input autocomplete="off" type="text" placeholder="example@gmail.com" class="input-email-inputemail1" name="email" id="email" />
+                  <input autocomplete="off" type="text" placeholder="example@gmail.com" class="input-email-inputemail1" name="a_email" id="a_email" />
                   <button class="input-email-btnconfirm" id="btnEmail" name="btnEmail">확인</button>
                 </span>
               </div>
-                  <script>
-                      $("#btnEmail").click(function() {
-                        const email = $('#email').val();
-                        console.log("OK");
-                        console.log(email);
-                        alert(email);
-                      });
-                    </script>
+              <script>
+                document.getElementById("btnEmail").onclick = function () {
+                  
+                  console.log("OK");
+                  
+                };
+              </script>
+                  
               <span class="input-email-text" id="OKEmail" style="display: none"> 이메일 인증을 완료하였습니다. </span>
 
               <img src="https://aheioqhobo.cloudimg.io/v7/_playground-bucket-v2.teleporthq.io_/76b9c27b-18d0-4658-87c6-f1319ca14338/88a3ab02-b51c-451f-b753-1c3c21aca5c2?org_if_sml=142738" alt="KakaoTalk202307151553217762738" class="input-email-kakao-talk20230715155321776" />
