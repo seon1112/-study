@@ -189,7 +189,8 @@
 					</div>
 					<!-- 코드 -->
 					<div class="code-pp1">
-						<textarea rows="30" cols="195" name="p_code" value="${c.p_code }"></textarea>
+						<!-- 텍스트에리어 안보이는거 수정했습니다. 유리 -->
+						<textarea rows="30" cols="195" name="p_code">${c.p_code }</textarea>
 					</div>
 				</div>
 				<!-- 목록버튼 -->
