@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="commentary">
+	<select id="findByNo" resultType="CommentaryVO">
+	select b_no, c_no, TO_CHAR(c_date,'yyyy-MM-dd hh:mm:ss') as c_date, c_content, c.a_no, a_nick, a_img
+from commentary c, account a where c.a_no=a.a_no and b_no=#{b_no} order by c_date
+	</select>
+	<insert id="insertComment" parameterType="CommentaryVO">
+		insert into commentary(c_no,a_no,b_no,c_date,c_content) values(#{c_no},#{a_no},#{b_no},sysdate,#{c_content})
+	</insert>
+	<select id="getNextNo" resultType="java.lang.Integer">
+		select nvl(max(c_no),0)+1 from commentary
+	</select>
+	<update id="updateComment" parameterType="CommentaryVO">
+		update commentary set c_content=#{c_content} where c_no=#{c_no}
+	</update>
+	
+	<delete id="deleteComment">
+		delete commentary where c_no=#{c_no}
+	</delete>
+</mapper>

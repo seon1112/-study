@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="language">
+	<!-- 스터디 생성시 언어 등록 -->
+	<insert id="insertLanguage" parameterType="LanguageVO">
+		insert into language values(#{l_no},#{s_no},#{l_lang},#{l_img})
+	</insert>
+	
+	<!-- 언어 다음 no 조회 -->
+	<select id="getNextNo" resultType="java.lang.Integer">
+		select nvl(max(l_no),0)+1 from language
+	</select>
+	
+	<!-- 스터디 no별 언어 조회 -->
+	<select id="findByNo" resultType="LanguageVO">
+		select * from language where s_no=#{s_no}
+	</select>
+</mapper>
