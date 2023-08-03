@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="coding">
+
+	<!-- 문제 수정 --><!-- 유리 -->
+	<update id="updateCodingTest" parameterType="codingVO">
+		update coding_test
+		set p_timer=#{p_timer, jdbcType=VARCHAR}, p_code=#{p_code, jdbcType=VARCHAR}, p_lang=#{p_lang, jdbcType=VARCHAR},
+		p_link=#{p_link, jdbcType=VARCHAR}, p_date =sysdate
+		where ct_no=#{ct_no, jdbcType=INTEGER}
+	</update>
+
+	<!-- 문제 삭제 --><!-- 유리 -->
+	<delete id="delete" parameterType="java.lang.Integer">
+		delete coding_test where ct_no = #{ct_no, jdbcType=INTEGER}
+	</delete>
+
+	<!-- 푼 문제 입력 --><!-- 유리 -->
+	<insert id="insertCodingTest" parameterType="codingVO">
+		insert into coding_test(ct_no, a_no, q_no, p_timer, p_code, p_date, p_lang, p_link)
+		values ((select nvl(max(ct_no),0)+1 from coding_test), #{a_no}, #{q_no}, #{p_timer}, #{p_code}, sysdate, #{p_lang}, #{p_link})
+	</insert>
+
+
+	<select id="getNextNo" resultType="java.lang.Integer">
+		select nvl(max(ct_no), 4000)+1 from coding_test
+	</select>
+
+	<!-- 프로그래머스 레벨 별 푼 문제 개수 --><!-- 수정 -->
+	<select id="findByLevel" resultType="java.lang.String">
+		select count(*) as ct from coding_test ct,quiz q where ct.q_no=q.q_no and
+		a_no=#{a_no} and q_level=#{q_level} group by q_level
+	</select>
+
+	<!-- 번호에 따른 문제 찾기 --><!-- 수정 -->
+	<select id="findByCtNo" resultType="codingVO">
+		select ct.*,q_title,q_level  FROM coding_test ct,quiz q
+		WHERE ct.q_no=q.q_no and ct_no=#{ct_no}
+	</select>
+
+	<!-- 연도에 따른 문제목록 --><!-- 수정 -->
+	<select id="findByAno" resultType="codingVO">
+		SELECT ROWNUM , ct.*, q_title,q_level FROM coding_test ct,quiz q
+		WHERE ct.q_no=q.q_no and EXTRACT(YEAR FROM p_date) = #{year} AND a_no = #{a_no}
+		ORDER BY ct_no DESC
+
+	</select>
+	<!-- 회원의 스터디 찾기 -->
+	<select id="selectStudy" resultType="java.lang.String">
+		select s_no from study_in where a_no=#{a_no} and r_ok=1
+	</select>
+	<!-- 해결한 문제 수 -->
+	<select id="total" resultType="java.lang.String">
+		select count(*) from coding_test where a_no=#{a_no}
+	</select>
+	<!-- 스터디 랭킹 -->
+	<select id="rank" resultType="java.lang.String">
+		select c.ct_no_rank from (
+		SELECT a.a_no, COUNT(c.ct_no) AS ct_no_count,
+		RANK() OVER (ORDER BY COUNT(c.ct_no) DESC) AS ct_no_rank
+		FROM study_in a
+		LEFT JOIN coding_test c ON a.a_no = c.a_no
+		and TO_CHAR(p_date, 'YYYY-MM-DD') >= TO_CHAR(s_a_regdate, 'YYYY-MM-DD')
+
+		WHERE a.s_no = #{s_no}
+		GROUP BY a.a_no) c
+		where c.a_no=#{a_no}
+	</select>
+	<!-- 스터디 멤버 수 -->
+	<select id="totalIn" resultType="java.lang.String">
+		select count(*) from study_in where s_no=#{s_no}
+	</select>
+	<!-- 이번달에 문제 푼 날의 수 -->
+	<select id="solved" resultType="java.lang.String">
+		select count(distinct p_date) as num_day from coding_test
+		where a_no=#{a_no} and extract(month from p_date)=extract(month from sysdate)
+	</select>
+	<!-- 스터디 활동일 수-->
+	<select id="start" resultType="java.lang.String">
+		SELECT TRUNC(SYSDATE) - TRUNC(s_a_regdate)+1 AS days_passed
+		FROM study_in WHERE a_no = #{a_no} and s_no=#{s_no}
+	</select>
+	<!-- 멤버 이름 -->
+	<select id="name" resultType="java.lang.String">
+		select nvl(a_nick, '멤버') from account where a_no=#{a_no}
+	</select>
+	<!-- 포도팜 가입년도 -->
+	<select id="regdate" resultType="java.lang.String">
+		select distinct(extract(year from a_regdate)) from account where a_no=#{a_no} order by extract(year from a_regdate) desc
+	</select>
+	<!-- 문제푼 날짜 별 문제 개수 -->
+	<select id="proGrape" resultType="codingVO">
+		select p_date, count(ct_no) as ct from coding_test where a_no=#{a_no} and extract(year from p_date)=#{year} group by p_date
+	</select>
+</mapper>

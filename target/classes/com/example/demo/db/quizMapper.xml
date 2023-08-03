@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="quiz">
+	<!-- 문제 이름 조회 --><!-- yuri -->
+	<select id="findTitle" resultType="java.lang.String">
+		select q_title from quiz
+	</select>
+
+
+
+	<!-- 문제 번호에 따른 문제 정보 조회 --><!-- yuri -->
+	<select id="findByTitle" resultType="quizVO">
+    	select * from quiz where q_title=#{q_title, jdbcType=VARCHAR}
+	</select>
+</mapper>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+ <properties resource="com/example/demo/db/db.properties"></properties>
+ <typeAliases>
+ 	<typeAlias type="com.example.demo.vo.Coding_testVO" alias="codingVO"/>   <!--나는 이렇게 애칭으로 쓰겠어 -->
+ 	<typeAlias type="com.example.demo.vo.StudyVO" alias="studyVO"/>   <!--나는 이렇게 애칭으로 쓰겠어 -->
+ 	<typeAlias type="com.example.demo.vo.Study_InVO" alias="study_inVO"/>   <!--나는 이렇게 애칭으로 쓰겠어 -->
+ 	<typeAlias type="com.example.demo.vo.RankVO" alias="rankVO"/>   <!--나는 이렇게 애칭으로 쓰겠어 -->
+ 	<typeAlias type="com.example.demo.vo.AccountVO" alias="accountVO"/>   <!--나는 이렇게 애칭으로 쓰겠어 -->
+ 	 <typeAlias type="com.example.demo.vo.LanguageVO" alias="LanguageVO"/>   <!--나는 이렇게 애칭으로 쓰겠어 -->
+ 	 <typeAlias type="com.example.demo.vo.AccountVO2" alias="AccountVO2"/>   <!--나는 이렇게 애칭으로 쓰겠어 -->
+ 	  <typeAlias type="com.example.demo.vo.StudyListVO" alias="StudyListVO"/>   <!--나는 이렇게 애칭으로 쓰겠어 -->
+ 	   <typeAlias type="com.example.demo.vo.BoardVO" alias="BoardVO"/>   <!--나는 이렇게 애칭으로 쓰겠어 -->
+       <typeAlias type="com.example.demo.vo.BoardDetailVO" alias="BoardDetailVO"/>   <!--나는 이렇게 애칭으로 쓰겠어 -->
+       <typeAlias type="com.example.demo.vo.CommentaryVO" alias="CommentaryVO"/>   <!--나는 이렇게 애칭으로 쓰겠어 -->
+     <typeAlias type="com.example.demo.vo.AdminVO" alias="adminVO"/>
+     <typeAlias type="com.example.demo.vo.QuizVO" alias="quizVO"/>   <!--나는 이렇게 애칭으로 쓰겠어 -->
+
+ </typeAliases>
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+      <dataSource type="POOLED">
+        <property name="driver" value="${driver}"/>
+        <property name="url" value="${url}"/>
+        <property name="username" value="${username}"/>
+        <property name="password" value="${password}"/>
+      </dataSource>
+    </environment>
+  </environments>
+  <mappers>
+    <mapper resource="com/example/demo/db/codingMapper.xml"/>  <!-- mapper를 지금은 하나만 등록해놨어요 -->
+    <mapper resource="com/example/demo/db/study_InMapper.xml"/>  <!-- mapper를 지금은 하나만 등록해놨어요 -->
+    <mapper resource="com/example/demo/db/studyMapper.xml"/>  <!-- mapper를 지금은 하나만 등록해놨어요 -->
+    <mapper resource="com/example/demo/db/languageMapper.xml"/><!-- mapper를 지금은 하나만 등록해놨어요 -->
+    <mapper resource="com/example/demo/db/accountMapper.xml"/><!-- mapper를 지금은 하나만 등록해놨어요 -->
+    <mapper resource="com/example/demo/db/boardMapper.xml"/><!-- mapper를 지금은 하나만 등록해놨어요 -->
+    <mapper resource="com/example/demo/db/commentaryMapper.xml"/><!-- mapper를 지금은 하나만 등록해놨어요 -->
+    <mapper resource="com/example/demo/db/myPageMapper.xml"/><!-- mapper를 지금은 하나만 등록해놨어요 -->
+      <mapper resource="com/example/demo/db/quizMapper.xml"/><!-- mapper를 지금은 하나만 등록해놨어요 -->
+
+  </mappers>
+</configuration>

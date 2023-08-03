@@ -1,0 +1,150 @@
+:root {
+  --color-background: #F7F7F7;
+  --color-white: #ffffff;
+  --color-purple: #624BFF;
+}
+
+html {
+  font-size: 14px;
+  font-family: Poppins;
+  font-style: normal;
+
+}
+
+body {
+  width: 192rem;
+  margin : auto;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+button{
+  outline:none;
+}
+
+header{
+  /*width : 100vw;*/
+  width:100%;
+ /* max-width: 110rem;*/
+  max-width: 192rem;
+  margin : auto; /*중앙 정렬 이걸로    */
+  display : block;
+  height: 10rem;
+  flex-shrink: 0;
+  align-items : center;
+   transition: all 0.5s;
+
+}
+
+.header-bar{
+	height: 10rem;
+  display : flex;
+  justify-content: space-between;
+   /* background-color: #4e2fa9;*/
+
+}
+
+.menu-bar {
+  display: flex;
+  padding: 0.5rem 0rem;
+  align-items: center;
+  gap: 0.625rem;
+
+}
+
+.logo{
+  display: flex;
+  width: 10rem;
+  align-items: center;
+  flex-shrink: 0;
+  text-decoration: none;
+  object-fit: contain;
+
+
+}
+
+
+.logo-img{
+  height: 3.125rem;
+  flex-shrink: 0;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: none; /* 버튼의 기본 배경 제거 */
+  border: none; /* 버튼의 기본 스타일 제거 */
+  cursor: pointer; /* 손 모양 커서 설정 */
+  margin-left: auto; /* 프로필 요소를 오른쪽으로 이동 */
+  padding-right: 3rem;
+  position: relative;
+
+}
+
+.profile-img{
+  background-color: white;
+}
+
+.profile-img img{
+  width: 3rem;
+  height: 3rem;
+  object-fit: contain;
+}
+
+
+
+.edit-profile,
+.edit-studygroup {
+
+  color: #533777;
+  font-family: Poppins;
+  font-size: 1.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 3.6875rem;
+  text-decoration: none;
+}
+
+#settingDiv {
+  position: absolute;
+  bottom: -6rem; /* 이 값을 조절해 메뉴의 위치를 조정해주세요. */
+  left: 0;
+  z-index: 1;
+  display: none;
+  border: 1px solid black;
+  padding: 1rem;
+  background-color : var(--color-white);
+}
+
+
+.setting-link {
+  font-size: 2rem;
+  text-decoration: none;
+}
+
+#noticeDiv {
+  position: absolute;
+  bottom: 183rem; /* 이 값을 조절해 메뉴의 위치를 조정해주세요. */
+  z-index: 1;
+  right: 70rem;
+  display: none;
+  border: 1px solid black;
+  padding: 1rem;
+  background-color : var(--color-white);
+}
+
+.notice{
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: none; /* 버튼의 기본 배경 제거 */
+  border: none; /* 버튼의 기본 스타일 제거 */
+  cursor: pointer; /* 손 모양 커서 설정 */
+  margin-left: 150rem; /* 프로필 요소를 오른쪽으로 이동 */
+  padding-right: 3rem;
+  position: relative;
+
+}
