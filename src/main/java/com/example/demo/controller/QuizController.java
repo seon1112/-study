@@ -38,7 +38,7 @@ public class QuizController {
 		System.out.println("ct_no: "+ct_no);
 		String c_no = String.valueOf(ct_no);
 
-		ano = (int)session.getAttribute("a_no");
+		ano = Integer.parseInt((String)session.getAttribute("a_no"));
 		cd.update(c);
 		String q_level = qd.findByTitle(c.getQ_title()).getQ_level();
 		int q_no = qd.findByTitle(c.getQ_title()).getQ_no();
