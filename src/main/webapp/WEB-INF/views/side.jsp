@@ -23,7 +23,7 @@ function myAccFunc() {
 	 $.ajax({
 		  url:"mate",
 		  success:function(data){
-			  $("#mateList").empty();
+			$("#mateList").empty();
 			for(var i=0;i<data.length;i++){
 				var a=$("<a></a>").attr("href","myProPage?mate_no="+data[i].a_no).addClass("w3-bar-item w3-button").html(data[i].a_name);
 				$("#mateList").append(a);

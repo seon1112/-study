@@ -19,8 +19,18 @@
 	</select>
 	<!-- 같은 스터디 멤버 찾기 -->
 	<select id="findMate" resultType="accountVO">
-		select * from account where a_no in (
-		select a_no from study_in where s_no=(select s_no from study_in where a_no=#{a_no} and r_ok='1') and a_no!=#{a_no} )
+	SELECT * FROM account 
+    WHERE a_no IN (
+        SELECT a_no 
+        FROM study_in 
+        WHERE s_no = (
+            SELECT s_no 
+            FROM study_in 
+            WHERE a_no = #{a_no}
+        ) 
+        AND a_no != #{a_no} 
+        AND r_ok = '1'
+    )
 	</select>
 	
 	<!--******************************* 현주 -->

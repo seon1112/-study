@@ -37,7 +37,8 @@ public class StudyController2 {
 	//스터디 멤버 찾기
 	@GetMapping("mate")
 	@ResponseBody
-	public List<AccountVO> mate(){
+	public List<AccountVO> mate(HttpSession session){
+	    a_no = (String) session.getAttribute("a_no");
 		return sid.findMate(a_no);
 	}
 	
