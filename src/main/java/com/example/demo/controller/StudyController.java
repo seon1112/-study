@@ -50,7 +50,7 @@ public class StudyController {
 	int languageNo=0;
 	
 	//회원번호 임의로 넣어두기
-	private int a_no;
+	 int a_no;
 	
 	@GetMapping("/insertStudy")
 	public void insert() {
@@ -58,8 +58,9 @@ public class StudyController {
 	}
 	//스터디 생성
 	@PostMapping("/insertStudy")
-	public ModelAndView insertSubmit(StudyVO s,Study_InVO si, LanguageVO l, @RequestParam("language") String language) {
+	public ModelAndView insertSubmit(HttpSession session, StudyVO s,Study_InVO si, LanguageVO l, @RequestParam("language") String language) {
 		System.out.println("**************language :"+language);
+		a_no= Integer.parseInt(String.valueOf(session.getAttribute("a_no")));
 		//다음 no 확인해서 vo에 담기
 		int studyNo = dao.getNextNo();
 		int study_inNo = dao.getNextNo();
@@ -104,7 +105,7 @@ public class StudyController {
 	@GetMapping("/studyDetail")
 	public void detail(HttpSession session,Model model, Integer s_no) {
 		System.out.println("detail 컨트롤러 실행함!!!!!!!!!!1");
-		a_no=(Integer)session.getAttribute("a_no");
+		a_no= Integer.parseInt(String.valueOf(session.getAttribute("a_no")));
 		System.out.println("a:"+a_no);
 		//
 		model.addAttribute("r_ok",study_inDAO.isMember(a_no));
@@ -168,5 +169,8 @@ public class StudyController {
 	   return msg;
 	}
 
-	
+	@GetMapping("/studyMaking")
+	public void studyMaking() {
+		
+	}
 }

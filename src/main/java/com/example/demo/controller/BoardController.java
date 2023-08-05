@@ -34,8 +34,13 @@ public class BoardController {
 	
 	//질문 등록
 	@PostMapping("/insertBoard")
-	public ModelAndView insertBoard(BoardVO b) {
+	public ModelAndView insertBoard(HttpSession session,BoardVO b) {
+		System.out.println("질문등록 컨트롤러 왔음");
 		int boardNo = dao.getNextNo();
+		ano= Integer.parseInt(String.valueOf(session.getAttribute("a_no")));
+		
+		System.out.println("질문댓글에 ano"+ano);
+		System.out.println("질문댓글에 sno"+sno);
 		b.setB_no(boardNo);
 		b.setA_no(ano);
 		b.setS_no(sno);
@@ -65,11 +70,12 @@ public class BoardController {
 	
 	//전체 리스트
 	@RequestMapping("/questionBoard")
-	public ModelAndView questionBoard(HttpSession session, Integer a_no, String keyword, @RequestParam(value = "pageNUM", 
+	public ModelAndView questionBoard(HttpSession session, String keyword, @RequestParam(value = "pageNUM", 
 			defaultValue = "1")  int pageNUM) {
 		ModelAndView mav=new ModelAndView();
-
 		ano= Integer.parseInt(String.valueOf(session.getAttribute("a_no")));
+		System.out.println("보드 컨트롤러는 오나???"+ano);
+
 		String s_no=cd.selectStudy(ano+"");
 		if(s_no==null) {
 			mav.setViewName("redirect:/myProPage");
@@ -77,10 +83,11 @@ public class BoardController {
 			sno=Integer.parseInt(s_no);
 			int start = (pageNUM-1)* BoardDAO.pageSIZE +1;
 			int end = start +  BoardDAO.pageSIZE -1;
+			System.out.println("sno는 뭐게"+s_no);
 			
 		
 			HashMap<String, Object> map = new HashMap<String,Object>();
-			map.put("a_no", a_no);
+			map.put("a_no", ano);
 			map.put("s_no", s_no);
 			map.put("keyword", keyword);
 			map.put("start", start);
@@ -88,7 +95,7 @@ public class BoardController {
 			
 			mav.addObject("list",dao.findByAno(map));
 			mav.addObject("totalPage", dao.totalPage);
-			//접속자 2번 고정
+			
 			mav.addObject("a_no",ano);
 		}
 		System.out.println("board컨트롤러에 내가 작성한 리스트 조회하는거 왔다~");
@@ -100,13 +107,14 @@ public class BoardController {
 	
 	//질문 상세+댓글
 	@GetMapping("/question")
-	public void question(Model model, @RequestParam("b_no") Integer b_no) {
+	public void question(HttpSession session, Model model, @RequestParam("b_no") Integer b_no) {
 		System.out.println("board컨트롤러에 디테일 조회하는거 왔다~");
 		model.addAttribute("b",dao.findByBno(b_no));
 		System.out.println(dao.findByBno(b_no));
 		model.addAttribute("list",commentaryDAO.findByNo(b_no));
 		System.out.println(commentaryDAO.findByNo(b_no));
 		//a_no에 따라서 질문 수정 삭제 보이게 하려구
+		ano= Integer.parseInt(String.valueOf(session.getAttribute("a_no")));
 		model.addAttribute("a",ano);
 	}
 	

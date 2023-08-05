@@ -10,5 +10,5 @@
 	<select resultType="java.lang.String" id="checkID">select a_no from account where a_email = #{a_email} </select>
 
 	<!--회원가입 -->
-	<insert id="loginPODOFAM" parameterType="map">INSERT INTO accounts (a_no, a_nick, a_name, a_gender, a_email, a_img, a_regdate)VALUES (ACCOUNT_SEQ.NEXTVAL, #{a_name}, #{a_name}, 'none', #{a_email}, 'default.png', SYSDATE); </insert>
+	<insert id="loginPODOFAM" parameterType="map">INSERT INTO accounts (a_no, a_nick, a_name, a_gender, a_email, a_img, a_regdate)VALUES (ACCOUNT_SEQ.NEXTVAL, #{a_name}, #{a_name}, 'none', #{a_email}, 'default.png', SYSDATE) </insert>
 </mapper>
