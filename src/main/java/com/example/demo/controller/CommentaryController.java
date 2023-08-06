@@ -24,7 +24,7 @@ public class CommentaryController {
 	
 	@PostMapping("/insertComment")
 	public ModelAndView insertComment(HttpSession session,CommentaryVO c) {
-		a_no=(Integer)session.getAttribute("a_no");
+		a_no=Integer.parseInt(String.valueOf(session.getAttribute("a_no")));
 		System.out.println("댓글 인설트 컨트롤러임");
 		int no = dao.getNextNo();
 		c.setA_no(a_no);

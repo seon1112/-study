@@ -39,7 +39,7 @@ public class BoardDAO {
 		System.out.println("totalRecord"+totalRecord);
 		totalPage=(int)Math.ceil(totalRecord/(double)pageSIZE);
 		System.out.println("totalPage"+totalPage);
-		
+		System.out.println(map);
 		return DBManager.findByAnoBoard(map);
 	}
 	

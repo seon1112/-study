@@ -70,8 +70,9 @@
 	</select>
 	<!-- 스터디 멤버 수 -->
 	<select id="totalIn" resultType="java.lang.String">
-		select count(*) from study_in where s_no=#{s_no}
+		select count(*) from study_in where s_no=#{s_no} and r_ok=1
 	</select>
+	
 	<!-- 이번달에 문제 푼 날의 수 -->
 	<select id="solved" resultType="java.lang.String">
 		select count(distinct p_date) as num_day from coding_test

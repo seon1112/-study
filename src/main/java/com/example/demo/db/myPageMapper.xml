@@ -58,8 +58,8 @@
         DELETE FROM account WHERE a_no = #{a_no}
     </delete>
 
-    <select resultType="java.lang.String" id="nickName">
-        SELECT a_nick FROM account WHERE a_no = #{a_no}
+    <select id="nickName" resultType="java.lang.String" >
+        SELECT a_nick FROM account WHERE a_no = #{b_no}
     </select>
 
     <update id="updateNickName" parameterType="accountVO">

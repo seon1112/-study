@@ -7,16 +7,8 @@
 	<select id="findLeaderByNo" resultType="AccountVO2">
 		select a.a_no,a_nick,a_img from study s, study_in si, account a where s.s_no=si.s_no and a.a_no=si.a_no and s.s_no=#{s_no} and s_leader='1'
 	</select>
-
-
-	<!--회원여부 확인 -->
-	<select id ="checkID" resultType="java.lang.String">
-		select a_no from account where a_email = #{a_email}
-	</select>
+	<select resultType="java.lang.String" id="checkID">select a_no from account where a_email = #{a_email} </select>
 
 	<!--회원가입 -->
-	<insert id="loginPODOFAM" parameterType="map">
-		INSERT INTO accounts (a_no, a_nick, a_name, a_gender, a_email, a_img, a_regdate)
-		VALUES (ACCOUNT_SEQ.NEXTVAL, #{a_name}, #{a_name}, '무', #{a_email}, 'default.png', SYSDATE);
-	</insert>
+	<insert id="loginPODOFAM" parameterType="map">INSERT INTO accounts (a_no, a_nick, a_name, a_gender, a_email, a_img, a_regdate)VALUES (ACCOUNT_SEQ.NEXTVAL, #{a_name}, #{a_name}, 'none', #{a_email}, 'default.png', SYSDATE) </insert>
 </mapper>

@@ -645,9 +645,11 @@ public class DBManager {
 		return list;
 	}
 
-	public static String nickName(int a_no) {
+	public static String nickName(int b_no) {
 		SqlSession session = sqlSessionFactory.openSession();
-		String a = session.selectOne("mypage.nickName", a_no);
+		System.out.println("여기와?");
+		String a=session.selectOne("mypage.nickName", b_no);
+		System.out.println("a:"+a);
 		session.close();
 		return a;
 	}

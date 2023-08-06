@@ -102,8 +102,9 @@
             <div class="profile-img">
                 <img src="./assets/logo.png" alt="profile-img"/>
             </div>
+            
             <span>${n} 님,<br>환영합니다</span>
-
+		
             <div class="setting-list" id="settingDiv">
                 <ul>
                     <li><a href="/myPage" class="setting-link">설정하기</a></li>

@@ -14,6 +14,18 @@
 	width: 100%;
 	height: 60%;
 }
+
+option {
+	background-color: white;
+	padding: 4px;
+	margin-bottom: 1px;
+	font-size: 18px;
+	cursor: pointer;
+}
+
+option:hover {
+	background-color: lightblue;
+}
 </style>
 <head>
 <meta charset="utf-8" />
@@ -143,10 +155,11 @@
 							<div class="heading-2-EfT">
 								<!-- 문제 제목 https://jeremyrecord.tistory.com/18 -->
 								<div class="performance-ngy">문제 제목</div>
-								<input type="text" list="searchTitle" name="q_title" class="performancetext-Wss" />
-								<datalist id="searchTitle">
-									<c:forEach var="t" items="${list }">
-										<option value="${t } "/>
+								<input type="text" list="searchTitle" name="q_title"
+									class="performancetext-Wss" autocomplete="off" />
+								<datalist id="searchTitle" >
+									<c:forEach var="t" items="${list}">
+										<option value="${t}" />
 									</c:forEach>
 								</datalist>
 
@@ -185,7 +198,7 @@
 							<input type="text" name="p_link" class="questiontext-amF"
 								style="font-size: 1.6rem;">
 						</div>
-						
+
 					</div>
 					<!-- 코드 -->
 					<div class="code-pp1">

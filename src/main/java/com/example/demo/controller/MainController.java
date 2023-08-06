@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.example.demo.dao.AccountDAO;
+import com.example.demo.dao.Coding_testDAO;
 
 import jakarta.servlet.http.HttpSession;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,6 +26,8 @@ public class MainController {
 
 	@Autowired
 	AccountDAO ad;
+	@Autowired
+	private Coding_testDAO cd;
 
 	@Autowired
 	Study_inDAO sid;
@@ -32,6 +35,7 @@ public class MainController {
 	private String a_email;
 
 	private String a_no;
+	
 	@PostMapping("/loginPODOFAM")
 	public ModelAndView compareData(HttpSession session, @RequestBody Map<String, String> data) {
 		a_email = data.get("email");
@@ -60,13 +64,16 @@ public class MainController {
 
 	@GetMapping("/header")
 	public void header(Model model){
+		System.out.println("여기와?");
 		int b_no = Integer.parseInt(a_no);
 		int leader = sid.FindTeamLeader(b_no);
 		if(b_no == leader) {
 			model.addAttribute("pl", sid.PermissionList(b_no));
 		}
-		model.addAttribute("a",sid.nickName(b_no));
-		System.out.println("가져온 닉네임 확인" + sid.nickName(b_no));
+		//멤버 이름
+        model.addAttribute("n", cd.getName(a_no));
+		//model.addAttribute("n",sid.nickName(b_no));
+		//System.out.println("가져온 닉네임 확인" + sid.nickName(b_no));
 	}
 
 }

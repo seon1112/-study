@@ -99,7 +99,9 @@
       <div class = "profile-img">
         <img src="./assets/logo.png" alt="profile-img"/>
       </div>
+
       <span>${n}님,<br>환영합니다</span>
+   
     </button>
 
   </div>

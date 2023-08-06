@@ -69,7 +69,7 @@ public class Study_inDAO {
 		return DBManager.TeamLeaderInfo(a_no);
 	}
 
-	public String nickName(int a_no){
-		return DBManager.nickName(a_no);
+	public String nickName(int b_no){
+		return DBManager.nickName(b_no);
 	}
 }
