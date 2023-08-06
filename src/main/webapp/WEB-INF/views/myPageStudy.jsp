@@ -71,8 +71,8 @@
         </a>
 
         <button class="profile">
-            <div class="profile-img">
-                <img src="./assets/logo.png" alt="profile-img"/>
+            <div class = "profile-img">
+                <img src="./images/${a.a_img}" alt="profile-img"/>
             </div>
             <span>${n}님,<br>환영합니다</span>
         </button>

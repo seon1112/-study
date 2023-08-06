@@ -92,7 +92,11 @@ public class MyPageController {
 
     @GetMapping("/myPageStudy")
     public void myPage_Study(Model model){
+
         int leader = sid.FindTeamLeader(a_no);
+
+        AccountVO account = ad.findMyPage(a_no);
+        model.addAttribute("a", account);
 
         model.addAttribute("n", sid.nickName(a_no));
         System.out.println("leader값 :" +leader);

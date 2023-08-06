@@ -62,6 +62,7 @@
           contentType: false,
           success: function(response) {
             console.log('이미지 업로드 완료!');
+            location.reload();
             // 업로드한 이미지를 화면에 표시하거나 기타 동작을 수행합니다.
           },
           error: function(xhr, status, error) {
@@ -90,14 +91,14 @@
 <!-- Header-->
 <header>
   <div class = "header-bar">
-    <a href ="#" class = "logo">
+    <a href ="/myProPage" class = "logo">
       <img src="./assets/logo-text.png" alt="로고" class = "logo-img">
     </a>
 
 
     <button class = "profile">
       <div class = "profile-img">
-        <img src="./assets/logo.png" alt="profile-img"/>
+        <img src="./images/${a.a_img}" alt="profile-img"/>
       </div>
 
       <span>${n}님,<br>환영합니다</span>

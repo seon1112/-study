@@ -45,6 +45,7 @@ public class MainController {
 
 		if(ad.checkID(a_email) != null){
 			a_no = ad.checkID(a_email);
+			System.out.println("Main Controller : ID가 있고 a_no 값은 " + a_no);
 
 		} else{
 			ad.loginPODOFAM(a_name,a_email);
