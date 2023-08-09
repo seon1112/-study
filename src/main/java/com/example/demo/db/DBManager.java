@@ -550,7 +550,16 @@ public class DBManager {
 		return re;
 	}
 
-
+	public static int deleteProfile(AccountVO a) {
+		System.out.println("deleteProfile 실행");
+		int re = -1;
+		SqlSession session =
+				sqlSessionFactory.openSession();
+		re = session.update("mypage.deleteProfileImg", a);
+		session.commit();
+		session.close();
+		return re;
+	}
 	public static int updateNickName(AccountVO a) {
 		System.out.println("updateProfile 실행");
 		int re = -1;

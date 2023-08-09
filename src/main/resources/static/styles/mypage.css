@@ -229,7 +229,7 @@ main {
 
 }
 
-.image-edit-button{
+.image-edit-button, .image-delete-button{
     display: flex;
     padding: 0.55rem 1.125rem;
     justify-content: center;

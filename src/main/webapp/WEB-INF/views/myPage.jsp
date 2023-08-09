@@ -78,6 +78,35 @@
         // 파일 선택 이벤트를 트리거
       });
 
+
+      $(document).ready(function() {
+
+        // 이미지 제거 버튼 클릭 이벤트
+        $('.image-delete-button').click(function() {
+          // AJAX 요청으로 이미지 제거
+          var aNo = ${a.a_no}; // a_no 값을 가져와서 적절하게 설정
+          $.ajax({
+            url: '/deleteProfileImg',
+            type: 'POST',
+            data: {
+              a_no: aNo
+            },
+            success: function(response) {
+              if (response === 'success') {
+                alert('프로필 이미지가 제거되었습니다.');
+                // 프로필 이미지가 제거되면 페이지를 새로고침하여 변경된 이미지를 보여줍니다.
+                location.reload();
+              } else {
+                alert('프로필 이미지 제거에 실패하였습니다.');
+              }
+            },
+            error: function(xhr, status, error) {
+              alert('서버 오류로 인해 프로필 이미지 제거에 실패하였습니다.');
+            }
+          });
+        });
+      });
+
       $(document).ready(function() {
         // profile 버튼 클릭 시 setting box 토글
         $('.profile').click(function() {
@@ -134,7 +163,7 @@
         <div class = "image-edit-box">
           <button class = "image-edit-button">이미지 수정</button>
           <input type="file" name="uploadFile" id="uploadFile" style="display: none">
-          <button class = "image-edit-button">이미지 제거</button>
+          <button class = "image-delete-button">이미지 제거</button>
         </div>
       </div>
       <div class="edit-nickname">

@@ -126,4 +126,20 @@ public class MyPageController {
         System.out.println("업데이트 되는지 확인하기");
         return "success"; // 업데이트 성공 시 성공 메시지 반환
     }
+
+
+    @PostMapping("/deleteProfileImg")
+    @ResponseBody
+    public String deleteProfileImg(@RequestParam("a_no") Integer aNo) {
+        AccountVO a = ad.findMyPage(aNo);
+        if (a == null) {
+            return "error"; // 계정이 없으면 에러 메시지 반환
+        }
+        // 프로필 이미지를 'default.png'로 변경
+        a.setA_img("default.png");
+        ad.updateProfileImg(a); // 데이터베이스에서 프로필 이미지 업데이트
+
+        return "success"; // 이미지가 삭제되면 성공 메시지 반환
+    }
+
 }

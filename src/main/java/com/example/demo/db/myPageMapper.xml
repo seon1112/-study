@@ -67,4 +67,8 @@
     <update id="updateNickName" parameterType="accountVO">
         UPDATE account SET a_nick = #{a_nick} WHERE a_no = #{a_no}
     </update>
+
+    <update id="deleteProfileImg" parameterType="accountVO">
+        UPDATE account SET a_img = 'default.png' WHERE a_no = #{a_no, jdbcType=INTEGER}
+    </update>
 </mapper>

@@ -18,6 +18,10 @@ public class AccountDAO {
 		return DBManager.updateProfile(a);
 	}
 
+	public int deleteProfileImg(AccountVO a){
+		return DBManager.deleteProfile(a);
+	}
+
 	public int updateNickName(AccountVO a){
 		return DBManager.updateNickName(a);
 	}
