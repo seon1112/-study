@@ -50,7 +50,7 @@ header {
 
 .container-logo{
     display: flex;
-    width: 22.9375rem;
+    width: 35.9375rem;
     flex-direction: column;
     justify-content: center;
     flex-shrink: 0;
@@ -59,9 +59,8 @@ header {
 .container-text{
     display: flex;
     width: 78.9375rem;
-    height: 19.5rem;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
     flex-shrink: 0;
 }
 
@@ -91,7 +90,7 @@ t2 {
     /* 기본 스타일 */
     display: flex;
     width: 36.375rem;
-    height: 4.1875rem;
+    height: 6.1875rem;
     justify-content: center;
     align-items: center;
     flex-shrink: 0;

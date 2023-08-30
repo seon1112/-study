@@ -13,7 +13,7 @@ import com.example.demo.vo.LanguageVO;
 @Repository
 public class BoardDAO {
 	//한 화면에 보여줄 레코드의 수
-		public static int pageSIZE=1;
+		public static int pageSIZE=10;
 		
 		//전체레코드의 수
 		public static int totalRecord;
@@ -28,18 +28,10 @@ public class BoardDAO {
 	public int getNextNo() {
 		return DBManager.getNextNoBoard();
 	}
-/*
-	public List<BoardVO> findAll(int no){
-		return DBManager.findAllBoard(no);
-	}
-	*/
 	
 	public List<BoardVO> findByAno(HashMap<String,Object> map){
 		totalRecord = DBManager.getTotalRecord(map);
-		System.out.println("totalRecord"+totalRecord);
 		totalPage=(int)Math.ceil(totalRecord/(double)pageSIZE);
-		System.out.println("totalPage"+totalPage);
-		System.out.println(map);
 		return DBManager.findByAnoBoard(map);
 	}
 	

@@ -21,7 +21,7 @@
      <typeAlias type="com.example.demo.vo.AdminVO" alias="adminVO"/>   <!--나는 이렇게 애칭으로 쓰겠어 -->
 
  </typeAliases>
- 
+
   <environments default="development">
     <environment id="development">
       <transactionManager type="JDBC"/>
@@ -42,9 +42,7 @@
     <mapper resource="com/example/demo/db/boardMapper.xml"/><!-- mapper를 지금은 하나만 등록해놨어요 -->
     <mapper resource="com/example/demo/db/commentaryMapper.xml"/><!-- mapper를 지금은 하나만 등록해놨어요 -->
     <mapper resource="com/example/demo/db/quizMapper.xml"/><!-- mapper를 지금은 하나만 등록해놨어요 -->
-
       <mapper resource="com/example/demo/db/myPageMapper.xml"/>
-
-
+   
   </mappers>
 </configuration>

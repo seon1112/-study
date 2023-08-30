@@ -44,7 +44,7 @@
 	<select id="findByAno" resultType="codingVO">
 	 SELECT ROWNUM , ct.*, q_title,q_level FROM coding_test ct,quiz q
 	 WHERE ct.q_no=q.q_no and EXTRACT(YEAR FROM p_date) = #{year} AND a_no = #{a_no}
-     ORDER BY ct_no DESC
+     ORDER BY p_date DESC
 	
 	</select>
 	<!-- 회원의 스터디 찾기 -->
@@ -93,6 +93,6 @@
 	</select>
 	<!-- 문제푼 날짜 별 문제 개수 -->
 	<select id="proGrape" resultType="codingVO">
-		select p_date, count(ct_no) as ct from coding_test where a_no=#{a_no} and extract(year from p_date)=#{year} group by p_date
+		select trunc(p_date) as p_date, count(ct_no) as ct from coding_test where a_no=#{a_no} and extract(year from p_date)=#{year} group by trunc(p_date)
 	</select>
 </mapper>

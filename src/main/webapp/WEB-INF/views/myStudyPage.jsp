@@ -56,6 +56,7 @@ function drawChart() {
 		url:"graph",
 		data:{year:year2,month,month2},
 		success:function(d){
+			console.log(d);
 			 //스터디 멤버 가져오기
 			 $.ajax({
 				 url:"member",
@@ -206,22 +207,7 @@ var m=month;
    	<!-- 메인본문 -->
     <div class="mystudy-3uT">
       <div class="maincol-CGZ">
-        <div class="mainstudy-Wo3">
-         
-          
-          <!--스터디 이름 
-            <div class="studyname-xf3">${studyName } </div>
- 
-				<select class="selectyear-nhw selectmonth-fZT" onchange="selectMonth(this)">
-				    <option disabled="disabled">월 선택</option>
-				    <c:forEach var="m" items="${month}">
-				        <option value="${m[0]}/${m[1]}/${m[2]}">${m[0]}/${m[1]}</option>
-				    </c:forEach>
-				    <input type="hidden" value="${month[0][2]}" id="last">
-				</select>
-					-->			    
-         
-          
+        <div class="mainstudy-Wo3">  
           <div class="auto-group-c6cy-r6D">
            <div class="serch-gJm">
 	          <div class="item-mr1">

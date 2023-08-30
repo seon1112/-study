@@ -59,7 +59,6 @@ public class StudyController {
 	//스터디 생성
 	@PostMapping("/insertStudy")
 	public ModelAndView insertSubmit(HttpSession session, StudyVO s,Study_InVO si, LanguageVO l, @RequestParam("language") String language) {
-		System.out.println("**************language :"+language);
 		a_no= Integer.parseInt(String.valueOf(session.getAttribute("a_no")));
 		//다음 no 확인해서 vo에 담기
 		int studyNo = dao.getNextNo();
@@ -84,7 +83,6 @@ public class StudyController {
 			languageNo = languageDAO.getNextNo();
 			l.setL_no(languageNo);
 			l.setL_lang(lang.trim());
-			System.out.println("lang : "+lang);
 			l.setL_img(lang+".png");
 			languageRe = languageDAO.insert(l);
 		}
@@ -104,9 +102,7 @@ public class StudyController {
 	//스터디 상세보기
 	@GetMapping("/studyDetail")
 	public void detail(HttpSession session,Model model, Integer s_no) {
-		System.out.println("detail 컨트롤러 실행함!!!!!!!!!!1");
 		a_no= Integer.parseInt(String.valueOf(session.getAttribute("a_no")));
-		System.out.println("a:"+a_no);
 		//
 		model.addAttribute("r_ok",study_inDAO.isMember(a_no));
 		model.addAttribute("ano", a_no);
@@ -118,8 +114,6 @@ public class StudyController {
 	//스터디 리스트
 	@RequestMapping("/studySearching")
 	public void listStudy(HttpSession session,Model model,@RequestParam(value = "selectedBtns", required = false) String[] selectedBtns, String keyword,String btn_lang) {
-		System.out.println("list컨트롤러 실행됨!!!!");
-		System.out.println(":::::::"+selectedBtns);
 		a_no= Integer.parseInt(String.valueOf(session.getAttribute("a_no")));
 		HashMap<String, Object> map = new HashMap<String,Object>();
 		map.put("keyword", keyword);
@@ -128,16 +122,7 @@ public class StudyController {
 		model.addAttribute("list",dao.findAll(map));
 		
 		model.addAttribute("r_ok",study_inDAO.isMember(a_no));
-		System.out.println("컨트롤러에서 멤버인지 확인 "+study_inDAO.isMember(a_no));
 		
-		/*
-		List<StudyListVO> list2=dao.findAll(selectedBtns);
-		ArrayList<ArrayList<String>>list3=new ArrayList<>();
-		for(StudyListVO sv:list2) {
-			String fname=sv.getLanguagesImg();
-			String[]str=fname.trim().split(",");
-		}
-		*/
 	}
 	
 	
@@ -156,10 +141,8 @@ public class StudyController {
 	@ResponseBody
 	public String applyStudy(Study_InVO si){
 	    int study_inNo = study_inDAO.getNextNo();
-	    System.out.println("rno:"+study_inNo);
 	    si.setR_no(study_inNo);
 	    int study_inRe = study_inDAO.insertMember(si);
-	    System.out.println("신청하기 컨트롤러... 실행되늬..?");
 	    String msg="";
 	    if(study_inRe ==1) {
 	    	msg="신청되었습니다.";

@@ -80,9 +80,8 @@
         <img src = "./assets/logo-text.png" alt="로고" class = "container-logo">
         <div class = "container-text">
             <h1>알고리즘 스터디 공간</h1>
-            <h2>프로그래머스 자동 커밋과 스터디를 구하는 가장 쉬운 방법 </h2>
+            <h2>프로그래머스 스터디를 구하는 가장 쉬운 방법!! </h2>
         </div>
-        <button class = "extension-button">포도팜 익스텐션 다운로드</button>
         <a href ="/myProPage" class= "logout-button">포도팜 화면으로 바로가기</a>
 
         <div id="g_id_onload"

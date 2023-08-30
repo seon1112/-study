@@ -93,13 +93,13 @@
     </thead>
     <tbody class="tbodyCss">
     <c:forEach var="b" items="${list }">
-      <tr onclick="selectQuestion(${b.b_no})" >
-        <td>${b.b_title }</td>
-        <td>${b.b_p_title }</td>
-        <td>${b.b_p_lang }</td>
-        <td>${b.a_nick }</td>
-        <td>${b.commentCnt }</td>
-        <td>${b.b_date }</td>
+      <tr onclick="selectQuestion(${b.b_no})" style="height: 6rem;">
+        <td style="padding-top: 2rem;">${b.b_title }</td>
+        <td style="padding-top: 2rem;">${b.b_p_title }</td>
+        <td style="padding-top: 2rem;">${b.b_p_lang }</td>
+        <td style="padding-top: 2rem;">${b.a_nick }</td>
+        <td style="padding-top: 2rem;">${b.commentCnt }</td>
+        <td style="padding-top: 2rem;">${b.b_date }</td>
       </tr>
       </c:forEach>
     </tbody>

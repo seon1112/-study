@@ -84,7 +84,7 @@ function questionDelete(ct_no) {
           </div>
         </div>
         <!-- 목록버튼 --><!-- 유리 -->
-        <div class="btnCollection">
+        <div class="btnCollection" >
        	<c:if test="${test.a_no==a }">
 	        <a class="listbtn-95bB" href="/updateCode?ct_no=${ct_no }">수정</a>
 	        <button class="listbtn-95bC">

@@ -126,6 +126,7 @@ public class DBManager {
 			int n = 0;
 			SqlSession session = sqlSessionFactory.openSession();
 			n = session.selectOne("board.getTotalRecord",map);
+			System.out.println("n:"+n);
 			session.close();
 			return n;
 		} 
@@ -136,7 +137,6 @@ public class DBManager {
 			SqlSession session = sqlSessionFactory.openSession();
 			list = session.selectList("board.findByAno",map);
 			session.close();
-			System.out.println("board list : "+list);
 			return list;
 			
 		}
@@ -147,7 +147,6 @@ public class DBManager {
 			SqlSession session = sqlSessionFactory.openSession();
 			bd = session.selectOne("board.findByBno",no);
 			session.close();
-			System.out.println("board bd : "+bd);
 			return bd;
 		}
 		
@@ -176,12 +175,10 @@ public class DBManager {
 		
 		//질문번호별 댓글 조회
 		public static List<CommentaryVO> findByNoComment(int no){
-			System.out.println("댓글 db매니저 와쑴");
 			List<CommentaryVO> list = null;
 			SqlSession session = sqlSessionFactory.openSession();
 			list = session.selectList("commentary.findByNo",no);
 			session.close();
-			System.out.println("commentary list : "+list);
 			return list;
 		}
 		
@@ -199,7 +196,6 @@ public class DBManager {
 			int re = -1;
 			SqlSession session = sqlSessionFactory.openSession();
 			re = session.insert("commentary.insertComment",c);
-			System.out.println("질문 re:"+re);
 			session.commit();
 			session.close();
 			return re;

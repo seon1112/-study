@@ -93,15 +93,15 @@
    </select>
    <!-- 그래프 -->
    <select id="findGraph" resultType="rankVO">
-   	select extract(day from p_date) as day, a.a_no,a_name ,count(ct.p_date) as c
+   	select extract(day from p_date) as day, a.a_no,a_name ,count(ct_no) as c
 	from coding_test ct, account a,study_in st
 	where ct.a_no=a.a_no and st.a_no=a.a_no
 	and extract(month from p_date)=#{month}
 	and extract(year from p_date)=#{year}
 	and TO_CHAR(p_date, 'YYYY-MM-DD') >= TO_CHAR(s_a_regdate, 'YYYY-MM-DD')
 	and a.a_no in(select a_no from study_in where s_no =
-	(select s_no from study_in where a_no=#{a_no}))
-	group by(p_date,a.a_no,a.a_name)
+	(select s_no from study_in where a_no=1))
+	group by(extract(day from p_date),a.a_no,a.a_name)
    </select>
 	
 </mapper>

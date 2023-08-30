@@ -79,7 +79,7 @@
         <a href="myProPage.jsp" class="logo">
             <img src="./assets/logo-text.png" alt="로고" class="logo-img">
         </a>
-
+		<!--  
         <div class = "notice">
             <div class="alarm-img">
                 <img src ="./assets/alarm.png" alt="alaram-img">
@@ -98,6 +98,7 @@
                 </c:forEach>
             </ul>
         </div>
+        -->
         <div class="profile">
             <div class="profile-img">
                 <img src="./assets/logo.png" alt="profile-img"/>

@@ -96,10 +96,9 @@ public class Coding_testController {
 	public void code(String year,Model model,String mate_no,HttpSession session) {
 		a_no= session.getAttribute("a_no")+"";
 		int b_no = Integer.parseInt(a_no);
-		System.out.println("a_no: " + a_no + ", Type: " + a_no.getClass().getSimpleName());
 		//멤버 이름
         model.addAttribute("n", cd.getName(a_no));
-		//session.setAttribute("n", sid.nickName(b_no));
+        session.setAttribute("n", cd.getName(a_no));
 		session.setAttribute("a_no",a_no);
 		
 		if(year==null|| year.equals("")) {
