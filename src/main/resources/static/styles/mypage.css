@@ -1,0 +1,468 @@
+:root {
+    --color-background: #F7F7F7;
+    --color-white: #ffffff;
+    --color-purple: #624BFF;
+}
+
+html {
+    font-size: 14px;
+    font-family: Poppins;
+    font-style: normal;
+}
+
+body {
+    margin : auto;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+button{
+    outline:none;
+}
+
+header{
+    width : 100vw;
+    max-width: 110rem;
+    margin : auto; /*중앙 정렬 이걸로    */
+    display : block;
+    height: 10rem;
+    flex-shrink: 0;
+    align-items : center;
+}
+
+.header-bar{
+    display : flex;
+    background-color : white;
+    justify-content: space-between;
+
+}
+
+.menu-bar {
+    display: flex;
+    padding: 0.5rem 0rem;
+    align-items: center;
+    gap: 0.625rem;
+
+}
+
+.logo{
+    display: flex;
+    width: 10rem;
+    align-items: center;
+    flex-shrink: 0;
+    text-decoration: none;
+    object-fit: contain;
+
+}
+
+
+.logo-img{
+    height: 3.125rem;
+    flex-shrink: 0;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: none; /* 버튼의 기본 배경 제거 */
+    border: none; /* 버튼의 기본 스타일 제거 */
+    cursor: pointer; /* 손 모양 커서 설정 */
+    margin-left: auto; /* 프로필 요소를 오른쪽으로 이동 */
+    padding-right: 3rem;
+
+}
+
+.profile-img{
+    background-color: white;
+}
+
+.profile-img img{
+    width: 3rem;
+    height: 3rem;
+    object-fit: contain;
+}
+
+.alaram{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: none;
+    cursor: pointer; /* 손 모양 커서 설정 */
+}
+
+
+.alaram img{
+    padding-top : 0.3rem;
+    width: 2rem;
+    height: 2rem;
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+.edit-profile,
+.edit-studygroup {
+
+    color: #624BFF;
+    font-family: Poppins;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 3.5rem;
+    text-decoration: none;
+}
+
+.setting-div {
+    font-family: Poppins;
+    font-size: 1.875rem;
+    display: block;
+    position: absolute;
+    width: 15rem;
+    height: 5rem;
+    background-color: white; /* 배경을 흰색으로 변경 */
+    margin-left: 90rem;
+    margin-top : 7rem;
+    display: none; /* 추가 */
+    border: 1px solid black; /* 테두리 추가 */
+    border-radius: 3px; /* 테두리 둥글게 */
+    box-shadow: 0 3px #888888; /* 박스 아래로 그림자 추가 */
+}
+
+.setting-div a {
+    text-decoration: none; /* 밑줄 제거 */
+}
+
+.alaram-div {
+    font-family: Poppins;
+    font-size: 1.875rem;
+    display: block;
+    position: absolute;
+    width: 30rem;
+    background-color: white;
+    margin-left: 80rem;
+    display: block; /* 추가 */
+}
+
+.setting-box{
+}
+main {
+    margin : auto;
+    display: flex;
+    width: 100vw;
+    max-width: 110rem;
+    height: 56.25rem;
+    align-items: flex-start;
+    gap: 0.0625rem;
+    flex-shrink: 0;
+    background-color: #fff;
+}
+
+.edit-image{
+    display: flex;
+    width: 1920px;
+    height: 703px;
+    padding: 20px 100px;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-shrink: 0;
+}
+
+.edit-box image{
+    width: 5rem;
+    height: 5rem;
+}
+.title-image{
+    display: flex;
+    width: 20rem;
+    align-items: flex-start;
+    gap: 70.6875rem;
+
+    text-align: center;
+    font-family: Noto Sans KR;
+    font-size: 2.575rem;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.edit-box{
+    display: flex;
+    width: 94.1875rem;
+    height: 14.375rem;
+    padding: 5rem;
+    align-items: center;
+    gap: 1.25rem;
+    flex-shrink: 0;
+    padding-left : 0;
+}
+
+.image-box {
+    width: 15rem;
+    height: 15rem;
+    align-items: left;
+    position: relative; /* 부모 요소에 relative position 설정 */
+}
+
+.image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    position: absolute; /* 자식 요소에 absolute position 설정 */
+    top: 0;
+    left: 0;
+}
+
+
+.image-edit-box{
+    display: flex;
+    height: 12.375rem;
+    padding: 0.625rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1.875rem;
+
+}
+
+.image-edit-button, .image-delete-button{
+    display: flex;
+    padding: 0.55rem 1.125rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    border-radius: 0.5rem;
+    background: #262626;
+    color: white;
+    text-align: center;
+    font-family: Noto Sans KR;
+    font-size: 1.575rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    cursor: pointer; /* 손 모양 커서 설정 */
+    border : none;
+
+
+}
+
+.edit-nickname{
+    display: flex;
+    height: 10rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+    flex-shrink: 0;
+
+}
+
+.nick-name{
+    display: flex;
+    color: color;
+    text-align: left;
+    font-family: Noto Sans KR;
+    font-size: 1.875rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    align-items: center;
+}
+
+.input {
+    margin-left : 2rem;
+    display: flex;
+    width: 21.9375rem;
+    height: 2.1875rem;
+    padding: 0.75rem 0.8125rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    flex-shrink: 0;
+    border-radius: 0.5rem;
+}
+
+.save-box{
+    display: flex;
+    width: 94.1875rem;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.complete{
+    display: flex;
+    width: 12.5rem;
+    padding: 0.7rem 0.125rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    flex-shrink: 0;
+    border-radius: 0.5rem;
+    background: black;
+    color: white;
+    text-align: center;
+    font-family: Noto Sans KR;
+    font-size: 1.675rem;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    text-decoration: none;
+
+}
+
+.delete-account{
+    display: flex;
+    width: 10.5rem;
+    padding: 0.7rem 0.125rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    flex-shrink: 0;
+    border-radius: 0.5rem;
+    background: #ff3217;
+    color: white;
+    text-align: center;
+    font-family: Noto Sans KR;
+    font-size: 1.675rem;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    text-decoration: none;
+
+}
+
+/* mypage _study */
+
+.study-main{
+    display: block;
+    width: 1920px;
+    height: 1080px;
+    padding: 20px 100px;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-shrink: 0;
+    overflow : auto;
+
+}
+.study-box{
+    width: 94.1875rem;
+    height: 25.375rem;
+    padding: 1rem;
+    padding-left: 1.2rem;
+    align-items: center;
+    gap: 1.25rem;
+    flex-shrink: 0;
+    background-color: #F7F7F7;
+}
+
+.study-title-box {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    padding-left : 1rem;
+    width: 100%;
+    height: 2.2 rem;
+}
+
+.study-title-box h2 {
+    margin: 0; /* 기본적인 마진 제거 */
+}
+.study-allowed{
+    display: block;
+    height: 20rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+    flex-shrink: 0;
+    margin-top: 4rem;
+}
+.leader-box{
+    background-color: #E7E7E7;
+}
+
+.member-table{
+    font-size : 2rem;
+}
+
+.permission-table{
+    border-spacing: 1rem;
+    font-size: 1.3rem;
+}
+
+.member-table th {
+    background-color: #ccc; /* Gray background for table headers */
+    padding: 10px;
+    text-align: center;
+}
+.allowed-box{
+    background-color: #E7e7e7;
+    width: 50rem;
+    height: 15rem;
+}
+
+button.approve {
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+button.approve:hover {
+    opacity: 0.8; /* 마우스 호버 시 버튼의 투명도를 조절하여 효과 부여 */
+}
+
+button.reject {
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+button.reject:hover {
+    opacity: 0.8; /* 마우스 호버 시 버튼의 투명도를 조절하여 효과 부여 */
+}
+
+
+.table-button{
+    display: flex;
+    width: 5.5rem;
+    padding: 0.5rem 0.125rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    flex-shrink: 0;
+    border-radius: 0.5rem;
+    background: black;
+    color: #E7E7E7;
+    text-align: center;
+    font-family: Noto Sans KR;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    text-decoration: none;
+}
+.permission-user-list button{
+    display: flex;
+    width: 3rem;
+    padding: 0.5rem 0.125rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    flex-shrink: 0;
+    border-radius: 0.5rem;
+    background: #262626;
+    color: #E7E7E7;
+    text-align: center;
+    font-family: Noto Sans KR;
+    font-size: 0.9rem;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    text-decoration: none;
+}
+
+.footer {
+    background-color: #533777;
+}

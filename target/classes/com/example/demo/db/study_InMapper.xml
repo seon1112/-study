@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="study_in">
+	<!-- 경선 -->
+	<!-- 방장 여부 확인하기 -->
+	<select id="findLeader" resultType="java.lang.String">
+		select s_leader from study_in where a_no=#{a_no}
+	</select>
+	<!-- 방장이 아닐때 탈퇴하기 -->
+	<delete id="deleteStudy" parameterType="java.lang.String">
+		delete study_in where a_no=#{a_no}
+	</delete>	
+	<!-- 스터디의 멤버 찾기 -->
+	<select id="findMember" resultType="accountVO">
+		select * from account where a_no in (
+		select a_no from study_in where s_no=(select s_no from study_in where a_no=#{a_no} and r_ok='1'))
+	</select>
+	<!-- 같은 스터디 멤버 찾기 -->
+	<select id="findMate" resultType="accountVO">
+	SELECT * FROM account 
+    WHERE a_no IN (
+        SELECT a_no 
+        FROM study_in 
+        WHERE s_no = (
+            SELECT s_no 
+            FROM study_in 
+            WHERE a_no = #{a_no}
+        ) 
+        AND a_no != #{a_no} 
+        AND r_ok = '1'
+    )
+	</select>
+	
+	<!--******************************* 현주 -->
+	<!-- 스터디 생성시 방장 추가 -->
+	<insert id="insertStudy_inLeader" parameterType="Study_inVO">
+		insert into Study_in(r_no, a_no, s_no, s_leader, r_ok,s_a_regdate) values(#{r_no},#{a_no},#{s_no},'1','1',sysdate)
+	</insert>
+	
+	<!-- 스터디원 다음 no 조회 -->
+	<select id="getNextNo" resultType="java.lang.Integer">
+		select nvl(max(r_no),0)+1 from study_in
+	</select>
+	
+	<!-- 스터디별 승인된 인원수 조회 -->
+	<select id="findByNoAndOk" resultType="java.lang.Integer">
+		select count(*) from study_in where s_no=#{s_no} and r_ok='1';
+	</select>
+	
+	<!-- 스터디 신청시 회원 추가 -->
+	<insert id="insertStudy_inMember" parameterType="Study_inVO">
+		insert into study_in values(#{r_no},#{a_no},#{s_no},'0','0',#{a_git},#{a_level},#{a_programmers},null)
+	</insert>
+	
+	<!-- 스터디가 있는지 -->
+	<select id="isMember" resultType="java.lang.Integer">
+		select count(*) from study_in where r_ok ='1' and a_no=#{a_no}
+	</select>
+
+</mapper>

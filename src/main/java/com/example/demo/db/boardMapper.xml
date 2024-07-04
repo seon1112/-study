@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="board">
+	<!-- 질문 등록 -->
+	<insert id="insertBoard" parameterType="BoardVO">
+		insert into board(b_no, a_no, s_no, b_title, b_content, b_date, b_code, b_p_lang, b_p_title) values(#{b_no},#{a_no},#{s_no},#{b_title},#{b_content},sysdate,#{b_code},#{b_p_lang},#{b_p_title})
+	</insert>
+	
+	<!-- 게시판 다음 no 조회 -->
+	<select id="getNextNo" resultType="java.lang.Integer">
+		select nvl(max(b_no),0)+1 from
+		board
+	</select>
+	
+	<!--질문리스트 보기 -->
+	<select id="findByAno" resultType="BoardVO">
+	SELECT 
+    t.*
+FROM
+    (SELECT 
+        b.b_no, b.a_no, b.s_no, b.b_title, b.b_content, TO_CHAR(b.b_date, 'yyyy-MM-dd hh:mm:ss') AS b_date, b.b_code, b.b_p_lang, b.b_p_title,
+        COALESCE(c.commentCnt, 0) AS commentCnt,
+        a.a_nick,
+        ROW_NUMBER() OVER (ORDER BY b.b_date) AS rn
+    FROM
+        board b
+    LEFT JOIN
+        (
+            SELECT 
+                b_no, COUNT(*) AS commentCnt
+            FROM 
+                commentary
+            GROUP BY 
+                b_no
+        ) c ON b.b_no = c.b_no
+    LEFT JOIN
+        account a ON b.a_no = a.a_no
+    WHERE
+        b.s_no = #{s_no}
+        <if test="a_no != null">
+        AND b.a_no = #{a_no}
+        </if>
+        <if test="keyword != null">
+        AND b.b_p_title LIKE '%' || #{keyword} || '%'
+        </if>
+    ) t
+WHERE
+    t.rn BETWEEN #{start} AND #{end}
+ORDER BY
+    t.b_date
+
+	</select>
+	 
+	
+	<!-- 질문상세보기 -->
+	<select id="findByBno" resultType="BoardDetailVO">
+		select b_no, b_title, b_p_title, b_p_lang, b_content, b_code, b.a_no, TO_CHAR(b.b_date,'yyyy-MM-dd hh-mm-ss') as b_date, a_nick, a_img
+from board b, account a where b.a_no=a.a_no and b_no=#{b_no}
+	</select>
+	
+	<!-- 질문 수정 -->
+	<update id="updateBoard" parameterType="BoardVO">
+		update board set b_title=#{b_title},b_content=#{b_content},b_code=#{b_code},b_p_lang=#{b_p_lang},b_p_title=#{b_p_title} where b_no=#{b_no}
+	</update>
+	
+	<!-- 질문 삭제 -->
+	<delete id="deleteBoard">
+		delete board where b_no=#{b_no}
+	</delete>
+	
+	<!--전체 레코드 수  -->
+	<select id="getTotalRecord" resultType="java.lang.Integer">
+		select count(*) from board where s_no=#{s_no}
+	</select>
+</mapper>

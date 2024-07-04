@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="study">
+	<!-- 스터디 생성 -->
+	<insert id="insertStudy" parameterType="StudyVO">
+		insert into
+		study(s_no,s_name,s_title,s_content,s_goal,s_o_date,s_e_date,s_member,s_condition)
+		values(#{s_no},#{s_name},#{s_title},#{s_content},#{s_goal},sysdate,#{s_e_date},#{s_member},'1')
+	</insert>
+
+	<!-- 스터디 다음 no 조회 -->
+	<select id="getNextNo" resultType="java.lang.Integer">
+		select nvl(max(s_no),0)+1 from
+		study
+	</select>
+
+	<!-- 스터디 상세 조회 -->
+	<select id="findByNo" resultType="StudyVO">
+		select s_no, s_name, s_title, s_goal, TO_CHAR(s_o_date,'yyyy-MM-dd') as s_o_date, TO_CHAR(s_e_date,'yyyy-MM-dd') as s_e_date, s_member, s_content from study where
+		s_no=#{s_no}
+	</select>
+
+	<!-- 스터디 전체 조회 -->
+	<select id="findAll" resultType="StudyListVO">
+		SELECT s.s_no, s.s_name, s.s_title, s.s_goal, TO_CHAR(s.s_o_date,'yyyy-MM-dd') as s_o_date, TO_CHAR(s.s_e_date,'yyyy-MM-dd') as s_e_date, s.s_member,
+		a.a_nick, a.a_img,
+		LISTAGG(l.l_lang, ',') WITHIN GROUP (ORDER BY l.l_lang) AS languages,
+		LISTAGG(l.l_img, ',') WITHIN GROUP (ORDER BY l.l_img) AS languagesImg,      
+		(SELECT COUNT(DISTINCT si2.a_no) FROM study_in si2 WHERE si2.s_no = s.s_no and si2.r_ok=1) AS accessPeopleCnt
+		FROM study s
+		INNER JOIN study_in si ON s.s_no = si.s_no
+		INNER JOIN account a ON a.a_no = si.a_no
+		INNER JOIN language l ON s.s_no = l.s_no
+		WHERE s.s_condition = '1' AND si.s_leader = '1'
+		<if test="selectedBtns != null">
+			AND languages IN
+    <foreach item="item" collection="selectedBtns" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+    	</if>
+    	<if test="btn_lang != null">
+			AND l_lang like '%' || #{btn_lang} ||'%'
+		</if>
+		<if test="keyword != null">
+			AND s.s_name like '%' || #{keyword} ||'%'
+		</if>
+		GROUP BY s.s_no, s.s_name, s.s_title, s.s_goal, s.s_o_date, s.s_e_date, s.s_member, s.s_condition, a.a_nick, a.a_img
+		ORDER BY s.s_no
+	</select>
+	
+	
+	<!-- 경선아 주석달자 -->
+	<!-- 스터디 이름 -->
+	<select id="findStudyName" resultType="java.lang.String">
+		select s_name from study, study_in  where study.s_no=study_in.s_no and a_no=#{a_no}
+	</select>
+	<!-- 전체 랭킹 -->
+	<select id="findTotalRank" resultType="rankVO">
+		select rownum,a.* from
+		(SELECT a_name, COUNT(ct_no) AS c FROM coding_test
+		JOIN study_in ON coding_test.a_no = study_in.a_no
+		JOIN account ON coding_test.a_no = account.a_no
+		where study_in.s_no=(select s_no from study_in where a_no=#{a_no})
+		and TO_CHAR(p_date, 'YYYY-MM-DD') >= TO_CHAR(s_a_regdate, 'YYYY-MM-DD')
+		GROUP BY a_name ORDER BY c DESC FETCH FIRST 3 ROWS ONLY) a
+	</select>
+	<!-- 이달의 랭킹 -->
+	<select id="findMonthRank" resultType="rankVO">
+		select rownum,a.* from(
+		SELECT a_name, COUNT(ct_no) AS c FROM coding_test
+		JOIN study_in ON coding_test.a_no = study_in.a_no
+		JOIN account ON coding_test.a_no = account.a_no
+		WHERE EXTRACT(MONTH FROM p_date) = #{month}
+		  AND EXTRACT(YEAR FROM p_date) = #{year}
+		  and study_in.s_no=(select s_no from study_in where a_no=#{a_no})
+		 and TO_CHAR(p_date, 'YYYY-MM-DD') >= TO_CHAR(s_a_regdate, 'YYYY-MM-DD')
+		GROUP BY a_name ORDER BY c DESC FETCH FIRST 3 ROWS ONLY)a
+	</select>
+	<!-- 활동한 연도/달 찾기 -->
+	<select id="findMonth" resultType="java.lang.String">
+    <![CDATA[
+        WITH cte AS (
+            SELECT TO_CHAR(ADD_MONTHS((SELECT s_a_regdate FROM study_in WHERE a_no = #{a_no}), LEVEL-1), 'YYYY/MM') AS year_month
+            FROM dual
+            CONNECT BY ADD_MONTHS((SELECT s_a_regdate FROM study_in WHERE a_no = #{a_no}), LEVEL-1) <= TRUNC(SYSDATE, 'MM')
+        )
+        SELECT year_month
+        FROM cte
+        order by year_month desc
+    ]]>
+   </select>
+   <!-- 그래프 -->
+   <select id="findGraph" resultType="rankVO">
+   	select extract(day from p_date) as day, a.a_no,a_name ,count(ct_no) as c
+	from coding_test ct, account a,study_in st
+	where ct.a_no=a.a_no and st.a_no=a.a_no
+	and extract(month from p_date)=#{month}
+	and extract(year from p_date)=#{year}
+	and TO_CHAR(p_date, 'YYYY-MM-DD') >= TO_CHAR(s_a_regdate, 'YYYY-MM-DD')
+	and a.a_no in(select a_no from study_in where s_no =
+	(select s_no from study_in where a_no=1))
+	group by(extract(day from p_date),a.a_no,a.a_name)
+   </select>
+	
+</mapper>

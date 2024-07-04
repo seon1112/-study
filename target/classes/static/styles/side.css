@@ -1,0 +1,277 @@
+.icon{
+	width: 2rem;
+	margin-right: 1rem;
+}
+.w3-bar-block .w3-bar-item{
+	padding: 15px 16px!;
+}
+
+.w3-sidebar {
+    height: 100%;
+  width: 200px;
+  background-color: #fff;
+  position: fixed!important;
+  z-index: 1;
+  top: 100px; /* 원하는 값으로 조정 */
+  margin-top: 10rem;
+    
+}
+
+
+.w3-theme-l1 {color:#fff !important;background-color: #7040fa !important}
+
+
+.sidbar-LMX {
+  width: 70%;
+  margin-left:30%;
+  margin-top: 50%;
+  height: 61.7409rem;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+ .sidbar-LMX .sidemenu-ggH {
+  margin-bottom: 4.2rem;
+  box-sizing: border-box;
+  padding: 2.193rem 2.1rem 2.804rem 2.1rem;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: solid 0.1rem #828282;
+  box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.25);
+  background-color: #ffffff;
+  border-radius: 1.5rem;
+  flex-shrink: 0;
+  font-weight: 800;
+  font-size: large;
+}
+ .sidbar-LMX .sidemenu-ggH .mypage-boF {
+  margin: 0rem 7.2rem 3.411rem 0.215rem;
+  box-sizing: border-box;
+  padding-left: 0.0005rem;
+  width: calc(100% - 7.4153rem);
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+ .sidbar-LMX .sidemenu-ggH .mypage-boF .icon-ddT {
+  margin: 0rem 1.131rem 0.2rem 0rem;
+  width: 1.3534rem;
+  height: 1.3714rem;
+  object-fit: contain;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+ .sidbar-LMX .sidemenu-ggH .mypage-boF .mypage-wu3 {
+  display: flex;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 1.1951874495;
+  color: #3a3d4d;
+  font-family: Poppins, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+ .sidbar-LMX .sidemenu-ggH .mystudy-HCD {
+  margin: 0rem 14.3rem 3.411rem 0.1rem;
+  width: calc(100% - 14.4rem);
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+ .sidbar-LMX .sidemenu-ggH .mystudy-HCD .icon-pT3 {
+  margin: 0.004rem 1rem 0rem 0rem;
+  opacity: 0.99;
+  width: 1.6rem;
+  height: 1.3714rem;
+  object-fit: contain;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+ .sidbar-LMX .sidemenu-ggH .mystudy-HCD .mystudy-kLh {
+  display: flex;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 1.1951874495;
+  color: #363949;
+  font-family: Poppins, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+ .sidbar-LMX .sidemenu-ggH .teammate-hFw {
+  margin: 0rem 12.3rem 3.411rem 0.1rem;
+  box-sizing: border-box;
+  padding-left: 0.0009rem;
+  width: calc(100% - 12.4rem);
+  display: flex;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+ .sidbar-LMX .sidemenu-ggH .teammate-hFw .icon-2Z7 {
+  margin-right: 0.9221rem;
+  opacity: 0.99;
+  width: 1.6771rem;
+  height: 1.8rem;
+  object-fit: contain;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+ .sidbar-LMX .sidemenu-ggH .teammate-hFw .team-mate-wRB {
+  margin-top: 0.1rem;
+  display: flex;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 1.1951874495;
+  color: #363949;
+  font-family: Poppins, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+ .sidbar-LMX .sidemenu-ggH .searching-2xR {
+  margin: 0rem 8rem 3.506rem 0.1rem;
+  width: calc(100% - 8.1rem);
+  display: flex;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+ .sidbar-LMX .sidemenu-ggH .searching-2xR .icon-ZBf {
+  margin-right: 0.8rem;
+  opacity: 0.99;
+  width: 1.8rem;
+  height: 1.8rem;
+  object-fit: contain;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+ .sidbar-LMX .sidemenu-ggH .searching-2xR .searching-6Bb {
+  margin-top: 0.1rem;
+  display: flex;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 1.1951874495;
+  color: #363949;
+  font-family: Poppins, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+ .sidbar-LMX .sidemenu-ggH .board-DGD {
+  margin-right: 15.7rem;
+  box-sizing: border-box;
+  padding: 0.005rem 0rem 0rem 0.2rem;
+  width: calc(100% - 15.7rem);
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+ .sidbar-LMX .sidemenu-ggH .board-DGD .icon-jVT {
+  margin: 0rem 0.829rem 0.261rem 0rem;
+  opacity: 0.99;
+  width: 1.6714rem;
+  height: 1.4143rem;
+  object-fit: contain;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+ .sidbar-LMX .sidemenu-ggH .board-DGD .board-Fyb {
+  display: flex;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 1.1951874495;
+  color: #363949;
+  font-family: Poppins, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+ .sidbar-LMX .sidelevel-wbX {
+  box-sizing: border-box;
+  padding: 2.259rem 2.1rem 2.341rem 2.1rem;
+  width: 100%;
+  height: 25.6rem;
+  overflow: hidden;
+  position: relative;
+  border: solid 0.1rem #828282;
+  box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.25);
+  background-color: #ffffff;
+  border-radius: 1.5rem;
+  flex-shrink: 0;
+  font-weight: 600;
+}
+ .sidbar-LMX .sidelevel-wbX .frame-7-qwo {
+  width: 4.5rem;
+  height: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+ .sidbar-LMX .sidelevel-wbX .frame-7-qwo .mypage-NB3 {
+  display: flex;
+  font-size: 1.3rem;
+  font-weight: 500;
+  line-height: 1.4709999378;
+  color: #3a3d4d;
+  font-family: Poppins, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+ .sidbar-LMX .sidelevel-wbX .frame-7-qwo .auto-group-aa17-WY9 {
+  box-sizing: border-box;
+  padding: 1.8rem 0;
+  width: 100%;
+  row-gap: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+ .sidbar-LMX .sidelevel-wbX .frame-7-qwo .auto-group-aa17-WY9 .level-1-3Y5 {
+  display: flex;
+  font-size: 1.3rem;
+  font-weight: 500;
+  line-height: 1.4709999378;
+  color: #363949;
+  font-family: Poppins, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+ .sidbar-LMX .sidelevel-wbX .frame-7-qwo .auto-group-aa17-WY9 .level-2-zTK {
+  display: flex;
+  font-size: 1.3rem;
+  font-weight: 500;
+  line-height: 1.4709999378;
+  color: #363949;
+  font-family: Poppins, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+ .sidbar-LMX .sidelevel-wbX .frame-7-qwo .auto-group-aa17-WY9 .searching-w7f {
+  display: flex;
+  font-size: 1.3rem;
+  font-weight: 500;
+  line-height: 1.4709999378;
+  color: #363949;
+  font-family: Poppins, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+ .sidbar-LMX .sidelevel-wbX .frame-7-qwo .level-4-t2u {
+  margin-bottom: 1.8rem;
+  display: flex;
+  font-size: 1.3rem;
+  font-weight: 500;
+  line-height: 1.4709999378;
+  color: #363949;
+  font-family: Poppins, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+ .sidbar-LMX .sidelevel-wbX .frame-7-qwo .level-5-bi1 {
+  display: flex;
+  font-size: 1.3rem;
+  font-weight: 500;
+  line-height: 1.4709999378;
+  color: #363949;
+  font-family: Poppins, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}

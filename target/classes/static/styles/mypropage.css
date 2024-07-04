@@ -1,0 +1,555 @@
+
+html {
+	font-size:62.5%;
+	display: flex;
+ justify-content: center;
+ align-items: center;
+    flex-direction: column;
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+ul, li {
+	list-style: none;
+}
+input {
+	border: none;
+}
+body {
+  width: 192rem;
+  display: flex;
+ justify-content: center;
+ align-items: center;
+    flex-direction: column;
+}
+.serch-gJm {
+  margin-bottom: 3.138rem;
+  box-sizing: border-box;
+  padding: 0.8rem 0rem 0rem 0.4rem;
+  width: 100%;
+  height: 5.6rem;
+  display: flex;
+  align-items: center;
+  border-bottom: solid 0.3rem #f2f2f2;
+  flex-shrink: 0;
+}
+ .serch-gJm .item-mr1 {
+/* margin-bottom: 1.5rem;*/
+ /* width: 100%;*/
+  margin-right: 75.1rem;
+  width: 20.9rem;
+  height: 100%;
+  flex-shrink: 0;
+  display: flex;
+}
+.serch-gJm .item-mr1 .studysearching-KsX {
+ /*margin-right: 92.5rem;*/
+  margin-bottom: 1rem;
+  display: flex;
+  font-size: 2.6rem;
+  font-weight: 700;
+  line-height: 1.2599999354;
+  color: #333333;
+  font-family: Roboto, 'Source Sans Pro';
+  white-space: nowrap;
+}
+.serch-gJm .item-mr1 .pseudo-4KK {
+  width: 100%;
+  height: 0.5rem;
+  background-color: #8b7aa6;
+}
+
+
+
+
+.solved{
+	background-color: #7040fa;
+	color:white;
+}	
+.selectY{
+	width:12.8rem; 
+	height:4rem;
+	 font-size:25px;
+	 font-weight:600;
+}
+.selectYearCol{
+ margin-bottom: 0.8rem;
+  position: relative;
+  flex-shrink: 0;
+	width:12.8rem;
+	 height:4.3rem;
+	 font-size: 25px;
+}
+ .mypro-fxm {
+  left:42.3rem;
+  box-sizing: border-box;
+  padding: 0 1.8rem;
+  width: 155.3rem;
+  height: 189.2rem;
+  overflow: hidden;
+  position: relative;
+  background-color: #ffffff;
+  flex-shrink: 0;
+}
+ .mypro-fxm .maincol-DDb {
+  width: 131.8rem;
+  height: 195.2rem;
+  overflow: hidden;
+  position: relative;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+}
+ .mypro-fxm .maincol-DDb .auto-group-gd4m-XEH {
+  box-sizing: border-box;
+  padding: 12.55rem 0.2rem 1.9rem 0.3rem;
+  width: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+ .mypro-fxm .maincol-DDb .auto-group-gd4m-XEH .mainmemberstate-Dso {
+  margin-bottom: 4.05rem;
+  width: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+ .mypro-fxm .maincol-DDb .auto-group-gd4m-XEH .mainmemberstate-Dso .auto-group-gvzm-B3w {
+  margin-bottom: 1.5rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+ .mypro-fxm .maincol-DDb .auto-group-gd4m-XEH .mainmemberstate-Dso .auto-group-gvzm-B3w .memberstatetitle-Xdb {
+  margin-right: 92.5rem;
+  display: flex;
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.4475;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  align-items: baseline;
+  flex-shrink: 0;
+}
+ .mypro-fxm .maincol-DDb .auto-group-gd4m-XEH .mainmemberstate-Dso .auto-group-gvzm-B3w .memberstatetitle-Xdb .memberstatetitle-Xdb-sub-0 {
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1.4475;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+}
+ .mypro-fxm .maincol-DDb .auto-group-gd4m-XEH .mainmemberstate-Dso .auto-group-gvzm-B3w .memberstatetitle-Xdb .memberstatetitle-Xdb-sub-1 {
+}
+.serch-gJm .item-mr1 .selectyear-nhw {
+  width: 13rem;
+  height: 4.3rem;
+  flex-shrink: 0;
+  position: absolute;
+  right: 20px;
+  border-radius: 1rem;
+  font-size: 1.6rem;
+  margin-top: 1rem;
+  top:160px;
+}
+ .mypro-fxm .maincol-DDb .auto-group-gd4m-XEH .mainmemberstate-Dso .memberstate-X9j {
+  margin: 0 0.3rem;
+  width: calc(100% - 0.6rem);
+  height: 13.8rem;
+  display: flex;
+  column-gap: 2.4rem;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+ .mypro-fxm .maincol-DDb .auto-group-gd4m-XEH .mainmemberstate-Dso .memberstate-X9j .solved-od3 {
+  box-sizing: border-box;
+  padding: 3.227rem 4.431rem 3.35rem 4.1rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  border: solid 0.2rem #533777;
+  border-radius: 1.5rem;
+  flex-shrink: 0;
+  width: 460px;
+}
+ .mypro-fxm .maincol-DDb .auto-group-gd4m-XEH .mainmemberstate-Dso .memberstate-X9j .solved-od3 .light-jmb {
+  margin: 0.123rem 3.5rem 0rem 0rem;
+  width: 5.9rem;
+  height: 7.1rem;
+  object-fit: contain;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+ .mypro-fxm .maincol-DDb .auto-group-gd4m-XEH .mainmemberstate-Dso .memberstate-X9j .solved-od3 .solvedtext-TxV {
+  margin-bottom: 0.8168rem;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+ .mypro-fxm .maincol-DDb .auto-group-gd4m-XEH .mainmemberstate-Dso .memberstate-X9j .solved-od3 .solvedtext-TxV .solvedtitle-cqP {
+  margin: 0rem 0rem 2.406rem 0.169rem;
+  display: flex;
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.1111111111;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+ .mypro-fxm .maincol-DDb .auto-group-gd4m-XEH .mainmemberstate-Dso .memberstate-X9j .solved-od3 .solvedtext-TxV .solvedinput-hM3 {
+  display: flex;
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.1111111111;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  align-items: baseline;
+  flex-shrink: 0;
+}
+ .mypro-fxm .maincol-DDb .auto-group-gd4m-XEH .mainmemberstate-Dso .memberstate-X9j .solved-od3 .solvedtext-TxV .solvedinput-hM3 .solvedinput-hM3-sub-0 {
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 0.5;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+}
+ .mypro-fxm .maincol-DDb .auto-group-gd4m-XEH .mainmemberstate-Dso .memberstate-X9j .solved-od3 .solvedtext-TxV .solvedinput-hM3 .solvedinput-hM3-sub-1 {
+  font-size: 4rem;
+  font-weight: 500;
+  line-height: 0.5;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+}
+ .mypro-fxm .maincol-DDb .auto-group-gd4m-XEH .mainmemberstate-Dso .memberstate-X9j .solved-od3 .solvedtext-TxV .solvedinput-hM3 .solvedinput-hM3-sub-2 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 0.8333333333;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+}
+ .mypro-fxm .maincol-DDb .auto-group-gd4m-XEH .mainmemberstate-Dso .memberstate-X9j .solved-od3 .solvedtext-TxV .solvedinput-hM3 .solvedinput-hM3-sub-3 {
+}
+ .mypro-fxm .maincol-DDb .auto-group-gd4m-XEH .mainmemberstate-Dso .memberstate-X9j .studyrank-HiZ {
+  box-sizing: border-box;
+  padding: 3.225rem 8.353rem 3.65rem 2.9rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  border: solid 0.2rem #533777;
+  border-radius: 1.5rem;
+  flex-shrink: 0;
+   width: 460px;
+}
+ .mypro-fxm .maincol-DDb .auto-group-gd4m-XEH .mainmemberstate-Dso .memberstate-X9j .studyrank-HiZ .ranking-1Pf {
+  margin: 0.125rem 2.8rem 0rem 0rem;
+  height: 6.8rem;
+  display: flex;
+  align-items: flex-end;
+  flex-shrink: 0;
+}
+ .mypro-fxm .maincol-DDb .auto-group-gd4m-XEH .mainmemberstate-Dso .memberstate-X9j .studyrank-HiZ .ranking-1Pf .vector-8z5 {
+  margin-right: 0.7582rem;
+  width: 2.08rem;
+  height: 3.3677rem;
+  object-fit: contain;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+ .mypro-fxm .maincol-DDb .auto-group-gd4m-XEH .mainmemberstate-Dso .memberstate-X9j .studyrank-HiZ .ranking-1Pf .auto-group-gg6m-58d {
+  margin-right: 0.7584rem;
+  height: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+ .mypro-fxm .maincol-DDb .auto-group-gd4m-XEH .mainmemberstate-Dso .memberstate-X9j .studyrank-HiZ .ranking-1Pf .auto-group-gg6m-58d .vector-DVj {
+  margin-bottom: 0.5367rem;
+  width: 2.1235rem;
+  height: 1.7731rem;
+  object-fit: contain;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+ .mypro-fxm .maincol-DDb .auto-group-gd4m-XEH .mainmemberstate-Dso .memberstate-X9j .studyrank-HiZ .ranking-1Pf .auto-group-gg6m-58d .vector-AA5 {
+  margin-left: 0.0001rem;
+  width: 2.08rem;
+  height: 4.4903rem;
+  object-fit: contain;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+ .mypro-fxm .maincol-DDb .auto-group-gd4m-XEH .mainmemberstate-Dso .memberstate-X9j .studyrank-HiZ .ranking-1Pf .vector-6Jd {
+  width: 2.08rem;
+  height: 2.4696rem;
+  object-fit: contain;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+ .mypro-fxm .maincol-DDb .auto-group-gd4m-XEH .mainmemberstate-Dso .memberstate-X9j .studyrank-HiZ .ranktext-3Ds {
+  margin-bottom: 0.512rem;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+ .mypro-fxm .maincol-DDb .auto-group-gd4m-XEH .mainmemberstate-Dso .memberstate-X9j .studyrank-HiZ .ranktext-3Ds .studyranktitile-PoX {
+  margin: 0rem 0rem 2.413rem 0rem;
+  display: flex;
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.1111111111;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+ .mypro-fxm .maincol-DDb .auto-group-gd4m-XEH .mainmemberstate-Dso .memberstate-X9j .studyrank-HiZ .ranktext-3Ds .studyrankinput-3NH {
+  display: flex;
+  font-size: 4rem;
+  font-weight: 500;
+  line-height: 0.5;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  align-items: baseline;
+  flex-shrink: 0;
+}
+ .mypro-fxm .maincol-DDb .auto-group-gd4m-XEH .mainmemberstate-Dso .memberstate-X9j .studyrank-HiZ .ranktext-3Ds .studyrankinput-3NH .studyrankinput-3NH-sub-0 {
+}
+ .mypro-fxm .maincol-DDb .auto-group-gd4m-XEH .mainmemberstate-Dso .memberstate-X9j .studyrank-HiZ .ranktext-3Ds .studyrankinput-3NH .studyrankinput-3NH-sub-1 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  line-height: 1.1111111111;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+}
+ .mypro-fxm .maincol-DDb .auto-group-gd4m-XEH .mainmemberstate-Dso .memberstate-X9j .missed-3Fo {
+  box-sizing: border-box;
+  padding: 3.225rem 6rem 3.95rem 3.1rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  border: solid 0.2rem #533777;
+  background-color: #ffffff;
+  border-radius: 1.5rem;
+  flex-shrink: 0;
+   width: 460px;
+}
+ .mypro-fxm .maincol-DDb .auto-group-gd4m-XEH .mainmemberstate-Dso .memberstate-X9j .missed-3Fo .sleep-mxV {
+  margin: 1.225rem 3rem 0rem 0rem;
+  width: 7.4001rem;
+  height: 5.4rem;
+  position: relative;
+  object-fit: contain;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+ .mypro-fxm .maincol-DDb .auto-group-gd4m-XEH .mainmemberstate-Dso .memberstate-X9j .missed-3Fo .memberstatetext-6js {
+  margin-bottom: 0.212rem;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+ .mypro-fxm .maincol-DDb .auto-group-gd4m-XEH .mainmemberstate-Dso .memberstate-X9j .missed-3Fo .memberstatetext-6js .missedtitle-rU9 {
+  margin-bottom: 2.413rem;
+  display: flex;
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.1111111111;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+ .mypro-fxm .maincol-DDb .auto-group-gd4m-XEH .mainmemberstate-Dso .memberstate-X9j .missed-3Fo .memberstatetext-6js .missedinput-z4Z {
+  display: flex;
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.1111111111;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  align-items: baseline;
+  flex-shrink: 0;
+}
+ .mypro-fxm .maincol-DDb .auto-group-gd4m-XEH .mainmemberstate-Dso .memberstate-X9j .missed-3Fo .memberstatetext-6js .missedinput-z4Z .missedinput-z4Z-sub-0 {
+  font-size: 4rem;
+  font-weight: 500;
+  line-height: 0.5;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+}
+ .mypro-fxm .maincol-DDb .auto-group-gd4m-XEH .mainmemberstate-Dso .memberstate-X9j .missed-3Fo .memberstatetext-6js .missedinput-z4Z .missedinput-z4Z-sub-1 {
+  font-size: 2.4rem;
+  font-weight: 500;
+  line-height: 0.8333333333;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+}
+ .mypro-fxm .maincol-DDb .auto-group-gd4m-XEH .mainmemberstate-Dso .memberstate-X9j .startstudy-617 {
+  margin-bottom: 0.1rem;
+  box-sizing: border-box;
+  padding: 3.05rem 3.9rem 2.95rem 3.6rem;
+  display: flex;
+  align-items: center;
+  border: solid 0.2rem #533777;
+  background-color: #ffffff;
+  border-radius: 1.5rem;
+  flex-shrink: 0;
+   width: 460px;
+}
+ .mypro-fxm .maincol-DDb .auto-group-gd4m-XEH .mainmemberstate-Dso .memberstate-X9j .startstudy-617 .fire-cEM {
+  margin-right: 3.8rem;
+  width: 6.1rem;
+  height: 7.7rem;
+  position: relative;
+  object-fit: contain;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+ .mypro-fxm .maincol-DDb .auto-group-gd4m-XEH .mainmemberstate-Dso .memberstate-X9j .startstudy-617 .startstudytext-9VB {
+  margin-bottom: 0.928rem;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+ .mypro-fxm .maincol-DDb .auto-group-gd4m-XEH .mainmemberstate-Dso .memberstate-X9j .startstudy-617 .startstudytext-9VB .startstudytitle-bMB {
+  margin-bottom: 2.4409rem;
+  display: flex;
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.1111111111;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+ .mypro-fxm .maincol-DDb .auto-group-gd4m-XEH .mainmemberstate-Dso .memberstate-X9j .startstudy-617 .startstudytext-9VB .startstudyinput-7qK {
+  display: flex;
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.1111111111;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  align-items: baseline;
+  flex-shrink: 0;
+}
+ .mypro-fxm .maincol-DDb .auto-group-gd4m-XEH .mainmemberstate-Dso .memberstate-X9j .startstudy-617 .startstudytext-9VB .startstudyinput-7qK .startstudyinput-7qK-sub-0 {
+  font-size: 4rem;
+  font-weight: 400;
+  line-height: 0.5;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+}
+ .mypro-fxm .maincol-DDb .auto-group-gd4m-XEH .mainmemberstate-Dso .memberstate-X9j .startstudy-617 .startstudytext-9VB .startstudyinput-7qK .startstudyinput-7qK-sub-1 {
+  font-size: 2.4rem;
+  font-weight: 400;
+  line-height: 0.8333333333;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+}
+ .mypro-fxm .maincol-DDb .auto-group-gd4m-XEH .mainchart-QC9 {
+  width: 100%;
+  height: 29rem;
+  overflow: hidden;
+  position: relative;
+ border: solid 0.1rem #828282;
+  box-sizing: border-box;
+  border-radius: 2rem;
+  flex-shrink: 0;
+  padding-top: 2rem;
+  padding-left:4rem;
+}
+ .mypro-fxm .maincol-DDb .mainsolved-vwB {
+  box-sizing: border-box;
+  padding: 0.3rem 0rem 0rem 0rem;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  row-gap: 3.2rem;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border-radius: 0;
+  flex-shrink: 0;
+  
+}
+ .mypro-fxm .maincol-DDb .mainsolved-vwB .solvedtitle-3ku {
+  display: flex;
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #000000;
+  font-family: Poppins, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+ .mypro-fxm .maincol-DDb .mainsolved-vwB .selectcol-b1j {
+  width: 100%;
+  height: 4.8rem;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+ .mypro-fxm .maincol-DDb .mainsolved-vwB .selectcol-b1j .search-Lk1 {
+  margin-right: 2.6rem;
+  width: 113.5rem;
+  height: 100%;
+  border: solid 0.1rem #ced4da;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  border-radius: 0.4rem;
+  flex-shrink: 0;
+  
+}
+ .mypro-fxm .maincol-DDb .mainsolved-vwB .selectcol-b1j .searchbtn-sV3 {
+  width: 15.7rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  line-height: 1.2;
+  color: #ffffff;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  background-color: #7040fa;
+  border-radius: 1rem;
+  flex-shrink: 0;
+}
+ .mypro-fxm .maincol-DDb .mainsolved-vwB .solvedtable-Aj3 {
+  width: 100%;
+  height: 92.9rem;
+  border: solid 0.1rem #828282;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  overflow: auto;
+  border-radius: 1.5rem;
+}
+#myInput{
+	height:5rem; 
+	border-radius:1rem;
+	font-size: 25px;
+}
+
+.btnInsert{
+	width: 300px;
+    height: 70px;
+    background-color: #7040FA;
+    border-radius: 20px 20px 20px 20px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 10px;
+}

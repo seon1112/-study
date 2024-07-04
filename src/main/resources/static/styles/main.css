@@ -1,0 +1,122 @@
+:root {
+    --color-background: #F6F6F9;
+    --color-white: #ffffff;
+    --color-purple: #624BFF;
+    --color-light: rgba(0, 0, 0, 0.4);
+    --box-shadow: 0 2rem 3rem var(--color-light);
+}
+
+html {
+    font-size: 14px;
+    font-family: Poppins;
+    font-style: normal;
+}
+
+body {
+    margin : 0;
+    display: inline-flex;
+    width: 100vw;
+    height: 180rem;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+header {
+    display: flex;
+    width: 100vw;
+    height: 6rem;
+    padding: 0.625rem;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+    background-color: var(--color-purple);
+}
+
+
+.container{
+    margin-top: 5rem;
+    box-sizing: border-box;
+    display: flex;
+    width:100vw;
+    height: 46.6875rem;
+    padding: 2.125rem 20rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.4375rem;
+    flex-shrink: 0;
+    align-self: stretch;
+}
+
+.container-logo{
+    display: flex;
+    width: 35.9375rem;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.container-text{
+    display: flex;
+    width: 78.9375rem;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+t1 {
+    color: #000;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 3.75rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 3.6875rem; /* 98.333% */
+}
+
+t2 {
+    color: #000;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 1.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 3.6875rem;
+}
+
+
+.extension-button,
+.logout-button {
+    /* 기본 스타일 */
+    display: flex;
+    width: 36.375rem;
+    height: 6.1875rem;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 1.25rem;
+    background-color: var(--color-purple);
+    color: #FFF;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 1.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 3.6875rem; /* 196.667% */
+    text-decoration: none;
+
+    /* 마우스 호버 시 스타일 */
+    transition: background-color 0.3s ease;
+}
+.extension-button:hover,
+.logout-button:hover {
+    background-color: #5129E5;
+}
+
+/* 버튼 클릭 시 스타일 */
+.extension-button:active,
+.login-button:active {
+    background-color: #361F98;
+}
+
+/*-----------------------------------mainpage_study.html 관련 요소*/
